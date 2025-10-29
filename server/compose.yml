@@ -7,7 +7,6 @@ services:
       - "8282:80"
     volumes:
       - "./cms:/opt/drupal"
-      - "./cms/settings.php:/opt/drupal/web/sites/default/settings.php"
       - "./php/php.ini:/usr/local/etc/php/php.ini"
     depends_on:
       - "eladb"
