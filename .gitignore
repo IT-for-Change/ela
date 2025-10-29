@@ -1,0 +1,41 @@
+# Project root: track important files
+!.gitignore
+!dev.env
+!server/php/
+!server/cms/composer.json
+!server/cms/composer.lck
+!server/cms/compose.yml
+!server/cms/settings.php
+server/cms/config
+!server/cms/web/modules/custom
+!apps/stt
+!apps/langid
+!apps/nlp
+
+server/db/
+
+# Ignore dependencies
+server/cms/vendor/
+server/cms/recipes/
+
+# Ignore Drupal core, contrib modules, profiles
+server/cms/web/core/
+server/cms/web/profiles/
+server/cms/web/modules/contrib/
+server/cms/web/themes/contrib/
+
+# Ignore generated and private site data
+server/cms/web/sites/*/files/
+server/cms/web/sites/*/private/
+server/cms/web/sites/*/settings.php
+
+## Project root: Ignore sundry files
+server/.editorconfig
+server/.gitattributes
+
+# Ignore all individual files directly inside these directories
+server/cms/web/*
+server/cms/web/themes/*
+server/cms/web/sites/*
+server/cms/web/.htaccess
+server/cms/web/web.config

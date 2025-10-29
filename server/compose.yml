@@ -1,0 +1,26 @@
+services:
+  elacms:
+    image: "drupal:11.1.7"
+    container_name: "elacms-${ENV}"
+    user: "1001:1001"
+    ports:
+      - "8282:80"
+    volumes:
+      - "./cms:/opt/drupal"
+      - "./cms/settings.php:/opt/drupal/web/sites/default/settings.php"
+      - "./php/php.ini:/usr/local/etc/php/php.ini"
+    depends_on:
+      - "eladb"
+  eladb:
+    image: "mariadb:10.6.0"
+    container_name: "eladb-${ENV}"
+    user: "1001:1001"
+    ports:
+      - "3310:3306"
+    volumes:
+      - "./db:/var/lib/mysql"
+    environment:
+      MARIADB_ROOT_PASSWORD: "root"
+      MARIADB_DATABASE: "ELADB"
+      MARIADB_USER: "eladb"
+      MARIADB_PASSWORD: "eladb"
