@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms"
+    xmlns:odk="http://www.opendatakit.org/xforms">
+    <h:head>
+        <h:title>{{ title }}</h:title>
+        <model odk:xforms-version="1.0.0">
+            <instance>
+                <data id="{{ id }}" version="1">
+                    <startTime />
+                    <ela_collect>
+                        <intro />
+                        <learner />
+                        <activity />
+                        <prompt />
+                        <recording />
+                    </ela_collect>
+                    <meta>
+                        <instanceID />
+                    </meta>
+                </data>
+            </instance>
+            <instance id="__last-saved" src="jr://instance/last-saved" />
+            <instance id="activitylist">
+                <root>
+                    <item>
+                        <name>{{ activity_name }}</name>
+                        <label>{{ activity_label}}</label>
+                    </item>
+                </root>
+            </instance>
+            <instance id="learner">
+                <root> {% for learner in learners %} <item>
+                        <name>{{ learner.name }}</name>
+                        <label>{{ learner.display_name }}</label>
+                    </item> {% endfor %} </root>
+            </instance>
+            <bind nodeset="/data/startTime" jr:preload="timestamp" type="dateTime"
+                jr:preloadParams="start" />
+            <bind nodeset="/data/ela_collect/intro" readonly="true()" type="string" />
+            <bind nodeset="/data/ela_collect/learner" type="string" required="true()" />
+            <bind nodeset="/data/ela_collect/activity" type="string" required="true()" />
+            <setvalue ref="/data/ela_collect/activity" event="odk-instance-first-load"
+                value=" instance('__last-saved')/data/ela_collect/activity " />
+            <bind nodeset="/data/ela_collect/prompt" readonly="true()" type="string" />
+            <bind nodeset="/data/ela_collect/recording" type="binary" required="true()"
+                odk:quality="normal" />
+            <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" jr:preload="uid" />
+        </model>
+    </h:head>
+    <h:body>
+        <group appearance="field-list" ref="/data/ela_collect">
+            <label>{{ question_section_header }}</label>
+            <input ref="/data/ela_collect/intro">
+                <label>{{ cohort }}</label>
+            </input>
+            <select1 ref="/data/ela_collect/learner" appearance="minimal">
+                <label>Learner</label>
+                <itemset nodeset="instance('learner')/root/item">
+                    <value ref="name" />
+                    <label ref="label" />
+                </itemset>
+            </select1>
+            <select1 ref="/data/ela_collect/activity" appearance="minimal">
+                <label>Activity</label>
+                <itemset nodeset="instance('activitylist')/root/item">
+                    <value ref="name" />
+                    <label ref="label" />
+                </itemset>
+            </select1>
+            <input ref="/data/ela_collect/prompt">
+                <label>{{ question_prompt }}</label>
+            </input>
+            <upload ref="/data/ela_collect/recording" mediatype="audio/*" appearance="new">
+                <label>Record learner</label>
+            </upload>
+        </group>
+    </h:body>
+</h:html>
