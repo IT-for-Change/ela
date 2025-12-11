@@ -32,7 +32,7 @@ class AssessmentForm(Document):
             questions[0].question_prompt_rich_text)
         activity_document = frappe.get_doc('Activity', self.activity)
 
-        template_path = "ela/templates/odk_form_v2.xml"
+        template_path = "ela/templates/odk_form_v3.xml"
         context = {
             "title": self.title,
             "id": self.name,
