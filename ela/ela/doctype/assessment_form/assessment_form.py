@@ -3,7 +3,7 @@
 
 from datetime import datetime
 import zoneinfo
-
+import xml.sax.saxutils as saxutils
 
 # import frappe
 from frappe.model.document import Document
@@ -28,7 +28,8 @@ class AssessmentForm(Document):
             text += f'{question.response_type} | {question.mandatory} | {question.question_prompt_rich_text}'
         '''
         question_section_header = questions[0].response_type + ' Question'
-        question_prompt = questions[0].question_prompt_rich_text
+        question_prompt = saxutils.escape(
+            questions[0].question_prompt_rich_text)
         activity_document = frappe.get_doc('Activity', self.activity)
 
         template_path = "ela/templates/odk_form_v2.xml"
