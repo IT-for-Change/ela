@@ -1,0 +1,55 @@
+{
+ "actions": [],
+ "autoname": "format:PKG-{YY}-{###}",
+ "creation": "2025-12-04 12:56:27.223777",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "package",
+  "comments"
+ ],
+ "fields": [
+  {
+   "description": "Upload a zip file created by the ELA mobile app",
+   "fieldname": "package",
+   "fieldtype": "Attach",
+   "in_list_view": 1,
+   "label": "Package",
+   "reqd": 1
+  },
+  {
+   "description": "Enter some comments related to this package upload.",
+   "fieldname": "comments",
+   "fieldtype": "Long Text",
+   "label": "Comments"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-12-11 15:47:42.339503",
+ "modified_by": "Administrator",
+ "module": "ELA",
+ "name": "ELA Package",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
