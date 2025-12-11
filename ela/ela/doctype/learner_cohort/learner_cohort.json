@@ -1,0 +1,69 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "autoname": "format:{cohort_name}-{academic_year}",
+ "creation": "2025-12-06 14:27:30.539608",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "cohort_name",
+  "academic_year"
+ ],
+ "fields": [
+  {
+   "fieldname": "cohort_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Cohort Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "academic_year",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Academic Year",
+   "options": "2025-26\n2026-27\n2027-28\n2028-29\n2029-30",
+   "reqd": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-12-11 11:24:09.383908",
+ "modified_by": "Administrator",
+ "module": "ELA",
+ "name": "Learner Cohort",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Teacher",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

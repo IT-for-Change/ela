@@ -1,0 +1,64 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:ELA-Q-{###}",
+ "creation": "2025-12-06 12:44:53.356796",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_hhtt",
+  "column_break_gqrf",
+  "response_type",
+  "mandatory",
+  "question_prompt_rich_text"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_hhtt",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_gqrf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "AUDIO: Record learner's speech | SINGLE CHOICE: Learner selects one option out of many\n| MULTI CHOICE: Learner selects one or more options\n| NUMBER: Learner types a number\n| TEXT: Learner types text",
+   "fieldname": "response_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "LEARNER RESPONSE TYPE",
+   "options": "AUDIO\nSINGLE CHOICE\nMULTI CHOICE\nNUMBER\nTEXT",
+   "reqd": 1
+  },
+  {
+   "default": "No",
+   "fieldname": "mandatory",
+   "fieldtype": "Check",
+   "label": "MANDATORY",
+   "options": "Yes\nNo"
+  },
+  {
+   "fieldname": "question_prompt_rich_text",
+   "fieldtype": "Text Editor",
+   "label": "QUESTION PROMPT",
+   "reqd": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-12-11 11:24:09.698673",
+ "modified_by": "Administrator",
+ "module": "ELA",
+ "name": "Question",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

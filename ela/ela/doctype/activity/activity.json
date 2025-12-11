@@ -1,0 +1,105 @@
+{
+ "actions": [],
+ "autoname": "format:ELA-A-{##}",
+ "creation": "2025-12-08 14:16:31.893315",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "title",
+  "section_break_pcah",
+  "modes",
+  "pictures",
+  "audio",
+  "video",
+  "interactive_media"
+ ],
+ "fields": [
+  {
+   "description": "Enter a name that you can easily identify this classroom activity by. For example, 'Timmy and Pepe story listening activity'. The activity title will appear in the assessment form in the mobile app for selection.",
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Title",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_pcah",
+   "fieldtype": "Section Break",
+   "label": "Activity Assist"
+  },
+  {
+   "default": "0",
+   "fieldname": "modes",
+   "fieldtype": "Check",
+   "label": "Text"
+  },
+  {
+   "default": "0",
+   "fieldname": "pictures",
+   "fieldtype": "Check",
+   "label": "Pictures"
+  },
+  {
+   "default": "0",
+   "fieldname": "audio",
+   "fieldtype": "Check",
+   "label": "Audio"
+  },
+  {
+   "default": "0",
+   "fieldname": "video",
+   "fieldtype": "Check",
+   "label": "Video"
+  },
+  {
+   "default": "0",
+   "fieldname": "interactive_media",
+   "fieldtype": "Check",
+   "label": "Interactive Media"
+  }
+ ],
+ "grid_page_length": 50,
+ "hide_toolbar": 1,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-12-11 11:23:30.790487",
+ "modified_by": "Administrator",
+ "module": "ELA",
+ "name": "Activity",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Teacher",
+   "select": 1,
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "show_title_field_in_link": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "title"
+}
