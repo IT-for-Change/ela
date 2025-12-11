@@ -16,10 +16,10 @@ class AssessmentForm(Document):
 
     def before_save(self):
 
-        learner_list = frappe.get_all(
+        learners = frappe.get_all(
             'Learner',
             filters={'cohort': f'{self.cohort}'},
-            fields=['name1', 'learner_id', 'cohort']
+            fields=['name', 'name1', 'learner_id', 'display_name']
         )
 
         questions = self.assessment_questions
@@ -31,7 +31,7 @@ class AssessmentForm(Document):
         question_prompt = questions[0].question_prompt_rich_text
         activity_document = frappe.get_doc('Activity', self.activity)
 
-        template_path = "library_management/templates/odk_form_v2.xml"
+        template_path = "ela/templates/odk_form_v2.xml"
         context = {
             "title": self.title,
             "id": self.name,
@@ -40,7 +40,7 @@ class AssessmentForm(Document):
             "question_prompt": question_prompt,
             "activity_label": activity_document.title,
             "activity_name": activity_document.name,
-            "learners": str(learner_list),
+            "learners": learners,
         }
 
         output = render_template(template_path, context)
