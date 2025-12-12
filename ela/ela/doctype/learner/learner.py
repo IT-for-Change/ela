@@ -6,7 +6,6 @@ from frappe.model.document import Document
 
 
 class Learner(Document):
-    pass
 
     def before_insert(self):
         self.display_name = f'{self.name1} ({self.learner_id})'

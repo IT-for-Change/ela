@@ -12,6 +12,7 @@
                     <ela_collect>
                         <intro />
                         <learner />
+                        <teacher />
                         <activity />
                         <prompt />
                         <recording />
@@ -37,10 +38,20 @@
                     </item> {%
                     endfor %} </root>
             </instance>
+            <instance id="teacher">
+                <root> {% for teacher in teachers %} <item>
+                        <name>{{ teacher.name }}</name>
+                        <label>{{ teacher.display_name }}</label>
+                    </item> {%
+                    endfor %} </root>
+            </instance>
             <bind nodeset="/data/startTime" jr:preload="timestamp" type="dateTime"
                 jr:preloadParams="start" />
             <bind nodeset="/data/ela_collect/intro" readonly="true()" type="string" />
             <bind nodeset="/data/ela_collect/learner" type="string" required="true()" />
+            <bind nodeset="/data/ela_collect/teacher" type="string" required="true()" />
+            <setvalue ref="/data/ela_collect/teacher" event="odk-instance-first-load"
+                value=" instance('__last-saved')/data/ela_collect/teacher " />
             <bind nodeset="/data/ela_collect/activity" type="string" required="true()" />
             <setvalue ref="/data/ela_collect/activity" event="odk-instance-first-load"
                 value=" instance('__last-saved')/data/ela_collect/activity " />
@@ -59,6 +70,13 @@
             <select1 ref="/data/ela_collect/learner" appearance="minimal">
                 <label>Learner</label>
                 <itemset nodeset="instance('learner')/root/item">
+                    <value ref="name" />
+                    <label ref="label" />
+                </itemset>
+            </select1>
+            <select1 ref="/data/ela_collect/teacher" appearance="minimal">
+                <label>Learner</label>
+                <itemset nodeset="instance('teacher')/root/item">
                     <value ref="name" />
                     <label ref="label" />
                 </itemset>

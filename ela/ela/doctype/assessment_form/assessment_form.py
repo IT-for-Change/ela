@@ -22,6 +22,11 @@ class AssessmentForm(Document):
             fields=['name', 'name1', 'learner_id', 'display_name']
         )
 
+        teachers = frappe.get_all(
+            'Teacher',
+            fields=['name', 'name1', 'teacher_id', 'display_name']
+        )
+
         questions = self.assessment_questions
         text = ''
         '''for question in questions:
@@ -42,6 +47,7 @@ class AssessmentForm(Document):
             "activity_label": activity_document.title,
             "activity_name": activity_document.name,
             "learners": learners,
+            "teachers": teachers
         }
 
         output = render_template(template_path, context)
