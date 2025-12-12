@@ -27,27 +27,44 @@ class AssessmentForm(Document):
             fields=['name', 'name1', 'teacher_id', 'display_name']
         )
 
+        learner_cohort = frappe.get_doc(
+            'Learner Cohort', self.cohort,
+            fields=['cohort_name', 'name', 'learning_space', 'academic_year']
+        )
+
+        learning_space = frappe.get_doc(
+            'Learning Space', learner_cohort.learning_space,
+            fields=['name', 'name1', 'postal_code']
+        )
+
         questions = self.assessment_questions
         text = ''
         '''for question in questions:
             text += f'{question.response_type} | {question.mandatory} | {question.question_prompt_rich_text}'
         '''
-        question_section_header = questions[0].response_type + ' Question'
-        question_prompt = saxutils.escape(
+
+        question_1_prompt = saxutils.escape(
             questions[0].question_prompt_rich_text)
         activity_document = frappe.get_doc('Activity', self.activity)
 
-        template_path = "ela/templates/odk_form_v3.xml"
+        question_2_prompt = ''
+        if (len(questions) > 1):
+            question_2_prompt = saxutils.escape(
+                questions[1].question_prompt_rich_text)
+
+        template_path = "ela/templates/odk_form_template_v2.xml"
         context = {
             "title": self.title,
             "id": self.name,
-            "cohort": self.cohort,
-            "question_section_header": question_section_header,
-            "question_prompt": question_prompt,
-            "activity_label": activity_document.title,
+            "brief_instruction": self.brief_instruction,
+            "cohort": learner_cohort.cohort_name,
+            "learning_space": learning_space.name1,
             "activity_name": activity_document.name,
+            "activity_label": activity_document.title,
             "learners": learners,
-            "teachers": teachers
+            "teachers": teachers,
+            "question_1_prompt": question_1_prompt,
+            "question_2_prompt": question_2_prompt,
         }
 
         output = render_template(template_path, context)

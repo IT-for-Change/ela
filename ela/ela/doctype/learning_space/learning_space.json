@@ -1,46 +1,39 @@
 {
  "actions": [],
- "allow_import": 1,
- "autoname": "format:{cohort_name}-{academic_year}",
- "creation": "2025-12-06 14:27:30.539608",
+ "autoname": "format:ELA-LS-{####}",
+ "creation": "2025-12-12 15:25:51.626746",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "cohort_name",
-  "learning_space",
-  "academic_year"
+  "name1",
+  "institution_identifier",
+  "postal_code"
  ],
  "fields": [
   {
-   "fieldname": "cohort_name",
+   "fieldname": "name1",
+   "fieldtype": "Small Text",
+   "label": "Name"
+  },
+  {
+   "description": "Example: UDISE school code",
+   "fieldname": "institution_identifier",
    "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Cohort Name",
-   "reqd": 1
+   "label": "Identifier"
   },
   {
-   "fieldname": "academic_year",
-   "fieldtype": "Select",
-   "in_list_view": 1,
-   "label": "Academic Year",
-   "options": "2025-26\n2026-27\n2027-28\n2028-29\n2029-30",
-   "reqd": 1
-  },
-  {
-   "fieldname": "learning_space",
-   "fieldtype": "Link",
-   "label": "Learning Space",
-   "options": "Learning Space",
-   "reqd": 1
+   "fieldname": "postal_code",
+   "fieldtype": "Data",
+   "label": "Postal code"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-12 15:42:17.697413",
+ "modified": "2025-12-12 15:38:01.299965",
  "modified_by": "Administrator",
  "module": "ELA",
- "name": "Learner Cohort",
+ "name": "Learning Space",
  "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
@@ -71,7 +64,9 @@
  ],
  "row_format": "Dynamic",
  "rows_threshold_for_grid_search": 20,
+ "show_title_field_in_link": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "title_field": "name1"
 }

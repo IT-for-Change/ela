@@ -1,0 +1,164 @@
+<?xml version="1.0"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:h="http://www.w3.org/1999/xhtml" xmlns:jr="http://openrosa.org/javarosa"
+    xmlns:odk="http://www.opendatakit.org/xforms" xmlns:orx="http://openrosa.org/xforms"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <h:head>
+        <h:title>{{ title }}</h:title>
+        <model odk:xforms-version="1.0.0">
+            <instance>
+                <data id="{{ id }}" version="6">
+                    <startTime />
+                    <form_introduction>
+                        <note />
+                        <cohort />
+                        <space />
+                        <learner />
+                        <teacher />
+                        <activity />
+                    </form_introduction>
+                    <question_1>
+                        <prompt />
+                        <recording />
+                    </question_1>
+                    <question_1_comprehension>
+                        <comprehension />
+                    </question_1_comprehension>
+                    <question_2>
+                        <note />
+                        <reading />
+                    </question_2>
+                    <meta>
+                        <instanceID />
+                    </meta>
+                </data>
+            </instance>
+            <instance id="__last-saved" src="jr://instance/last-saved" />
+            <bind jr:preload="timestamp" jr:preloadParams="start" nodeset="/data/startTime"
+                type="dateTime" />
+            <bind nodeset="/data/form_introduction/note" readonly="true()" type="string" />
+            <bind nodeset="/data/form_introduction/cohort" readonly="true()" type="string" />
+            <bind nodeset="/data/form_introduction/space" readonly="true()" type="string" />
+            <bind nodeset="/data/form_introduction/learner" required="true()" type="string" />
+            <bind nodeset="/data/form_introduction/teacher" required="true()" type="string" />
+            <setvalue event="odk-instance-first-load" ref="/data/form_introduction/teacher"
+                value=" instance('__last-saved')/data/form_introduction/teacher " />
+            <bind nodeset="/data/form_introduction/activity" required="true()" type="string" />
+            <setvalue event="odk-instance-first-load" ref="/data/form_introduction/activity"
+                value=" instance('__last-saved')/data/form_introduction/activity " />
+            <bind nodeset="/data/question_1/prompt" readonly="true()" type="string" />
+            <bind nodeset="/data/question_1/recording" odk:quality="normal" required="true()"
+                type="binary" />
+            <bind nodeset="/data/question_1_comprehension/comprehension" type="string" />
+            <bind nodeset="/data/question_2/note" readonly="true()" type="string" />
+            <bind nodeset="/data/question_2/reading" type="string" />
+            <bind jr:preload="uid" nodeset="/data/meta/instanceID" readonly="true()" type="string" />
+        </model>
+    </h:head>
+    <h:body>
+        <group appearance="field-list" ref="/data/form_introduction">
+            <label>{{ id }}</label>
+            <input ref="/data/form_introduction/note">
+                <label>{{ brief_instruction }}</label>
+            </input>
+            <input ref="/data/form_introduction/cohort">
+                <label>Cohort: {{ cohort }}</label>
+            </input>
+            <input ref="/data/form_introduction/cohort">
+                <label>Learning space: {{ learning_space }}</label>
+            </input>
+            <select1 appearance="minimal" ref="/data/form_introduction/learner">
+                <label>Learner</label> 
+                {% for learner in learners %} 
+                <item>
+                    <label>{{ learner.display_name }}</label>
+                    <value>{{ learner.name }}</value>
+                </item> 
+                {% endfor %}
+            </select1>
+            <select1 appearance="minimal" ref="/data/form_introduction/teacher">
+                <label>Teacher</label> 
+                {% for teacher in teachers %} 
+                <item>
+                    <label>{{ teacher.display_name }}</label>
+                    <value>{{ teacher.name }}</value>
+                </item> 
+                {% endfor %} 
+            </select1>
+            <select1 appearance="minimal" ref="/data/form_introduction/activity">
+                <label>Activity</label>
+                <item>
+                    <label>{{ activity_label }}</label>
+                    <value>{{ activity_name}}</value>
+                </item>
+            </select1>
+        </group>
+        <group appearance="field-list" ref="/data/question_1">
+            <label>Question 1 (Audio)</label>
+            <input ref="/data/question_1/prompt">
+                <label>{{ question_1_prompt }}</label>
+            </input>
+            <upload appearance="new" mediatype="audio/*" ref="/data/question_1/recording">
+                <label>Record learner</label>
+            </upload>
+        </group>
+        <group appearance="field-list" ref="/data/question_1_comprehension">
+            <label>Question 1 Comprehension</label>
+            <select1 ref="/data/question_1_comprehension/comprehension">
+                <label>Question comprehension</label>
+                <item>
+                    <label>Learner understood the question in English the first time</label>
+                    <value>Compre_1</value>
+                </item>
+                <item>
+                    <label>Learner understood the question in English after repeating</label>
+                    <value>Compre_2</value>
+                </item>
+                <item>
+                    <label>Learner did not understand the question in English. Understood in home
+                        language the first time</label>
+                    <value>Compre_3</value>
+                </item>
+                <item>
+                    <label>Learner did not understand the question in English. Understood in home
+                        language after repeating</label>
+                    <value>Compre_4</value>
+                </item>
+                <item>
+                    <label>Learner did not understand the question at all (English and home
+                        language)</label>
+                    <value>Compre_5</value>
+                </item>
+            </select1>
+        </group>
+        <group appearance="field-list" ref="/data/question_2">
+            <label>Question 2 (Single Choice)</label>
+            <input ref="/data/question_2/note">
+                <label>{{ question_2_prompt }}</label>
+            </input>
+            <select1 ref="/data/question_2/reading">
+                <label>Reading assessment</label>
+                <item>
+                    <label>Reading ability level 1</label>
+                    <value>reading_1</value>
+                </item>
+                <item>
+                    <label>Reading ability level 2</label>
+                    <value>reading_2</value>
+                </item>
+                <item>
+                    <label>Reading ability level 3</label>
+                    <value>Reading_3</value>
+                </item>
+                <item>
+                    <label>Reading ability level 4</label>
+                    <value>Reading_4</value>
+                </item>
+                <item>
+                    <label>Reading ability level 5</label>
+                    <value>Reading_5</value>
+                </item>
+            </select1>
+        </group>
+    </h:body>
+</h:html>
