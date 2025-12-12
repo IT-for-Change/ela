@@ -1,0 +1,146 @@
+<?xml version="1.0"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms"
+    xmlns:odk="http://www.opendatakit.org/xforms">
+    <h:head>
+        <h:title>Byrasandra form 1</h:title>
+        <model odk:xforms-version="1.0.0">
+            <instance>
+                <data id="ELA-036" version="1">
+                    <startTime />
+                    <ela_collect>
+                        <intro />
+                        <learner />
+                        <activity />
+                        <prompt />
+                        <recording />
+                    </ela_collect>
+                    <meta>
+                        <instanceID />
+                    </meta>
+                </data>
+            </instance>
+            <instance id="__last-saved" src="jr://instance/last-saved" />
+            <instance id="activitylist">
+                <root>
+                    <item>
+                        <name>ELA-A-34</name>
+                        <label>Gorilla on the beach video based activity</label>
+                    </item>
+                </root>
+            </instance>
+            <instance id="learner">
+                <root>
+                    <item>
+                        <name>student1</name>
+                        <label>ANITHA N</label>
+                    </item>
+                    <item>
+                        <name>student2</name>
+                        <label>ANITHA P</label>
+                    </item>
+                    <item>
+                        <name>student3</name>
+                        <label>ARFA ANJUM</label>
+                    </item>
+                    <item>
+                        <name>student4</name>
+                        <label>ASHWINI</label>
+                    </item>
+                    <item>
+                        <name>student5</name>
+                        <label>GANGAMMA H</label>
+                    </item>
+                    <item>
+                        <name>student6</name>
+                        <label>KHASEEM ALI</label>
+                    </item>
+                    <item>
+                        <name>student7</name>
+                        <label>MANJUNATHA</label>
+                    </item>
+                    <item>
+                        <name>student8</name>
+                        <label>MOHAMMED AYAN PASHA</label>
+                    </item>
+                    <item>
+                        <name>student9</name>
+                        <label>RENUKA</label>
+                    </item>
+                    <item>
+                        <name>student10</name>
+                        <label>SANDEEP KUMAR</label>
+                    </item>
+                    <item>
+                        <name>student11</name>
+                        <label>SUNIL GOWDA S</label>
+                    </item>
+                    <item>
+                        <name>student12</name>
+                        <label>TEJASWINI</label>
+                    </item>
+                    <item>
+                        <name>student13</name>
+                        <label>THANUSHREE S</label>
+                    </item>
+                    <item>
+                        <name>student14</name>
+                        <label>YALLINGA</label>
+                    </item>
+                    <item>
+                        <name>student15</name>
+                        <label>ZOYA</label>
+                    </item>
+                    <item>
+                        <name>student16</name>
+                        <label>OTHER</label>
+                    </item>
+                    <item>
+                        <name>student17</name>
+                        <label>ELATEST</label>
+                    </item>
+                </root>
+            </instance>
+            <bind nodeset="/data/startTime" jr:preload="timestamp" type="dateTime"
+                jr:preloadParams="start" />
+            <bind nodeset="/data/ela_collect/intro" readonly="true()" type="string" />
+            <bind nodeset="/data/ela_collect/learner" type="string" required="true()" />
+            <bind nodeset="/data/ela_collect/activity" type="string" required="true()" />
+            <setvalue ref="/data/ela_collect/activity" event="odk-instance-first-load"
+                value=" instance('__last-saved')/data/ela_collect/activity " />
+            <bind nodeset="/data/ela_collect/prompt" readonly="true()" type="string" />
+            <bind nodeset="/data/ela_collect/recording" type="binary" required="true()"
+                odk:quality="normal" />
+            <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" jr:preload="uid" />
+        </model>
+    </h:head>
+    <h:body>
+        <group appearance="field-list" ref="/data/ela_collect">
+            <label>Audio Question</label>
+            <input ref="/data/ela_collect/intro">
+                <label>Grade 5-2025-26</label>
+            </input>
+            <select1 ref="/data/ela_collect/learner" appearance="minimal">
+                <label>Learner</label>
+                <itemset nodeset="instance('learner')/root/item">
+                    <value ref="name" />
+                    <label ref="label" />
+                </itemset>
+            </select1>
+            <select1 ref="/data/ela_collect/activity" appearance="minimal">
+                <label>Activity</label>
+                <itemset nodeset="instance('activitylist')/root/item">
+                    <value ref="name" />
+                    <label ref="label" />
+                </itemset>
+            </select1>
+            <input ref="/data/ela_collect/prompt">
+                <label>What did the gorillas do?</label>
+            </input>
+            <upload ref="/data/ela_collect/recording" mediatype="audio/*" appearance="new">
+                <label>Record learner</label>
+            </upload>
+        </group>
+    </h:body>
+</h:html>
