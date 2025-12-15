@@ -10,36 +10,49 @@
   "name1",
   "learner_id",
   "cohort",
+  "primary_home_language",
   "display_name"
  ],
  "fields": [
   {
    "fieldname": "name1",
    "fieldtype": "Data",
-   "label": "Name"
+   "label": "Name",
+   "reqd": 1
   },
   {
    "fieldname": "learner_id",
    "fieldtype": "Data",
-   "label": "Learner ID"
+   "label": "Learner ID",
+   "reqd": 1
   },
   {
    "fieldname": "cohort",
    "fieldtype": "Link",
    "label": "Cohort",
-   "options": "Learner Cohort"
+   "options": "Learner Cohort",
+   "reqd": 1
   },
   {
    "fieldname": "display_name",
    "fieldtype": "Data",
    "label": "Display Label",
    "read_only": 1
+  },
+  {
+   "description": "KN - Kannada.\nHI - Hindi.\nUR - Urdu.\nMR - Marathi.\nTA - Tamil.\nTE - Telugu.",
+   "fieldname": "primary_home_language",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Primary Home Language",
+   "options": "KN\nHI\nUR\nMR\nTA\nTE",
+   "reqd": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-11 11:24:10.010984",
+ "modified": "2025-12-15 23:09:39.477202",
  "modified_by": "Administrator",
  "module": "ELA",
  "name": "Learner",
