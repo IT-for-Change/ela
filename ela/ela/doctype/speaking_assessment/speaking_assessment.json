@@ -17,6 +17,7 @@
   "clauses",
   "grammar",
   "vocabulary_section",
+  "enable",
   "global_wordlist_level_1",
   "global_wordlist_level_2",
   "global_wordlist_level_3",
@@ -121,12 +122,18 @@
    "fieldname": "custom_wordlist_level_3",
    "fieldtype": "Long Text",
    "label": "Custom wordlist (LEVEL 3)"
+  },
+  {
+   "default": "0",
+   "fieldname": "enable",
+   "fieldtype": "Check",
+   "label": "Enable"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-15 06:38:33.656337",
+ "modified": "2025-12-15 13:16:45.199872",
  "modified_by": "Administrator",
  "module": "ELA",
  "name": "Speaking Assessment",
