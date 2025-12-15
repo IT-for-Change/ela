@@ -1,0 +1,314 @@
+<?xml version="1.0"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms"
+    xmlns:odk="http://www.opendatakit.org/xforms">
+    <h:head>
+        <h:title>{{ title }}</h:title>
+        <model odk:xforms-version="1.0.0">
+            <instance>
+                <data id="{{ id }}" version="1">
+                    <startTime />
+                    <form_introduction>
+                        <ela_form_id />
+                        <note />
+                        <cohort />
+                        <space />
+                        <assessments />
+                        <num_assessments />
+                    </form_introduction>
+                    <form_configuration>
+                        <learner />
+                        <teacher />
+                        <activity />
+                    </form_configuration>
+                    <question_1>
+                        <question_1_prompt />
+                        <ela_asssessment_id_1 />
+                        <question_1_type />
+                        <question_1_audio />
+                    </question_1>
+                    <question_2>
+                        <question_2_prompt />
+                        <ela_asssessment_id_2 />
+                        <question_2_type />
+                        <question_2_singlechoice />
+                    </question_2>
+                    <question_3>
+                        <question_3_prompt />
+                        <question_3_type />
+                        <ela_asssessment_id_3 />
+                        <question_3_singlechoice />
+                    </question_3>
+                    <meta>
+                        <instanceID />
+                    </meta>
+                </data>
+            </instance>
+            <instance id="__last-saved" src="jr://instance/last-saved" />
+            <instance id="activity">
+                <root>
+                    <item>
+                        <name>activity1</name>
+                        <label>Busy Ants 1</label>
+                    </item>
+                </root>
+            </instance>
+            <instance id="learner">
+                <root>
+                    <item>
+                        <name>learner1</name>
+                        <label>Learner 1</label>
+                    </item>
+                    <item>
+                        <name>learner2</name>
+                        <label>Learner 2</label>
+                    </item>
+                    <item>
+                        <name>learner3</name>
+                        <label>Learner 3</label>
+                    </item>
+                    <item>
+                        <name>learner4</name>
+                        <label>Learner 4</label>
+                    </item>
+                    <item>
+                        <name>learner5</name>
+                        <label>Learner 5</label>
+                    </item>
+                    <item>
+                        <name>learner6</name>
+                        <label>Learner 6</label>
+                    </item>
+                    <item>
+                        <name>learner7</name>
+                        <label>Learner 7</label>
+                    </item>
+                    <item>
+                        <name>learner8</name>
+                        <label>Learner 8</label>
+                    </item>
+                    <item>
+                        <name>learner9</name>
+                        <label>Learner 9</label>
+                    </item>
+                    <item>
+                        <name>learner10</name>
+                        <label>Learner 10</label>
+                    </item>
+                    <item>
+                        <name>learner11</name>
+                        <label>Learner 11</label>
+                    </item>
+                    <item>
+                        <name>learner12</name>
+                        <label>Learner 12</label>
+                    </item>
+                    <item>
+                        <name>learner13</name>
+                        <label>Learner 13</label>
+                    </item>
+                    <item>
+                        <name>learner14</name>
+                        <label>Learner 14</label>
+                    </item>
+                    <item>
+                        <name>learner15</name>
+                        <label>Learner 15</label>
+                    </item>
+                    <item>
+                        <name>learner16</name>
+                        <label>OTHER</label>
+                    </item>
+                    <item>
+                        <name>learner17</name>
+                        <label>ELATEST</label>
+                    </item>
+                </root>
+            </instance>
+            <instance id="teacher">
+                <root>
+                    <item>
+                        <name>teacher1</name>
+                        <label>Teacher 1</label>
+                    </item>
+                    <item>
+                        <name>teacher2</name>
+                        <label>Teacher 2</label>
+                    </item>
+                    <item>
+                        <name>teacher3</name>
+                        <label>Teacher 3</label>
+                    </item>
+                </root>
+            </instance>
+            <instance id="question_2">
+                <root>
+                    <item>
+                        <name>question_2_choice1</name>
+                        <label>Learner understood the question in English the first time</label>
+                    </item>
+                    <item>
+                        <name>question_2_choice2</name>
+                        <label>Learner understood the question in English after repeating</label>
+                    </item>
+                    <item>
+                        <name>question_2_choice3</name>
+                        <label>Learner did not understand the question in English. Understood in
+                            home language the first time</label>
+                    </item>
+                    <item>
+                        <name>question_2_choice4</name>
+                        <label>Learner did not understand the question in English. Understood in
+                            home language after repeating</label>
+                    </item>
+                    <item>
+                        <name>question_2_choice5</name>
+                        <label>Learner did not understand the question at all (English and home
+                            language)</label>
+                    </item>
+                </root>
+            </instance>
+            <instance id="question_3">
+                <root>
+                    <item>
+                        <name>question_3_choice1</name>
+                        <label>Reading ability level 1</label>
+                    </item>
+                    <item>
+                        <name>question_3_choice2</name>
+                        <label>Reading ability level 2</label>
+                    </item>
+                    <item>
+                        <name>question_3_choice3</name>
+                        <label>Reading ability level 3</label>
+                    </item>
+                    <item>
+                        <name>question_3_choice4</name>
+                        <label>Reading ability level 4</label>
+                    </item>
+                    <item>
+                        <name>question_3_choice5</name>
+                        <label>Reading ability level 5</label>
+                    </item>
+                </root>
+            </instance>
+            <bind nodeset="/data/startTime" jr:preload="timestamp" type="dateTime"
+                jr:preloadParams="start" />
+            <bind nodeset="/data/form_introduction/ela_form_id" type="string"
+                calculate="&quot;{{ id }}&quot;" />
+            <bind nodeset="/data/form_introduction/note" readonly="true()" type="string" />
+            <bind nodeset="/data/form_introduction/cohort" type="string" readonly="true()" />
+            <bind nodeset="/data/form_introduction/space" type="string" readonly="true()" />
+            <bind nodeset="/data/form_introduction/assessments" type="string" readonly="true()" />
+            <bind nodeset="/data/form_introduction/num_assessments" type="string"
+                calculate="&quot;{{ assessment_count }}&quot;" />
+            <bind nodeset="/data/form_configuration/learner" type="string" required="true()" />
+            <bind nodeset="/data/form_configuration/teacher" type="string" required="true()" />
+            <setvalue ref="/data/form_configuration/teacher" event="odk-instance-first-load"
+                value=" instance('__last-saved')/data/form_configuration/teacher " />
+            <bind nodeset="/data/form_configuration/activity" type="string" required="true()" />
+            <setvalue ref="/data/form_configuration/activity" event="odk-instance-first-load"
+                value=" instance('__last-saved')/data/form_configuration/activity " />
+            <bind nodeset="/data/question_1/question_1_prompt" readonly="true()" type="string" />
+            <bind nodeset="/data/question_1/ela_asssessment_id_1" type="string"
+                calculate="&quot;{{ ela_asssessment_id_1 }}&quot;" />
+            <bind nodeset="/data/question_1/question_1_type" type="string"
+                calculate="&quot;{{ question_1_type }}&quot;" />
+            <bind nodeset="/data/question_1/question_1_audio" type="binary" required="true()"
+                odk:quality="normal" />
+            <bind nodeset="/data/question_2/question_2_prompt" readonly="true()" type="string" />
+            <bind nodeset="/data/question_2/ela_asssessment_id_2" type="string"
+                calculate="&quot;{{ ela_asssessment_id_2 }}&quot;" />
+            <bind nodeset="/data/question_2/question_2_type" type="string"
+                calculate="&quot;{{ question_2_type }}&quot;" />
+            <bind nodeset="/data/question_2/question_2_singlechoice" type="string" required="true()" />
+            <bind nodeset="/data/question_3/question_3_prompt" readonly="true()" type="string" />
+            <bind nodeset="/data/question_3/question_3_type" type="string"
+                calculate="&quot;{{ question_3_type }}&quot;" />
+            <bind nodeset="/data/question_3/ela_asssessment_id_3" type="string"
+                calculate="&quot;{{ ela_asssessment_id_3 }}&quot;" />
+            <bind nodeset="/data/question_3/question_3_singlechoice" type="string" required="true()" />
+            <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" jr:preload="uid" />
+        </model>
+    </h:head>
+    <h:body>
+        <group appearance="field-list" ref="/data/form_introduction">
+            <label>FORM {{ id }}</label>
+            <input ref="/data/form_introduction/note">
+                <label>{{ form_intro }}</label>
+            </input>
+            <input ref="/data/form_introduction/cohort">
+                <label>Learner cohort: {{ cohort_id }}</label>
+            </input>
+            <input ref="/data/form_introduction/space">
+                <label>Learning space: {{ learning_space_id }}</label>
+            </input>
+            <input ref="/data/form_introduction/assessments">
+                <label>The following {{ assessment_count }} assessment(s) are included in this form
+                    {{ question_1_type }}: {{ ela_asssessment_id_1 }}
+                    {{ question_2_type }}: {{ ela_asssessment_id_2 }}
+                    {{ question_3_type }}: {{ ela_asssessment_id_3 }}</label>
+            </input>
+        </group>
+        <group appearance="field-list" ref="/data/form_configuration">
+            <label>FORM {{ id }}</label>
+            <select1 ref="/data/form_configuration/learner" appearance="minimal">
+                <label>Learner</label>
+                <itemset nodeset="instance('learner')/root/item">
+                    <value ref="name" />
+                    <label ref="label" />
+                </itemset>
+            </select1>
+            <select1 ref="/data/form_configuration/teacher" appearance="minimal">
+                <label>Teacher</label>
+                <itemset nodeset="instance('teacher')/root/item">
+                    <value ref="name" />
+                    <label ref="label" />
+                </itemset>
+            </select1>
+            <select1 ref="/data/form_configuration/activity" appearance="minimal">
+                <label>Activity</label>
+                <itemset nodeset="instance('activity')/root/item">
+                    <value ref="name" />
+                    <label ref="label" />
+                </itemset>
+            </select1>
+        </group>
+        <group appearance="field-list" ref="/data/question_1">
+            <label>{{ question_1_title }}</label>
+            <input ref="/data/question_1/question_1_prompt">
+                <label>{{ question_1_prompt }}</label>
+            </input>
+            <upload ref="/data/question_1/question_1_audio" mediatype="audio/*" appearance="new">
+                <label>{{ question_1_action }}</label>
+            </upload>
+        </group>
+        <group appearance="field-list" ref="/data/question_2">
+            <label>{{ question_2_title }}</label>
+            <input ref="/data/question_2/question_2_prompt">
+                <label>{{ question_2_prompt }}</label>
+            </input>
+            <select1 ref="/data/question_2/question_2_singlechoice">
+                <label>{{ question_2_action }}</label>
+                <itemset nodeset="instance('question_2')/root/item">
+                    <value ref="name" />
+                    <label ref="label" />
+                </itemset>
+            </select1>
+        </group>
+        <group appearance="field-list" ref="/data/question_3">
+            <label>{{ question_3_title }}</label>
+            <input ref="/data/question_3/question_3_prompt">
+                <label>{{ question_3_prompt }}</label>
+            </input>
+            <select1 ref="/data/question_3/question_3_singlechoice">
+                <label>{{ question_3_action }}</label>
+                <itemset nodeset="instance('question_3')/root/item">
+                    <value ref="name" />
+                    <label ref="label" />
+                </itemset>
+            </select1>
+        </group>
+    </h:body>
+</h:html>
