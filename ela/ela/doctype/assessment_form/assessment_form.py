@@ -16,50 +16,77 @@ class AssessmentForm(Document):
 
     def before_save(self):
 
-        learners = frappe.get_all(
+        form_learners = frappe.get_all(
             'Learner',
             filters={'cohort': f'{self.cohort}'},
             fields=['name', 'name1', 'learner_id', 'display_name']
         )
 
-        teachers = frappe.get_all(
+        form_teachers = frappe.get_all(
             'Teacher',
             fields=['name', 'name1', 'teacher_id', 'display_name']
         )
 
-        learner_cohort = frappe.get_doc(
+        form_learner_cohort = frappe.get_doc(
             'Learner Cohort', self.cohort,
             fields=['cohort_name', 'name', 'learning_space', 'academic_year']
         )
 
-        learning_space = frappe.get_doc(
-            'Learning Space', learner_cohort.learning_space,
+        form_learning_space = frappe.get_doc(
+            'Learning Space', form_learner_cohort.learning_space,
             fields=['name', 'name1', 'postal_code']
         )
 
-        questions = self.assessment_questions
+        form_activity = frappe.get_doc('Activity', self.activity)
 
-        question_1_prompt = saxutils.escape(
-            questions[0].question_prompt_rich_text)
+        questions = self.questions
+        form_assessment_count = len(questions)
+        form_assessment_ids = []
+        form_question_types = []
+        form_question_prompts = []
+        form_question_titles = []
+        form_question_actions = []
 
-        reading_assessment_options = saxutils.escape(
-            questions[0].reading_assessment_options)
+        for index, question in enumerate(questions):
+            question_index = index + 1
+            question_type = question.question_type
+            if (question_type != 'AUDIO'):
+                frappe.throw("Only AUDIO question type is supported")
 
-        activity_document = frappe.get_doc('Activity', self.activity)
+            form_question_type = question.audio_question_type
 
-        template_path = "ela/templates/odk_form_template_v2.xml"
+            if (form_question_type in ['SPEAKING', 'CONVERSATION']):
+                form_assessment_id = question.speaking_assessment
+                form_assessment_ids.append(form_assessment_id)
+
+            form_question_types.append(question_type)
+
+            question_prompt = question.prompt
+            form_question_prompts.append(question_prompt)
+
+            form_question_title = question.name
+            form_question_titles.append(form_question_title)
+
+            form_question_action = question.action_instruction
+            form_question_actions.append(form_question_action)
+
+        template_path = f"ela/templates/A{form_assessment_count}.xml"
         context = {
             "title": self.title,
             "id": self.name,
-            "brief_instruction": self.brief_instruction,
-            "cohort": learner_cohort.cohort_name,
-            "learning_space": learning_space.name1,
-            "activity_name": activity_document.name,
-            "activity_label": activity_document.title,
-            "learners": learners,
-            "teachers": teachers,
-            "question_1_prompt": question_1_prompt,
-            "reading_assessment_options": reading_assessment_options
+            "brief_note": self.brief_note,
+            "cohort_id": form_learner_cohort.cohort_name,
+            "learning_space_id": form_learning_space.name1,
+            "activity_name": form_activity.name,
+            "activity_label": form_activity.title,
+            "learners": form_learners,
+            "teachers": form_teachers,
+            "assessment_count": form_assessment_count,
+            "assessment_ids": form_assessment_ids,
+            "question_types": form_question_types,
+            "question_prompts": form_question_prompts,
+            "question_titles": form_question_titles,
+            "question_actions": form_question_actions
         }
 
         output = render_template(template_path, context)

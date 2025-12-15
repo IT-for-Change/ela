@@ -9,7 +9,7 @@
   "title",
   "brief_note",
   "form_template",
-  "table_sphu",
+  "questions",
   "cohort",
   "activity",
   "form_last_generated",
@@ -62,22 +62,23 @@
    "options": "Assessment Form Template"
   },
   {
-   "depends_on": "eval:doc.form_template",
-   "fieldname": "table_sphu",
-   "fieldtype": "Table",
-   "options": "Question"
-  },
-  {
    "description": "This note will appear at the start of the mobile form.",
    "fieldname": "brief_note",
    "fieldtype": "Small Text",
    "label": "Brief note for the form"
+  },
+  {
+   "depends_on": "eval:doc.form_template",
+   "fieldname": "questions",
+   "fieldtype": "Table",
+   "label": "Question(s)",
+   "options": "Question"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-14 12:48:36.436248",
+ "modified": "2025-12-15 19:44:47.543124",
  "modified_by": "Administrator",
  "module": "ELA",
  "name": "Assessment Form",
