@@ -1,6 +1,5 @@
 {
  "actions": [],
- "allow_rename": 1,
  "autoname": "format:ELA-Q-{###}",
  "creation": "2025-12-06 12:44:53.356796",
  "doctype": "DocType",
@@ -9,9 +8,10 @@
  "field_order": [
   "section_break_hhtt",
   "column_break_gqrf",
-  "form_question_type",
+  "question_type",
   "audio_question_type",
-  "prompt_or_question",
+  "question_title",
+  "prompt",
   "action_instruction",
   "speaking_assessment",
   "readaloud_assessment",
@@ -29,7 +29,60 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "form_question_type",
+   "depends_on": "eval:doc.question_type == \"AUDIO\"",
+   "fieldname": "audio_question_type",
+   "fieldtype": "Select",
+   "label": "AUDIO QUESTION TYPE",
+   "mandatory_depends_on": "eval:doc.question_type == \"AUDIO\"",
+   "options": "SPEAKING\nCONVERSATION\nREAD ALOUD\nWRITE ALOUD"
+  },
+  {
+   "depends_on": "eval:((doc.audio_question_type == \"SPEAKING\" || doc.audio_question_type == \"CONVERSATION\") && doc.question_type == \"AUDIO\")",
+   "fieldname": "speaking_assessment",
+   "fieldtype": "Link",
+   "label": "Speaking Assessment ",
+   "mandatory_depends_on": "eval:((doc.audio_question_type == \"SPEAKING\" || doc.audio_question_type == \"CONVERSATION\") && doc.question_type == \"AUDIO\")",
+   "options": "Speaking Assessment"
+  },
+  {
+   "depends_on": "eval:(doc.audio_question_type == \"READ ALOUD\" && doc.question_type == \"AUDIO\")",
+   "fieldname": "readaloud_assessment",
+   "fieldtype": "Link",
+   "label": "Readaloud Assessment",
+   "mandatory_depends_on": "eval:(doc.audio_question_type == \"READ ALOUD\" && doc.question_type == \"AUDIO\")",
+   "options": "Readaloud Assessment"
+  },
+  {
+   "depends_on": "eval:(doc.audio_question_type == \"WRITE ALOUD\" && doc.question_type == \"AUDIO\")",
+   "fieldname": "writing_assessment",
+   "fieldtype": "Link",
+   "label": "Writing Assessment",
+   "mandatory_depends_on": "eval:(doc.audio_question_type == \"WRITE ALOUD\" && doc.question_type == \"AUDIO\")",
+   "options": "Writing Assessment"
+  },
+  {
+   "depends_on": "eval:(doc.question_type == \"SINGLE CHOICE\")",
+   "fieldname": "single_choice_assessment",
+   "fieldtype": "Link",
+   "label": "Single choice assessment",
+   "mandatory_depends_on": "eval:(doc.question_type == \"SINGLE CHOICE\")",
+   "options": "Single Choice Assessment"
+  },
+  {
+   "depends_on": "eval:(doc.question_type == \"MULTI CHOICE\")",
+   "fieldname": "multi_choice_assessment",
+   "fieldtype": "Link",
+   "label": "Multi choice assessment",
+   "mandatory_depends_on": "eval:(doc.question_type == \"MULTI CHOICE\")",
+   "options": "Multi Choice Assessment"
+  },
+  {
+   "fieldname": "action_instruction",
+   "fieldtype": "Data",
+   "label": "Action instruction"
+  },
+  {
+   "fieldname": "question_type",
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "FORM QUESTION TYPE",
@@ -37,71 +90,24 @@
    "reqd": 1
   },
   {
-   "fieldname": "prompt_or_question",
+   "fieldname": "prompt",
    "fieldtype": "Small Text",
    "in_list_view": 1,
    "label": "PROMPT / QUESTION",
    "reqd": 1
   },
   {
-   "depends_on": "eval:doc.form_question_type == \"AUDIO\"",
-   "fieldname": "audio_question_type",
-   "fieldtype": "Select",
-   "label": "AUDIO QUESTION TYPE",
-   "mandatory_depends_on": "eval:doc.form_question_type == \"AUDIO\"",
-   "options": "SPEAKING\nCONVERSATION\nREAD ALOUD\nWRITE ALOUD"
-  },
-  {
-   "depends_on": "eval:((doc.audio_question_type == \"SPEAKING\" || doc.audio_question_type == \"CONVERSATION\") && doc.form_question_type == \"AUDIO\")",
-   "fieldname": "speaking_assessment",
-   "fieldtype": "Link",
-   "label": "Speaking Assessment ",
-   "mandatory_depends_on": "eval:((doc.audio_question_type == \"SPEAKING\" || doc.audio_question_type == \"CONVERSATION\") && doc.form_question_type == \"AUDIO\")",
-   "options": "Speaking Assessment"
-  },
-  {
-   "depends_on": "eval:(doc.audio_question_type == \"READ ALOUD\" && doc.form_question_type == \"AUDIO\")",
-   "fieldname": "readaloud_assessment",
-   "fieldtype": "Link",
-   "label": "Readaloud Assessment",
-   "mandatory_depends_on": "eval:(doc.audio_question_type == \"READ ALOUD\" && doc.form_question_type == \"AUDIO\")",
-   "options": "Readaloud Assessment"
-  },
-  {
-   "depends_on": "eval:(doc.audio_question_type == \"WRITE ALOUD\" && doc.form_question_type == \"AUDIO\")",
-   "fieldname": "writing_assessment",
-   "fieldtype": "Link",
-   "label": "Writing Assessment",
-   "mandatory_depends_on": "eval:(doc.audio_question_type == \"WRITE ALOUD\" && doc.form_question_type == \"AUDIO\")",
-   "options": "Writing Assessment"
-  },
-  {
-   "depends_on": "eval:(doc.form_question_type == \"SINGLE CHOICE\")",
-   "fieldname": "single_choice_assessment",
-   "fieldtype": "Link",
-   "label": "Single choice assessment",
-   "mandatory_depends_on": "eval:(doc.form_question_type == \"SINGLE CHOICE\")",
-   "options": "Single Choice Assessment"
-  },
-  {
-   "depends_on": "eval:(doc.form_question_type == \"MULTI CHOICE\")",
-   "fieldname": "multi_choice_assessment",
-   "fieldtype": "Link",
-   "label": "Multi choice assessment",
-   "mandatory_depends_on": "eval:(doc.form_question_type == \"MULTI CHOICE\")",
-   "options": "Multi Choice Assessment"
-  },
-  {
-   "fieldname": "action_instruction",
+   "fieldname": "question_title",
    "fieldtype": "Data",
-   "label": "Action instruction"
+   "label": "QUESTION TITLE",
+   "reqd": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-12-15 13:15:23.025354",
+ "modified": "2025-12-15 21:22:15.756783",
  "modified_by": "Administrator",
  "module": "ELA",
  "name": "Question",

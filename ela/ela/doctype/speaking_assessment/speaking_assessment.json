@@ -1,11 +1,11 @@
 {
  "actions": [],
- "allow_rename": 1,
- "autoname": "prompt",
+ "autoname": "format:ELA-SPEAKING-ASSESSMENT-{###}",
  "creation": "2025-12-14 09:30:44.110508",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "title",
   "language_section",
   "detect_language",
   "basic_section",
@@ -128,16 +128,21 @@
    "fieldname": "enable",
    "fieldtype": "Check",
    "label": "Enable"
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "label": "Title"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-15 13:16:45.199872",
+ "modified": "2025-12-15 22:05:56.774607",
  "modified_by": "Administrator",
  "module": "ELA",
  "name": "Speaking Assessment",
- "naming_rule": "Set by user",
+ "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {
@@ -155,7 +160,9 @@
  ],
  "row_format": "Dynamic",
  "rows_threshold_for_grid_search": 20,
+ "show_title_field_in_link": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "title_field": "title"
 }
