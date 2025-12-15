@@ -15,7 +15,8 @@
   "speaking_assessment",
   "readaloud_assessment",
   "writing_assessment",
-  "choices"
+  "single_choice_assessment",
+  "multi_choice_assessment"
  ],
  "fields": [
   {
@@ -31,21 +32,15 @@
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "FORM QUESTION TYPE",
-   "options": "AUDIO\nSINGLE SELECT\nMULTI SELECT\nNUMBER",
+   "options": "AUDIO\nSINGLE CHOICE\nMULTI CHOICE\nNUMBER",
    "reqd": 1
   },
   {
    "fieldname": "prompt_or_question",
-   "fieldtype": "Long Text",
+   "fieldtype": "Small Text",
    "in_list_view": 1,
    "label": "PROMPT / QUESTION",
    "reqd": 1
-  },
-  {
-   "depends_on": "eval:(doc.form_question_type == \"SINGLE SELECT\" || doc.form_question_type == \"MULTI SELECT\")",
-   "fieldname": "choices",
-   "fieldtype": "Long Text",
-   "label": "CHOICES"
   },
   {
    "depends_on": "eval:doc.form_question_type == \"AUDIO\"",
@@ -78,13 +73,29 @@
    "label": "Writing Assessment",
    "mandatory_depends_on": "eval:(doc.audio_question_type == \"WRITE ALOUD\" && doc.form_question_type == \"AUDIO\")",
    "options": "Writing Assessment"
+  },
+  {
+   "depends_on": "eval:(doc.form_question_type == \"SINGLE CHOICE\")",
+   "fieldname": "single_choice_assessment",
+   "fieldtype": "Link",
+   "label": "Single choice assessment",
+   "mandatory_depends_on": "eval:(doc.form_question_type == \"SINGLE CHOICE\")",
+   "options": "Single Choice Assessment"
+  },
+  {
+   "depends_on": "eval:(doc.form_question_type == \"MULTI CHOICE\")",
+   "fieldname": "multi_choice_assessment",
+   "fieldtype": "Link",
+   "label": "Multi choice assessment",
+   "mandatory_depends_on": "eval:(doc.form_question_type == \"MULTI CHOICE\")",
+   "options": "Multi Choice Assessment"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-12-15 06:46:34.493646",
+ "modified": "2025-12-15 07:29:55.203067",
  "modified_by": "Administrator",
  "module": "ELA",
  "name": "Question",
