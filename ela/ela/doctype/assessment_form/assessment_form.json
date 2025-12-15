@@ -7,8 +7,9 @@
  "field_order": [
   "assessment_section",
   "title",
-  "brief_instruction",
-  "assessment_questions",
+  "brief_note",
+  "form_template",
+  "table_sphu",
   "cohort",
   "activity",
   "form_last_generated",
@@ -29,12 +30,6 @@
    "unique": 1
   },
   {
-   "fieldname": "assessment_questions",
-   "fieldtype": "Table",
-   "label": "Assessment Question(s)",
-   "options": "Question"
-  },
-  {
    "fieldname": "cohort",
    "fieldtype": "Link",
    "label": "Cohort",
@@ -42,7 +37,6 @@
    "reqd": 1
   },
   {
-   "description": "Select one or more activities. Selections will appear in the mobile assessment form. As far as possible, use not more than two or three activities per form.",
    "fieldname": "activity",
    "fieldtype": "Link",
    "label": "Activity",
@@ -62,15 +56,28 @@
    "label": "Save Flag"
   },
   {
-   "fieldname": "brief_instruction",
+   "fieldname": "form_template",
+   "fieldtype": "Link",
+   "label": "Form Template",
+   "options": "Assessment Form Template"
+  },
+  {
+   "depends_on": "eval:doc.form_template",
+   "fieldname": "table_sphu",
+   "fieldtype": "Table",
+   "options": "Question"
+  },
+  {
+   "description": "This note will appear at the start of the mobile form.",
+   "fieldname": "brief_note",
    "fieldtype": "Small Text",
-   "label": "Brief Instruction for teacher"
+   "label": "Brief note for the form"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-12 16:17:15.093301",
+ "modified": "2025-12-14 12:48:36.436248",
  "modified_by": "Administrator",
  "module": "ELA",
  "name": "Assessment Form",

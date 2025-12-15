@@ -1,0 +1,154 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "prompt",
+ "creation": "2025-12-14 09:30:44.110508",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "language_section",
+  "detect_language",
+  "basic_section",
+  "word_count",
+  "lexical_density",
+  "parts_of_speech",
+  "advanced_section",
+  "noun_phrases",
+  "clauses",
+  "grammar",
+  "vocabulary_section",
+  "global_wordlist_level_1",
+  "global_wordlist_level_2",
+  "global_wordlist_level_3",
+  "custom_wordlist_level_1",
+  "custom_wordlist_level_2",
+  "custom_wordlist_level_3"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_section",
+   "fieldtype": "Section Break",
+   "label": "BASIC"
+  },
+  {
+   "default": "1",
+   "fieldname": "word_count",
+   "fieldtype": "Check",
+   "label": "Word count",
+   "read_only": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "lexical_density",
+   "fieldtype": "Check",
+   "label": "Lexical density"
+  },
+  {
+   "fieldname": "vocabulary_section",
+   "fieldtype": "Section Break",
+   "label": "VOCABULARY"
+  },
+  {
+   "fieldname": "advanced_section",
+   "fieldtype": "Section Break",
+   "label": "STRUCTURE"
+  },
+  {
+   "default": "0",
+   "fieldname": "parts_of_speech",
+   "fieldtype": "Check",
+   "label": "Parts of speech usage"
+  },
+  {
+   "default": "0",
+   "fieldname": "grammar",
+   "fieldtype": "Check",
+   "label": "Grammar"
+  },
+  {
+   "default": "0",
+   "fieldname": "noun_phrases",
+   "fieldtype": "Check",
+   "label": "Noun phrases"
+  },
+  {
+   "default": "0",
+   "fieldname": "clauses",
+   "fieldtype": "Check",
+   "label": "Clauses"
+  },
+  {
+   "fieldname": "language_section",
+   "fieldtype": "Section Break",
+   "label": "LANGUAGE"
+  },
+  {
+   "default": "1",
+   "description": "Use this for cohorts of early learners at a foundational level. The parameters in the following sections are evaluated only for English. except 'word count' which is evaluated for all languages.",
+   "fieldname": "detect_language",
+   "fieldtype": "Check",
+   "label": "Detect Language"
+  },
+  {
+   "fieldname": "global_wordlist_level_1",
+   "fieldtype": "Attach",
+   "label": "Global wordlist (LEVEL 1)"
+  },
+  {
+   "fieldname": "global_wordlist_level_2",
+   "fieldtype": "Attach",
+   "label": "Global wordlist (LEVEL 2)"
+  },
+  {
+   "fieldname": "global_wordlist_level_3",
+   "fieldtype": "Attach",
+   "label": "Global wordlist (LEVEL 3)"
+  },
+  {
+   "description": "Enter one word or phrase in one line.",
+   "fieldname": "custom_wordlist_level_1",
+   "fieldtype": "Long Text",
+   "label": "Custom wordlist (LEVEL 1)"
+  },
+  {
+   "description": "Enter one word or phrase in one line.",
+   "fieldname": "custom_wordlist_level_2",
+   "fieldtype": "Long Text",
+   "label": "Custom wordlist (LEVEL 2)"
+  },
+  {
+   "description": "Enter one word or phrase in one line.",
+   "fieldname": "custom_wordlist_level_3",
+   "fieldtype": "Long Text",
+   "label": "Custom wordlist (LEVEL 3)"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-12-15 06:38:33.656337",
+ "modified_by": "Administrator",
+ "module": "ELA",
+ "name": "Speaking Assessment",
+ "naming_rule": "Set by user",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
