@@ -20,7 +20,9 @@
   {
    "fieldname": "teacher_id",
    "fieldtype": "Data",
-   "label": "Teacher ID"
+   "in_list_view": 1,
+   "label": "Teacher ID",
+   "reqd": 1
   },
   {
    "fieldname": "column_break_czen",
@@ -41,7 +43,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-12 10:32:48.255051",
+ "modified": "2025-12-16 06:34:15.501314",
  "modified_by": "Administrator",
  "module": "ELA",
  "name": "Teacher",

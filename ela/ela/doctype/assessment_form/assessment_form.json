@@ -7,6 +7,7 @@
  "field_order": [
   "assessment_section",
   "title",
+  "form_id",
   "brief_note",
   "form_template",
   "questions",
@@ -72,13 +73,21 @@
    "fieldname": "questions",
    "fieldtype": "Table",
    "label": "Question(s)",
-   "options": "Question"
+   "options": "Question",
+   "reqd": 1
+  },
+  {
+   "description": "Enter a unique ID. If unspecified, the system will assign one.",
+   "fieldname": "form_id",
+   "fieldtype": "Data",
+   "label": "Form ID",
+   "unique": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-15 19:44:47.543124",
+ "modified": "2025-12-16 06:46:41.224795",
  "modified_by": "Administrator",
  "module": "ELA",
  "name": "Assessment Form",

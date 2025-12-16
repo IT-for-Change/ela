@@ -16,10 +16,14 @@ class AssessmentForm(Document):
 
     def before_save(self):
 
+        if (self.form_id is None):
+            self.form_id = self.name
+
         form_learners = frappe.get_all(
             'Learner',
             filters={'cohort': f'{self.cohort}'},
-            fields=['name', 'name1', 'learner_id', 'display_name']
+            fields=['name', 'name1', 'learner_id', 'display_name'],
+            order_by='display_name asc'
         )
 
         form_teachers = frappe.get_all(
@@ -56,8 +60,10 @@ class AssessmentForm(Document):
             form_question_type = question.audio_question_type
 
             if (form_question_type in ['SPEAKING', 'CONVERSATION']):
-                form_assessment_id = question.speaking_assessment
-                form_assessment_ids.append(form_assessment_id)
+                form_assessment_name = question.speaking_assessment
+                assessment = frappe.get_doc('Speaking Assessment', question.speaking_assessment, fields=[
+                    'name', 'assessment_id'])
+                form_assessment_ids.append(assessment.assessment_id)
 
             form_question_types.append(question_type)
 
@@ -73,11 +79,11 @@ class AssessmentForm(Document):
         template_path = f"ela/templates/A{form_assessment_count}.xml"
         context = {
             "title": self.title,
-            "id": self.name,
+            "id": self.form_id,
             "brief_note": self.brief_note,
             "cohort_id": form_learner_cohort.cohort_name,
             "learning_space_id": form_learning_space.name1,
-            "activity_name": form_activity.name,
+            "activity_name": form_activity.activity_id,
             "activity_label": form_activity.title,
             "learners": form_learners,
             "teachers": form_teachers,

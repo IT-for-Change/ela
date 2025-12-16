@@ -6,4 +6,7 @@ from frappe.model.document import Document
 
 
 class SpeakingAssessment(Document):
-	pass
+
+    def before_save(self):
+        if (self.assessment_id is None):
+            self.assessment_id = self.name

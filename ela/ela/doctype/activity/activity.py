@@ -6,4 +6,7 @@ from frappe.model.document import Document
 
 
 class Activity(Document):
-	pass
+
+    def before_save(self):
+        if (self.activity_id is None):
+            self.activity_id = self.name

@@ -6,6 +6,7 @@
  "engine": "InnoDB",
  "field_order": [
   "title",
+  "assessment_id",
   "language_section",
   "detect_language",
   "basic_section",
@@ -133,12 +134,18 @@
    "fieldname": "title",
    "fieldtype": "Data",
    "label": "Title"
+  },
+  {
+   "description": "Specify a unique ID. If not specified, the system will assign one.",
+   "fieldname": "assessment_id",
+   "fieldtype": "Data",
+   "label": "Assessment ID"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-15 22:05:56.774607",
+ "modified": "2025-12-16 06:44:10.988536",
  "modified_by": "Administrator",
  "module": "ELA",
  "name": "Speaking Assessment",
