@@ -28,7 +28,8 @@ class AssessmentForm(Document):
 
         form_teachers = frappe.get_all(
             'Teacher',
-            fields=['name', 'name1', 'teacher_id', 'display_name']
+            fields=['name', 'name1', 'teacher_id', 'display_name'],
+            order_by='display_name asc'
         )
 
         form_learner_cohort = frappe.get_doc(
