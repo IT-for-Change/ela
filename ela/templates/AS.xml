@@ -24,13 +24,13 @@
                     </form_configuration>
                     <question_1>
                         <question_1_prompt />
-                        <ela_asssessment_id_1 />
+                        <assessment_id_1 />
                         <question_1_type />
                         <question_1_audio />
                     </question_1>
                     <question_2>
                         <question_2_prompt />
-                        <ela_asssessment_id_2 />
+                        <assessment_id_2 />
                         <question_2_type />
                         <question_2_singlechoice />
                     </question_2>
@@ -61,7 +61,7 @@
                     </item> {% endfor %} </root>
             </instance>
             <instance id="question_2">
-                <root> {% for choice_key, choice_label in choices.items() %} <item>
+                <root> {% for choice_key, choice_label in all_choice_questions[0].items() %} <item>
                         <label>{{ choice_label }}</label>
                         <name>{{ choice_key }}</name>
                     </item> {% endfor %} </root>
@@ -84,15 +84,15 @@
             <setvalue ref="/data/form_configuration/activity" event="odk-instance-first-load"
                 value=" instance('__last-saved')/data/form_configuration/activity " />
             <bind nodeset="/data/question_1/question_1_prompt" readonly="true()" type="string" />
-            <bind nodeset="/data/question_1/ela_asssessment_id_1" type="string"
-                calculate="&quot;{{ asssessment_ids[0] }}&quot;" />
+            <bind nodeset="/data/question_1/assessment_id_1" type="string"
+                calculate="&quot;{{ assessment_ids[0] }}&quot;" />
             <bind nodeset="/data/question_1/question_1_type" type="string"
                 calculate="&quot;{{ question_types[0] }}&quot;" />
             <bind nodeset="/data/question_1/question_1_audio" type="binary" required="true()"
                 odk:quality="normal" />
             <bind nodeset="/data/question_2/question_2_prompt" readonly="true()" type="string" />
-            <bind nodeset="/data/question_2/ela_asssessment_id_2" type="string"
-                calculate="&quot;{{ asssessment_ids[1] }}&quot;" />
+            <bind nodeset="/data/question_2/assessment_id_2" type="string"
+                calculate="&quot;{{ assessment_ids[1] }}&quot;" />
             <bind nodeset="/data/question_2/question_2_type" type="string"
                 calculate="&quot;{{ question_types[1] }}&quot;" />
             <bind nodeset="/data/question_2/question_2_singlechoice" type="string" required="true()" />
@@ -113,8 +113,8 @@
             </input>
             <input ref="/data/form_introduction/assessments">
                 <label>The following {{ assessment_count }} assessment(s) are included in this form
-                    {{ question_types[0] }}: {{ asssessment_ids[0] }}
-                    {{ question_types[1] }}: {{ asssessment_ids[1] }}</label>
+                    {{ question_types[0] }}: {{ assessment_ids[0] }}
+                    {{ question_types[1] }}: {{ assessment_ids[1] }}</label>
             </input>
         </group>
         <group appearance="field-list" ref="/data/form_configuration">

@@ -4,6 +4,7 @@
 from datetime import datetime
 import zoneinfo
 import xml.sax.saxutils as saxutils
+from jinja2 import Environment, FileSystemLoader
 
 # import frappe
 from frappe.model.document import Document
@@ -15,6 +16,23 @@ from frappe.utils import slug
 class AssessmentForm(Document):
 
     def before_save(self):
+
+        configuration = frappe.get_doc('ELAConfiguration')
+        template_config = configuration.supported_assessment_form_templates
+        templates = template_config.split(',')
+
+        questions = self.questions
+        template = ''
+        for question in questions:
+            question_type = question.question_type
+            template += question_type
+
+        template = template.replace('AUDIO', 'A').replace(
+            'SINGLE CHOICE', 'S').replace('MULTI CHOICE', 'M')
+
+        if (template not in templates):
+            frappe.throw(
+                f"Unsupported question sequence or question types {template}")
 
         if (self.form_id is None):
             self.form_id = self.name
@@ -51,33 +69,43 @@ class AssessmentForm(Document):
         form_question_prompts = []
         form_question_titles = []
         form_question_actions = []
+        form_all_choice_questions = []
 
         for index, question in enumerate(questions):
             question_index = index + 1
             question_type = question.question_type
-            if (question_type != 'AUDIO'):
-                frappe.throw("Only AUDIO question type is supported")
 
-            form_question_type = question.audio_question_type
+            if (question_type == 'AUDIO'):
+                form_question_type = question.audio_question_type
 
-            if (form_question_type in ['SPEAKING', 'CONVERSATION']):
-                form_assessment_name = question.speaking_assessment
-                assessment = frappe.get_doc('Speaking Assessment', question.speaking_assessment, fields=[
+                if (form_question_type in ['SPEAKING', 'CONVERSATION']):
+                    assessment = frappe.get_doc('Speaking Assessment', question.speaking_assessment, fields=[
+                        'name', 'assessment_id'])
+
+                    form_assessment_ids.append(assessment.assessment_id)
+
+            if (question_type == 'SINGLE CHOICE'):
+                assessment = frappe.get_doc('Single Choice Assessment', question.single_choice_assessment, fields=[
                     'name', 'assessment_id'])
                 form_assessment_ids.append(assessment.assessment_id)
+                choices_text = assessment.choices
+                form_choices = {}
+                for line in choices_text.splitlines():
+                    key, value = line.split("|", 1)
+                    form_choices[key.strip()] = value.strip()
+
+                form_all_choice_questions.append(form_choices)
 
             form_question_types.append(question_type)
-
             question_prompt = question.prompt
             form_question_prompts.append(question_prompt)
-
             form_question_title = question.name
             form_question_titles.append(form_question_title)
-
             form_question_action = question.action_instruction
             form_question_actions.append(form_question_action)
 
-        template_path = f"ela/templates/A{form_assessment_count}.xml"
+        template_path = f"templates/{template}.xml"
+
         context = {
             "title": self.title,
             "id": self.form_id,
@@ -90,13 +118,15 @@ class AssessmentForm(Document):
             "teachers": form_teachers,
             "assessment_count": form_assessment_count,
             "assessment_ids": form_assessment_ids,
+            # this section adds context for questions related text
             "question_types": form_question_types,
             "question_prompts": form_question_prompts,
             "question_titles": form_question_titles,
-            "question_actions": form_question_actions
+            "question_actions": form_question_actions,
+            "all_choice_questions": form_all_choice_questions
         }
 
-        output = render_template(template_path, context)
+        output = frappe.render_template(template_path, context)
 
         attachments = frappe.get_all('File', filters={
             'attached_to_name': self.name,

@@ -139,13 +139,14 @@
    "description": "Specify a unique ID. If not specified, the system will assign one.",
    "fieldname": "assessment_id",
    "fieldtype": "Data",
-   "label": "Assessment ID"
+   "label": "Assessment ID",
+   "unique": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-16 06:44:10.988536",
+ "modified": "2025-12-16 15:13:39.084458",
  "modified_by": "Administrator",
  "module": "ELA",
  "name": "Speaking Assessment",
