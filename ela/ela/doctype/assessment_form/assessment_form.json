@@ -14,7 +14,8 @@
   "cohort",
   "activity",
   "form_last_generated",
-  "save_flag"
+  "save_flag",
+  "assessment_template_type"
  ],
  "fields": [
   {
@@ -82,12 +83,19 @@
    "fieldtype": "Data",
    "label": "Form ID",
    "unique": 1
+  },
+  {
+   "fieldname": "assessment_template_type",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Assessment Template Type",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-16 06:46:41.224795",
+ "modified": "2025-12-17 16:41:56.112208",
  "modified_by": "Administrator",
  "module": "ELA",
  "name": "Assessment Form",

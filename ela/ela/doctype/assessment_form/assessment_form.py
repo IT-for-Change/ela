@@ -34,6 +34,8 @@ class AssessmentForm(Document):
             frappe.throw(
                 f"Unsupported question sequence or question types {template}")
 
+        self.assessment_template_type = template
+
         if (self.form_id is None):
             self.form_id = self.name
 
