@@ -1,16 +1,16 @@
 {
  "actions": [],
- "allow_rename": 1,
+ "autoname": "naming_series:[naming_series]",
  "creation": "2025-12-17 16:55:09.841050",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "package_file",
   "package_format",
+  "package_file",
   "package_note",
-  "number_of_submissions",
   "assessment_forms_in_package",
-  "status"
+  "status",
+  "naming_series"
  ],
  "fields": [
   {
@@ -20,17 +20,12 @@
    "reqd": 1
   },
   {
-   "fieldname": "number_of_submissions",
-   "fieldtype": "Data",
-   "label": "Number of submissions",
-   "read_only": 1
-  },
-  {
    "fieldname": "package_file",
    "fieldtype": "Attach",
    "in_list_view": 1,
-   "label": "Package (ZIP file)",
-   "reqd": 1
+   "label": "Package",
+   "reqd": 1,
+   "set_only_once": 1
   },
   {
    "fieldname": "assessment_forms_in_package",
@@ -39,27 +34,41 @@
    "read_only": 1
   },
   {
-   "default": "ELAx1",
+   "default": "ELA Cx1",
    "fieldname": "package_format",
    "fieldtype": "Select",
-   "label": "Format",
-   "options": "ELAx1\nELAx2\nECUBE",
+   "label": "Source",
+   "options": "ELA Cx1\nELA Cx2\nECUBE",
    "reqd": 1
   },
   {
    "fieldname": "status",
    "fieldtype": "Select",
    "label": "Status",
-   "options": "Uploaded\nIn progress\nClosed"
+   "options": "\nPending\nFailed\nReady\nIn progress\nClosed",
+   "read_only": 1
+  },
+  {
+   "default": "ELA-PKG-",
+   "fieldname": "naming_series",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Naming series"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
- "links": [],
- "modified": "2025-12-19 09:24:36.724427",
+ "links": [
+  {
+   "link_doctype": "Learner Submission",
+   "link_fieldname": "source_package"
+  }
+ ],
+ "modified": "2025-12-19 13:59:12.643592",
  "modified_by": "Administrator",
  "module": "ELA",
  "name": "Assessment Package",
+ "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {
