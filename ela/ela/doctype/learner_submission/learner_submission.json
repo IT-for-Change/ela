@@ -5,6 +5,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "source_package",
   "submitted_datetime",
   "submitted_via_form",
   "learner",
@@ -32,12 +33,18 @@
    "fieldtype": "Select",
    "label": "Status",
    "options": "Submitted\nPending transcription xA\nPending transcription xB\nPending text analysis\nClosed"
+  },
+  {
+   "fieldname": "source_package",
+   "fieldtype": "Link",
+   "label": "Source Package",
+   "options": "Assessment Package"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-19 07:32:22.537165",
+ "modified": "2025-12-19 12:08:33.373874",
  "modified_by": "Administrator",
  "module": "ELA",
  "name": "Learner Submission",

@@ -13,7 +13,7 @@ import frappe
 
 class AssessmentPackage(Document):
 
-    def before_save(self):
+    def after_insert(self):
 
         if (self.package_file == None):
             return
@@ -39,7 +39,8 @@ class AssessmentPackage(Document):
                         self.create_submission(file_contents[file_name])
                         # frappe.msgprint(file_contents[file_name])
 
-        self.number_of_submissions = num_submissions
+        self.status = 'Ready'
+        self.save()
 
     def create_submission(self, xml_string):
         root = ET.fromstring(xml_string)
@@ -62,6 +63,7 @@ class AssessmentPackage(Document):
             'doctype': 'Learner Submission',
             'submitted_datetime': start_time,
             'submitted_via_form': ela_form_id,
+            'source_package': self.name,
             "learner": learner_doc
         })
 
