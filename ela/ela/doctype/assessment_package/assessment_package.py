@@ -1,0 +1,91 @@
+# Copyright (c) 2025, IT for Change and contributors
+# For license information, please see license.txt
+
+import zipfile
+import io
+from io import BytesIO
+import xml.etree.ElementTree as ET
+
+# import frappe
+from frappe.model.document import Document
+import frappe
+
+
+class AssessmentPackage(Document):
+
+    def before_save(self):
+
+        if (self.package_file == None):
+            return
+
+        package_format = self.package_format
+
+        package_file = frappe.get_doc("File", {"file_url": self.package_file})
+        # the 'file_name' field of File doctype holds the unaltered (original) file name.
+        uploaded_file_name = package_file.file_name
+
+        content = package_file.get_content()
+
+        num_submissions = 0
+        with zipfile.ZipFile(BytesIO(content), 'r') as zip:
+            file_names = zip.namelist()
+            # Read the content of each file directly into memory
+            file_contents = {}
+            for file_name in file_names:
+                if file_name.endswith('.xml'):
+                    num_submissions += 1
+                    with zip.open(file_name) as file:
+                        file_contents[file_name] = file.read()
+                        self.create_submission(file_contents[file_name])
+                        # frappe.msgprint(file_contents[file_name])
+
+        self.number_of_submissions = num_submissions
+
+    def create_submission(self, xml_string):
+        root = ET.fromstring(xml_string)
+
+        # 1) Extract and print required fields
+        start_time = root.findtext("startTime")
+        ela_form_id = root.findtext("form_introduction/ela_form_id")
+        num_assessments = int(root.findtext(
+            "form_introduction/num_assessments"))
+        learner = root.findtext("form_configuration/learner")
+        teacher = root.findtext("form_configuration/teacher")
+        activity = root.findtext("form_configuration/activity")
+
+        learner_doc = frappe.get_doc(doctype='Learner', filters={'learner_id': f'{learner}'},
+                                     fields=['name', 'name1',
+                                             'learner_id', 'display_name']
+                                     )
+
+        submission = frappe.get_doc({
+            'doctype': 'Learner Submission',
+            'submitted_datetime': start_time,
+            'submitted_via_form': ela_form_id,
+            "learner": learner_doc
+        })
+
+        submission.insert()
+
+        '''
+        # 2) Loop through assessments
+        for index in range(1, num_assessments + 1):
+            assessment_id = root.findtext(
+                f"question_{index}/assessment_id_{index}")
+            question_type = root.findtext(
+                f"question_{index}/question_{index}_type")
+
+            response = None
+            if question_type == "AUDIO":
+                response = root.findtext(
+                    f"question_{index}/question_{index}_audio")
+            elif question_type == "SINGLE CHOICE":
+                response = root.findtext(
+                    f"question_{index}/question_{index}_singlechoice")
+
+            frappe.msgprint(
+                f"Assessment {index}:\n"
+                f"assessment_id = {assessment_id}\n"
+                f"response = {response}"
+            )
+            '''
