@@ -39,11 +39,11 @@
    "read_only": 1
   },
   {
-   "default": "ELA1",
+   "default": "ELAx1",
    "fieldname": "package_format",
    "fieldtype": "Select",
    "label": "Format",
-   "options": "ELA1\nELA2\nECUBE",
+   "options": "ELAx1\nELAx2\nECUBE",
    "reqd": 1
   },
   {
@@ -56,7 +56,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-19 07:35:08.657032",
+ "modified": "2025-12-19 09:24:36.724427",
  "modified_by": "Administrator",
  "module": "ELA",
  "name": "Assessment Package",
