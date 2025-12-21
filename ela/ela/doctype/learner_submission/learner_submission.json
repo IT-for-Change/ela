@@ -5,11 +5,20 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "overview_section",
   "source_package",
   "submitted_datetime",
+  "column_break_cxwl",
   "submitted_via_form",
+  "status",
+  "learner_information_section",
+  "learner_display_name",
   "learner",
-  "status"
+  "learner_cohort",
+  "activity_information_section",
+  "activity_title",
+  "activity_eid",
+  "activity_reference"
  ],
  "fields": [
   {
@@ -25,7 +34,7 @@
   {
    "fieldname": "learner",
    "fieldtype": "Link",
-   "label": "Learner",
+   "label": "Learner Reference",
    "options": "Learner"
   },
   {
@@ -39,12 +48,58 @@
    "fieldtype": "Link",
    "label": "Source Package",
    "options": "Assessment Package"
+  },
+  {
+   "fieldname": "learner_information_section",
+   "fieldtype": "Section Break",
+   "label": "Learner information"
+  },
+  {
+   "fieldname": "overview_section",
+   "fieldtype": "Section Break",
+   "label": "Overview"
+  },
+  {
+   "fieldname": "column_break_cxwl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "activity_information_section",
+   "fieldtype": "Section Break",
+   "label": "Activity information"
+  },
+  {
+   "fieldname": "activity_title",
+   "fieldtype": "Data",
+   "label": "Title"
+  },
+  {
+   "fieldname": "learner_display_name",
+   "fieldtype": "Data",
+   "label": "Name and ID"
+  },
+  {
+   "fieldname": "learner_cohort",
+   "fieldtype": "Link",
+   "label": "Cohort",
+   "options": "Learner Cohort"
+  },
+  {
+   "fieldname": "activity_eid",
+   "fieldtype": "Data",
+   "label": "ID"
+  },
+  {
+   "fieldname": "activity_reference",
+   "fieldtype": "Link",
+   "label": "Reference",
+   "options": "Activity"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-19 12:08:33.373874",
+ "modified": "2025-12-21 12:58:22.234176",
  "modified_by": "Administrator",
  "module": "ELA",
  "name": "Learner Submission",

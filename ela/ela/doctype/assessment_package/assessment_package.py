@@ -21,12 +21,14 @@ class AssessmentPackage(Document):
         package_format = self.package_format
 
         package_file = frappe.get_doc("File", {"file_url": self.package_file})
-        # the 'file_name' field of File doctype holds the unaltered (original) file name.
+        # IMP: the 'file_name' field of File doctype holds the unaltered (original) file name.
         uploaded_file_name = package_file.file_name
 
         content = package_file.get_content()
 
         num_submissions = 0
+        # unique_ela_forms = []
+        # Read zip and contents directly into memory. Avoid creating tmp files, dirs.
         with zipfile.ZipFile(BytesIO(content), 'r') as zip:
             file_names = zip.namelist()
             # Read the content of each file directly into memory
@@ -36,9 +38,10 @@ class AssessmentPackage(Document):
                     num_submissions += 1
                     with zip.open(file_name) as file:
                         file_contents[file_name] = file.read()
-                        self.create_submission(file_contents[file_name])
-                        # frappe.msgprint(file_contents[file_name])
+                        self.create_submission(
+                            file_contents[file_name])
 
+        # self.assessment_forms_in_package = str(set(unique_ela_forms))
         self.status = 'Ready'
         self.save()
 
@@ -54,17 +57,29 @@ class AssessmentPackage(Document):
         teacher = root.findtext("form_configuration/teacher")
         activity = root.findtext("form_configuration/activity")
 
-        learner_doc = frappe.get_doc(doctype='Learner', filters={'learner_id': f'{learner}'},
-                                     fields=['name', 'name1',
-                                             'learner_id', 'display_name']
-                                     )
+        learner_doc = frappe.get_value('Learner', {"learner_id": learner},
+                                       ['name', 'name1',
+                                        'learner_id', 'display_name', "cohort"], as_dict=True
+                                       )
+
+        activity_doc = frappe.get_doc('Activity', {'activity_id': activity},
+                                      ['name', 'name1', 'activity_id', 'title'], as_dict=True)
+
+        activity_in_package = frappe.new_doc("Activity in Package")
+        activity_in_package.activity = activity_doc.name
+        self.activities_in_package.append(activity_in_package)
 
         submission = frappe.get_doc({
             'doctype': 'Learner Submission',
             'submitted_datetime': start_time,
             'submitted_via_form': ela_form_id,
             'source_package': self.name,
-            "learner": learner_doc
+            "learner": learner_doc.name,
+            "learner_display_name": learner_doc.display_name,
+            "learner_cohort": learner_doc.cohort,
+            "activity_reference": activity_doc.name,
+            "activity_title": activity_doc.title,
+            "activity_eid": activity_doc.activity_id
         })
 
         submission.insert()
