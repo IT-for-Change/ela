@@ -6,13 +6,13 @@
  "engine": "InnoDB",
  "field_order": [
   "assessment_section",
+  "activity",
+  "activity_title",
   "title",
   "form_id",
-  "brief_note",
-  "form_template",
-  "questions",
   "cohort",
-  "activity",
+  "questions",
+  "brief_note",
   "form_last_generated",
   "save_flag",
   "assessment_template_type"
@@ -27,7 +27,7 @@
    "fieldname": "title",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Title",
+   "label": "Form title",
    "reqd": 1,
    "unique": 1
   },
@@ -39,10 +39,13 @@
    "reqd": 1
   },
   {
+   "default": "None",
    "fieldname": "activity",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Activity",
    "options": "Activity",
+   "read_only": 1,
    "reqd": 1
   },
   {
@@ -56,12 +59,6 @@
    "fieldtype": "Data",
    "hidden": 1,
    "label": "Save Flag"
-  },
-  {
-   "fieldname": "form_template",
-   "fieldtype": "Link",
-   "label": "Form Template",
-   "options": "Assessment Form Template"
   },
   {
    "description": "This note will appear at the start of the mobile form.",
@@ -90,12 +87,21 @@
    "hidden": 1,
    "label": "Assessment Template Type",
    "read_only": 1
+  },
+  {
+   "fieldname": "activity_title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Activity title",
+   "read_only": 1,
+   "reqd": 1,
+   "unique": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-17 16:41:56.112208",
+ "modified": "2025-12-21 06:57:23.460016",
  "modified_by": "Administrator",
  "module": "ELA",
  "name": "Assessment Form",

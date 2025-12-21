@@ -12,7 +12,9 @@
   "pictures",
   "audio",
   "video",
-  "interactive_media"
+  "interactive_media",
+  "section_break_rowq",
+  "create_assessment_form"
  ],
  "fields": [
   {
@@ -64,13 +66,22 @@
    "fieldtype": "Data",
    "label": "Activity ID",
    "unique": 1
+  },
+  {
+   "fieldname": "section_break_rowq",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "create_assessment_form",
+   "fieldtype": "Button",
+   "label": "Create assessment form"
   }
  ],
  "grid_page_length": 50,
  "hide_toolbar": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-16 06:38:50.551098",
+ "modified": "2025-12-20 16:40:39.714670",
  "modified_by": "Administrator",
  "module": "ELA",
  "name": "Activity",
