@@ -67,7 +67,6 @@
    "label": "Brief note for the form"
   },
   {
-   "depends_on": "eval:doc.form_template",
    "fieldname": "questions",
    "fieldtype": "Table",
    "label": "Question(s)",
@@ -101,7 +100,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-21 06:57:23.460016",
+ "modified": "2025-12-21 09:44:12.185369",
  "modified_by": "Administrator",
  "module": "ELA",
  "name": "Assessment Form",
