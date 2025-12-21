@@ -69,6 +69,30 @@ class AssessmentPackage(Document):
         activity_in_package.activity = activity_doc.name
         self.activities_in_package.append(activity_in_package)
 
+        # Loop through assessments
+        question_outputs_list = []
+        for index in range(1, num_assessments + 1):
+            question_output = {}
+            question_output['doctype'] = 'Question Output'
+            assessment_id = root.findtext(
+                f"question_{index}/assessment_id_{index}")
+            question_type = root.findtext(
+                f"question_{index}/question_{index}_type")
+
+            question_output['type'] = question_type
+
+            response = None
+            if question_type == "AUDIO":
+                response = root.findtext(
+                    f"question_{index}/question_{index}_audio")
+                question_output['file'] = response
+            elif question_type == "SINGLE CHOICE":
+                response = root.findtext(
+                    f"question_{index}/question_{index}_singlechoice")
+                question_output['response'] = response
+
+            question_outputs_list.append(question_output)
+
         submission = frappe.get_doc({
             'doctype': 'Learner Submission',
             'submitted_datetime': start_time,
@@ -79,30 +103,8 @@ class AssessmentPackage(Document):
             "learner_cohort": learner_doc.cohort,
             "activity_reference": activity_doc.name,
             "activity_title": activity_doc.title,
-            "activity_eid": activity_doc.activity_id
+            "activity_eid": activity_doc.activity_id,
+            "response": question_outputs_list
         })
 
         submission.insert()
-
-        '''
-        # 2) Loop through assessments
-        for index in range(1, num_assessments + 1):
-            assessment_id = root.findtext(
-                f"question_{index}/assessment_id_{index}")
-            question_type = root.findtext(
-                f"question_{index}/question_{index}_type")
-
-            response = None
-            if question_type == "AUDIO":
-                response = root.findtext(
-                    f"question_{index}/question_{index}_audio")
-            elif question_type == "SINGLE CHOICE":
-                response = root.findtext(
-                    f"question_{index}/question_{index}_singlechoice")
-
-            frappe.msgprint(
-                f"Assessment {index}:\n"
-                f"assessment_id = {assessment_id}\n"
-                f"response = {response}"
-            )
-            '''

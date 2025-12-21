@@ -5,6 +5,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "overview_tab",
   "overview_section",
   "source_package",
   "submitted_datetime",
@@ -18,7 +19,10 @@
   "activity_information_section",
   "activity_title",
   "activity_eid",
-  "activity_reference"
+  "activity_reference",
+  "submissions_tab",
+  "outputs_section",
+  "response"
  ],
  "fields": [
   {
@@ -94,12 +98,34 @@
    "fieldtype": "Link",
    "label": "Reference",
    "options": "Activity"
+  },
+  {
+   "fieldname": "overview_tab",
+   "fieldtype": "Tab Break",
+   "label": "Overview"
+  },
+  {
+   "fieldname": "submissions_tab",
+   "fieldtype": "Tab Break",
+   "label": "Submissions"
+  },
+  {
+   "fieldname": "outputs_section",
+   "fieldtype": "Section Break",
+   "label": "Outputs"
+  },
+  {
+   "fieldname": "response",
+   "fieldtype": "Table",
+   "label": "Response",
+   "options": "Question Output",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-21 12:58:22.234176",
+ "modified": "2025-12-21 13:48:06.695887",
  "modified_by": "Administrator",
  "module": "ELA",
  "name": "Learner Submission",
