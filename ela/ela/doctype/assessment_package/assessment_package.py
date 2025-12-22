@@ -27,25 +27,41 @@ class AssessmentPackage(Document):
         content = package_file.get_content()
 
         num_submissions = 0
+        audio_files_mapping = {}
         # unique_ela_forms = []
         # Read zip and contents directly into memory. Avoid creating tmp files, dirs.
         with zipfile.ZipFile(BytesIO(content), 'r') as zip:
             file_names = zip.namelist()
             # Read the content of each file directly into memory
-            file_contents = {}
+            frappe.msgprint(str(file_names))
+            for file_name in file_names:
+                if file_name.endswith('.m4a'):
+                    with zip.open(file_name) as file:
+                        file_contents = file.read()
+                        file_name_unqualified = file_name.split("/")[-1]
+                        file_doc = frappe.get_doc({
+                            "doctype": 'File',
+                            "file_name": file_name_unqualified,
+                            "content": file_contents,
+                            "folder": "Home"
+                        })
+                        file_doc.save()
+
+                    audio_files_mapping[file_name_unqualified] = file_doc.file_url
+
             for file_name in file_names:
                 if file_name.endswith('.xml'):
                     num_submissions += 1
                     with zip.open(file_name) as file:
-                        file_contents[file_name] = file.read()
+                        file_contents = file.read()
                         self.create_submission(
-                            file_contents[file_name])
+                            file_contents, audio_files_mapping)
 
         # self.assessment_forms_in_package = str(set(unique_ela_forms))
         self.status = 'Ready'
         self.save()
 
-    def create_submission(self, xml_string):
+    def create_submission(self, xml_string, audio_files_mapping):
         root = ET.fromstring(xml_string)
 
         # 1) Extract and print required fields
@@ -73,7 +89,8 @@ class AssessmentPackage(Document):
         question_outputs_list = []
         for index in range(1, num_assessments + 1):
             question_output = {}
-            question_output['doctype'] = 'Question Output'
+            question_output_doc_file_name = 'Question Output'
+            question_output['doctype'] = question_output_doc_file_name
             assessment_id = root.findtext(
                 f"question_{index}/assessment_id_{index}")
             question_type = root.findtext(
@@ -85,7 +102,8 @@ class AssessmentPackage(Document):
             if question_type == "AUDIO":
                 response = root.findtext(
                     f"question_{index}/question_{index}_audio")
-                question_output['file'] = response
+                audio_file_url = audio_files_mapping[response]
+                question_output['file'] = audio_file_url
             elif question_type == "SINGLE CHOICE":
                 response = root.findtext(
                     f"question_{index}/question_{index}_singlechoice")
