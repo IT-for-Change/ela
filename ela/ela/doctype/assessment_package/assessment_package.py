@@ -96,6 +96,8 @@ class AssessmentPackage(Document):
             question_type = root.findtext(
                 f"question_{index}/question_{index}_type")
 
+            question_output['assessment_id'] = assessment_id
+            # frappe.get_doc('DocType')
             question_output['type'] = question_type
 
             response = None
