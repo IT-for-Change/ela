@@ -33,7 +33,6 @@ class AssessmentPackage(Document):
         with zipfile.ZipFile(BytesIO(content), 'r') as zip:
             file_names = zip.namelist()
             # Read the content of each file directly into memory
-            frappe.msgprint(str(file_names))
             for file_name in file_names:
                 if file_name.endswith('.m4a'):
                     with zip.open(file_name) as file:
@@ -61,6 +60,19 @@ class AssessmentPackage(Document):
         self.status = 'Ready'
         self.save()
 
+    def get_assessment_doc(self, assessment_id):
+
+        possible_doctypes = ["Speaking Assessment", "Readabout Assessment",
+                             "Writing Assessment", "Single Choice Assessment", "Multi Choice Assessment"]
+
+        for dt in possible_doctypes:
+            if frappe.db.exists({"doctype": dt, "assessment_id": assessment_id}):
+                doc = frappe.get_doc(dt, {'assessment_id': assessment_id}, [
+                                     'name', 'assessment_id'])
+                return dt, doc
+
+        return None, None
+
     def create_submission(self, xml_string, audio_files_mapping):
         root = ET.fromstring(xml_string)
 
@@ -75,7 +87,7 @@ class AssessmentPackage(Document):
 
         learner_doc = frappe.get_value('Learner', {"learner_id": learner},
                                        ['name', 'name1',
-                                        'learner_id', 'display_name', "cohort"], as_dict=True
+                                       'learner_id', 'display_name', "cohort"], as_dict=True
                                        )
 
         activity_doc = frappe.get_doc('Activity', {'activity_id': activity},
@@ -93,10 +105,14 @@ class AssessmentPackage(Document):
             question_output['doctype'] = question_output_doc_file_name
             assessment_id = root.findtext(
                 f"question_{index}/assessment_id_{index}")
+            assessment_type, assessment_doc = self.get_assessment_doc(
+                assessment_id)
             question_type = root.findtext(
                 f"question_{index}/question_{index}_type")
 
-            question_output['assessment_id'] = assessment_id
+            question_output['assessment_type'] = assessment_type
+            question_output['assessment'] = assessment_doc.name
+            frappe.msgprint(f'{assessment_type}:{assessment_doc.name}')
             # frappe.get_doc('DocType')
             question_output['type'] = question_type
 
