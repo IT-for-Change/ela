@@ -83,9 +83,13 @@ class AssessmentPackage(Document):
         teacher = root.findtext("form_configuration/teacher")
         activity = root.findtext("form_configuration/activity")
 
-        learner_doc = frappe.get_value('Learner', {"learner_id": learner},
+        learner_doc = frappe.get_value('Learner', {"learner_eid": learner},
                                        ['name', 'name1',
                                        'learner_id', 'learner_eid', 'display_name', "cohort"], as_dict=True
+                                       )
+
+        teacher_doc = frappe.get_value('Teacher', {"teacher_eid": teacher},
+                                       ['name', 'teacher_eid', 'display_name'], as_dict=True
                                        )
 
         activity_doc = frappe.get_doc('Activity', {'activity_id': activity},
@@ -134,6 +138,9 @@ class AssessmentPackage(Document):
             "learner_display_name": learner_doc.display_name,
             "learner_eid": learner_doc.learner_eid,
             "learner_cohort": learner_doc.cohort,
+            "teacher_eid": teacher_doc.teacher_eid,
+            "teacher_display_name": teacher_doc.display_name,
+            "teacher_reference": teacher_doc.name,
             "activity_reference": activity_doc.name,
             "activity_title": activity_doc.title,
             "activity_eid": activity_doc.activity_id,

@@ -8,7 +8,7 @@ from frappe.model.document import Document
 class Teacher(Document):
 
     def before_insert(self):
-        self.display_name = f'{self.name1} ({self.teacher_id})'
+        self.display_name = f'{self.name1} ({self.teacher_eid})'
 
     def on_update(self):
-        self.display_name = f'{self.name1} ({self.teacher_id})'
+        self.display_name = f'{self.name1} ({self.teacher_eid})'

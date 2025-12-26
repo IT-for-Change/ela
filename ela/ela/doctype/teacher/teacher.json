@@ -7,7 +7,7 @@
  "field_order": [
   "name1",
   "display_name",
-  "teacher_id",
+  "teacher_eid",
   "column_break_czen",
   "voice_sample"
  ],
@@ -16,13 +16,6 @@
    "fieldname": "name1",
    "fieldtype": "Data",
    "label": "Name"
-  },
-  {
-   "fieldname": "teacher_id",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Teacher ID",
-   "reqd": 1
   },
   {
    "fieldname": "column_break_czen",
@@ -38,12 +31,20 @@
    "fieldtype": "Data",
    "label": "Display Name",
    "read_only": 1
+  },
+  {
+   "description": "Unique identifier for a teacher.",
+   "fieldname": "teacher_eid",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Teacher EID",
+   "reqd": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-16 06:34:15.501314",
+ "modified": "2025-12-26 16:41:08.026332",
  "modified_by": "Administrator",
  "module": "ELA",
  "name": "Teacher",

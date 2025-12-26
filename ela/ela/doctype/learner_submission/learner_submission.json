@@ -21,6 +21,9 @@
   "activity_title",
   "activity_eid",
   "activity_reference",
+  "teacher_display_name",
+  "teacher_eid",
+  "teacher_reference",
   "submissions_tab",
   "outputs_section",
   "response"
@@ -126,12 +129,28 @@
    "fieldname": "learner_eid",
    "fieldtype": "Data",
    "label": "EID"
+  },
+  {
+   "fieldname": "teacher_display_name",
+   "fieldtype": "Data",
+   "label": "Teacher"
+  },
+  {
+   "fieldname": "teacher_eid",
+   "fieldtype": "Data",
+   "label": "Teacher EID"
+  },
+  {
+   "fieldname": "teacher_reference",
+   "fieldtype": "Link",
+   "label": "Teacher Reference ID",
+   "options": "Teacher"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-26 16:32:54.383028",
+ "modified": "2025-12-26 16:46:38.851617",
  "modified_by": "Administrator",
  "module": "ELA",
  "name": "Learner Submission",
