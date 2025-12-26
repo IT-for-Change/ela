@@ -85,7 +85,7 @@ class AssessmentPackage(Document):
 
         learner_doc = frappe.get_value('Learner', {"learner_id": learner},
                                        ['name', 'name1',
-                                       'learner_id', 'display_name', "cohort"], as_dict=True
+                                       'learner_id', 'learner_eid', 'display_name', "cohort"], as_dict=True
                                        )
 
         activity_doc = frappe.get_doc('Activity', {'activity_id': activity},
@@ -132,6 +132,7 @@ class AssessmentPackage(Document):
             'source_package': self.name,
             "learner": learner_doc.name,
             "learner_display_name": learner_doc.display_name,
+            "learner_eid": learner_doc.learner_eid,
             "learner_cohort": learner_doc.cohort,
             "activity_reference": activity_doc.name,
             "activity_title": activity_doc.title,

@@ -8,7 +8,7 @@
  "engine": "InnoDB",
  "field_order": [
   "name1",
-  "learner_id",
+  "learner_eid",
   "cohort",
   "primary_home_language",
   "display_name"
@@ -18,12 +18,6 @@
    "fieldname": "name1",
    "fieldtype": "Data",
    "label": "Name",
-   "reqd": 1
-  },
-  {
-   "fieldname": "learner_id",
-   "fieldtype": "Data",
-   "label": "Learner ID",
    "reqd": 1
   },
   {
@@ -47,12 +41,19 @@
    "label": "Primary Home Language",
    "options": "KN\nHI\nUR\nMR\nTA\nTE",
    "reqd": 1
+  },
+  {
+   "description": "Learner's External ID, if available. The ID must uniquely identify a learner. If not filled, the system will auto-assign a unique ID.",
+   "fieldname": "learner_eid",
+   "fieldtype": "Data",
+   "label": "Learner EID",
+   "reqd": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-15 23:09:39.477202",
+ "modified": "2025-12-26 16:25:05.019504",
  "modified_by": "Administrator",
  "module": "ELA",
  "name": "Learner",

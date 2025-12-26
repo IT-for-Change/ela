@@ -14,6 +14,7 @@
   "status",
   "learner_information_section",
   "learner_display_name",
+  "learner_eid",
   "learner",
   "learner_cohort",
   "activity_information_section",
@@ -120,12 +121,17 @@
    "label": "Response",
    "options": "Question Output",
    "read_only": 1
+  },
+  {
+   "fieldname": "learner_eid",
+   "fieldtype": "Data",
+   "label": "EID"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-21 13:48:06.695887",
+ "modified": "2025-12-26 16:32:54.383028",
  "modified_by": "Administrator",
  "module": "ELA",
  "name": "Learner Submission",
