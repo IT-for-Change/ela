@@ -28,7 +28,6 @@ class AssessmentPackage(Document):
 
         num_submissions = 0
         audio_files_mapping = {}
-        # unique_ela_forms = []
         # Read zip and contents directly into memory. Avoid creating tmp files, dirs.
         with zipfile.ZipFile(BytesIO(content), 'r') as zip:
             file_names = zip.namelist()
@@ -56,7 +55,6 @@ class AssessmentPackage(Document):
                         self.create_submission(
                             file_contents, audio_files_mapping)
 
-        # self.assessment_forms_in_package = str(set(unique_ela_forms))
         self.status = 'Ready'
         self.save()
 
@@ -78,7 +76,7 @@ class AssessmentPackage(Document):
 
         # 1) Extract and print required fields
         start_time = root.findtext("startTime")
-        ela_form_id = root.findtext("form_introduction/ela_form_id")
+        form_id = root.findtext("form_introduction/form_id")
         num_assessments = int(root.findtext(
             "form_introduction/num_assessments"))
         learner = root.findtext("form_configuration/learner")
@@ -112,8 +110,6 @@ class AssessmentPackage(Document):
 
             question_output['assessment_type'] = assessment_type
             question_output['assessment'] = assessment_doc.name
-            frappe.msgprint(f'{assessment_type}:{assessment_doc.name}')
-            # frappe.get_doc('DocType')
             question_output['type'] = question_type
 
             response = None
@@ -132,7 +128,7 @@ class AssessmentPackage(Document):
         submission = frappe.get_doc({
             'doctype': 'Learner Submission',
             'submitted_datetime': start_time,
-            'submitted_via_form': ela_form_id,
+            'submitted_via_form': form_id,
             'source_package': self.name,
             "learner": learner_doc.name,
             "learner_display_name": learner_doc.display_name,

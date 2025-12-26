@@ -10,7 +10,7 @@
                 <data id="{{ id }}" version="1">
                     <startTime />
                     <form_introduction>
-                        <ela_form_id />
+                        <form_id />
                         <note />
                         <cohort />
                         <space />
@@ -68,7 +68,7 @@
             </instance>
             <bind nodeset="/data/startTime" jr:preload="timestamp" type="dateTime"
                 jr:preloadParams="start" />
-            <bind nodeset="/data/form_introduction/ela_form_id" type="string"
+            <bind nodeset="/data/form_introduction/form_id" type="string"
                 calculate="&quot;{{ id }}&quot;" />
             <bind nodeset="/data/form_introduction/note" readonly="true()" type="string" />
             <bind nodeset="/data/form_introduction/cohort" type="string" readonly="true()" />
