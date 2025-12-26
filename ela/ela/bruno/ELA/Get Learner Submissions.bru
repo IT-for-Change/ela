@@ -1,0 +1,15 @@
+meta {
+  name: Get Learner Submissions
+  type: http
+  seq: 1
+}
+
+get {
+  url: http://elaexplore.localhost:8081/api/v2/document/Learner%20Submission
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+}

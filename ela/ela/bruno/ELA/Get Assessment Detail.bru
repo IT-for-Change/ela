@@ -1,0 +1,20 @@
+meta {
+  name: Get Assessment Detail
+  type: http
+  seq: 9
+}
+
+get {
+  url: http://elaexplore.localhost:8081/api/v2/document/Learner%20Submission
+  body: none
+  auth: inherit
+}
+
+headers {
+  Authorization: token b909eccbd9b04d1:e7515a47bbfad81
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
