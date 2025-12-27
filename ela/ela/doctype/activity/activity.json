@@ -7,6 +7,9 @@
  "field_order": [
   "title",
   "activity_id",
+  "column_break_txzk",
+  "pending_assessment_count_msg",
+  "run_assessment",
   "section_break_pcah",
   "modes",
   "pictures",
@@ -75,13 +78,28 @@
    "fieldname": "create_assessment_form",
    "fieldtype": "Button",
    "label": "Create assessment form"
+  },
+  {
+   "fieldname": "column_break_txzk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "pending_assessment_count_msg",
+   "fieldtype": "HTML",
+   "label": "Assessment"
+  },
+  {
+   "fieldname": "run_assessment",
+   "fieldtype": "Button",
+   "hidden": 1,
+   "label": "Run assessment"
   }
  ],
  "grid_page_length": 50,
  "hide_toolbar": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-20 16:40:39.714670",
+ "modified": "2025-12-23 19:12:30.938155",
  "modified_by": "Administrator",
  "module": "ELA",
  "name": "Activity",
