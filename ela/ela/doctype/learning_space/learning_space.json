@@ -1,11 +1,12 @@
 {
  "actions": [],
- "autoname": "format:ELA-LS-{####}",
+ "autoname": "format: learning-space-{##}",
  "creation": "2025-12-12 15:25:51.626746",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
   "name1",
+  "short_name",
   "institution_identifier",
   "postal_code"
  ],
@@ -13,24 +14,39 @@
   {
    "fieldname": "name1",
    "fieldtype": "Small Text",
-   "label": "Name"
+   "in_list_view": 1,
+   "label": "Full name and address",
+   "reqd": 1
   },
   {
-   "description": "Example: UDISE school code",
+   "description": "Must be unique. Example: UDISE school code",
    "fieldname": "institution_identifier",
    "fieldtype": "Data",
-   "label": "Identifier"
+   "in_list_view": 1,
+   "label": "Identifier",
+   "reqd": 1,
+   "unique": 1
   },
   {
+   "description": "If you have the postal code in the address field already, paste it here.",
    "fieldname": "postal_code",
    "fieldtype": "Data",
-   "label": "Postal code"
+   "in_list_view": 1,
+   "label": "Postal code",
+   "reqd": 1
+  },
+  {
+   "description": "How you might refer to it in conversations. This will show as the title of the record.",
+   "fieldname": "short_name",
+   "fieldtype": "Data",
+   "label": "Short name",
+   "reqd": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-12 15:38:01.299965",
+ "modified": "2025-12-30 17:07:31.796950",
  "modified_by": "Administrator",
  "module": "ELA",
  "name": "Learning Space",
@@ -65,8 +81,8 @@
  "row_format": "Dynamic",
  "rows_threshold_for_grid_search": 20,
  "show_title_field_in_link": 1,
- "sort_field": "modified",
+ "sort_field": "short_name",
  "sort_order": "DESC",
  "states": [],
- "title_field": "name1"
+ "title_field": "short_name"
 }
