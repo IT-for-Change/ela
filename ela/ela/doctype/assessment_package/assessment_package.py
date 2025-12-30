@@ -115,6 +115,7 @@ class AssessmentPackage(Document):
             question_output['assessment_type'] = assessment_type
             question_output['assessment'] = assessment_doc.name
             question_output['type'] = question_type
+            question_output['status'] = 'CREATED'
 
             response = None
             if question_type == "AUDIO":

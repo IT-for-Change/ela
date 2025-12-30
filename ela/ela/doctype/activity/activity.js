@@ -8,20 +8,19 @@ function waiting(frm) {
 
 frappe.ui.form.on("Activity", {
 
-    refresh(frm) {
+    refresh: function (frm) {
+        frm.add_custom_button(__('Refresh Assessment Status'), function () {
+            waiting(frm);
 
-        waiting(frm);
-
-        frappe.call({
-            method: "ela.ela.doctype.activity.activity.display_assessment_block",
-            args: { activity_id: frm.doc.activity_id },
-            callback(r) {
-                if (r.message > 0) {
+            frappe.call({
+                method: "ela.ela.doctype.activity.activity.display_assessment_block",
+                args: { activity_eid: frm.doc.activity_id },
+                callback(r) {
                     var wrapper = $(frm.fields_dict['pending_assessment_count_msg'].wrapper);
-                    wrapper.html("<h4>" + r.message + " submissions pending assessment</h4>");
+                    wrapper.html("<h4>" + r.message + " submission(s) pending assessment. See assessment log tab for details.</h4>");
                     frm.toggle_display('run_assessment', true);
                 }
-            }
+            });
         });
     },
 

@@ -5,8 +5,11 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "section_break_oats",
   "title",
   "assessment_id",
+  "speaking_section",
+  "conversation",
   "language_section",
   "detect_language",
   "basic_section",
@@ -141,12 +144,28 @@
    "fieldtype": "Data",
    "label": "Assessment ID",
    "unique": 1
+  },
+  {
+   "fieldname": "speaking_section",
+   "fieldtype": "Section Break",
+   "label": "SPEAKING"
+  },
+  {
+   "default": "0",
+   "description": "Check this if: 1) this is an assessment of speaking ability of cohorts of early learners at a foundational level who may find it difficult to 'just speak' on their own, (OR) 2) if this is an assessment of conversational ability of more advanced learners. ",
+   "fieldname": "conversation",
+   "fieldtype": "Check",
+   "label": "Conversation"
+  },
+  {
+   "fieldname": "section_break_oats",
+   "fieldtype": "Section Break"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-16 15:13:39.084458",
+ "modified": "2025-12-30 11:36:35.614034",
  "modified_by": "Administrator",
  "module": "ELA",
  "name": "Speaking Assessment",

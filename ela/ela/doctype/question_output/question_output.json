@@ -9,7 +9,8 @@
   "response",
   "file",
   "assessment_type",
-  "assessment"
+  "assessment",
+  "status"
  ],
  "fields": [
   {
@@ -40,13 +41,20 @@
    "fieldtype": "Dynamic Link",
    "label": "Assessment",
    "options": "assessment_type"
+  },
+  {
+   "default": "CREATED",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "CREATED\nPENDING_LANGUAGE_CHECK\nPENDING_LEARNER_SPEECH_SEPARATION\nPENDING_TRANSCRIPTION\nPENDING_TEXT_ANALYSIS\nPENDING_REPORT"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-12-22 17:55:39.202617",
+ "modified": "2025-12-30 13:33:36.342374",
  "modified_by": "Administrator",
  "module": "ELA",
  "name": "Question Output",

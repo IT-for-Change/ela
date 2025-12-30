@@ -26,7 +26,9 @@
   "teacher_reference",
   "submissions_tab",
   "outputs_section",
-  "response"
+  "response",
+  "outputs_tab",
+  "assessment_outputs"
  ],
  "fields": [
   {
@@ -46,10 +48,11 @@
    "options": "Learner"
   },
   {
+   "default": "CREATED",
    "fieldname": "status",
    "fieldtype": "Select",
    "label": "Status",
-   "options": "Submitted\nPending transcription xA\nPending transcription xB\nPending text analysis\nClosed"
+   "options": "CREATED\nSPEECH_SEP_COMPLETE\nLANG_CHECK_COMPLETE\nSTT_COMPLETE\nNLP_COMPLETE\nREPORT_COMPLETE"
   },
   {
    "fieldname": "source_package",
@@ -119,13 +122,6 @@
    "label": "Outputs"
   },
   {
-   "fieldname": "response",
-   "fieldtype": "Table",
-   "label": "Response",
-   "options": "Question Output",
-   "read_only": 1
-  },
-  {
    "fieldname": "learner_eid",
    "fieldtype": "Data",
    "label": "EID"
@@ -145,12 +141,31 @@
    "fieldtype": "Link",
    "label": "Teacher Reference ID",
    "options": "Teacher"
+  },
+  {
+   "fieldname": "response",
+   "fieldtype": "Table",
+   "label": "Response",
+   "options": "Question Output",
+   "read_only": 1
+  },
+  {
+   "fieldname": "outputs_tab",
+   "fieldtype": "Tab Break",
+   "label": "Outputs"
+  },
+  {
+   "fieldname": "assessment_outputs",
+   "fieldtype": "Table",
+   "label": "Assessment Outputs",
+   "options": "Assessment Output",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-26 16:46:38.851617",
+ "modified": "2025-12-30 13:31:03.009894",
  "modified_by": "Administrator",
  "module": "ELA",
  "name": "Learner Submission",
