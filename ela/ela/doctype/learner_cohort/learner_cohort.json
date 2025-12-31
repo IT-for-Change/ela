@@ -1,13 +1,14 @@
 {
  "actions": [],
  "allow_import": 1,
- "autoname": "format:{cohort_name}-{academic_year}",
+ "autoname": "format:{cohort_name}: {learning_space_name}",
  "creation": "2025-12-06 14:27:30.539608",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
   "cohort_name",
   "learning_space",
+  "learning_space_name",
   "academic_year"
  ],
  "fields": [
@@ -15,29 +16,42 @@
    "fieldname": "cohort_name",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Cohort Name",
-   "reqd": 1
+   "label": "Cohort name",
+   "reqd": 1,
+   "set_only_once": 1
   },
   {
    "fieldname": "academic_year",
    "fieldtype": "Select",
    "in_list_view": 1,
-   "label": "Academic Year",
+   "label": "Academic year",
    "options": "2025-26\n2026-27\n2027-28\n2028-29\n2029-30",
    "reqd": 1
   },
   {
    "fieldname": "learning_space",
    "fieldtype": "Link",
-   "label": "Learning Space",
+   "label": "Learning space",
    "options": "Learning Space",
-   "reqd": 1
+   "reqd": 1,
+   "set_only_once": 1
+  },
+  {
+   "fetch_from": "learning_space.short_name",
+   "fieldname": "learning_space_name",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Learning space",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
+ "hide_toolbar": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-12 15:42:17.697413",
+ "modified": "2025-12-31 14:34:43.413366",
  "modified_by": "Administrator",
  "module": "ELA",
  "name": "Learner Cohort",
@@ -71,7 +85,9 @@
  ],
  "row_format": "Dynamic",
  "rows_threshold_for_grid_search": 20,
+ "show_title_field_in_link": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "title_field": "cohort_name"
 }

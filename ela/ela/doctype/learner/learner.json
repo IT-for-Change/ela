@@ -1,17 +1,19 @@
 {
  "actions": [],
  "allow_import": 1,
- "autoname": "format:ELA-L-{###}",
+ "autoname": "naming_series:",
  "creation": "2025-12-06 13:34:27.411963",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "learner_information_section",
   "name1",
   "learner_eid",
   "cohort",
   "primary_home_language",
-  "display_name"
+  "display_name",
+  "naming_series"
  ],
  "fields": [
   {
@@ -30,6 +32,7 @@
   {
    "fieldname": "display_name",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Display Label",
    "read_only": 1
   },
@@ -43,21 +46,37 @@
    "reqd": 1
   },
   {
-   "description": "Learner's External ID, if available. The ID must uniquely identify a learner. If not filled, the system will auto-assign a unique ID.",
+   "description": "Unique ID for the learner. This is usually the learner's registered roll number or similar. If one is not available, maintain a register of manually assigned unique IDs for all learners and enter the ID here.",
    "fieldname": "learner_eid",
    "fieldtype": "Data",
+   "in_standard_filter": 1,
    "label": "Learner EID",
-   "reqd": 1
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "default": "L-",
+   "fieldname": "naming_series",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Naming series",
+   "read_only": 1
+  },
+  {
+   "fieldname": "learner_information_section",
+   "fieldtype": "Section Break",
+   "label": "Learner information"
   }
  ],
  "grid_page_length": 50,
+ "hide_toolbar": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-26 16:25:05.019504",
+ "modified": "2025-12-31 13:45:35.461170",
  "modified_by": "Administrator",
  "module": "ELA",
  "name": "Learner",
- "naming_rule": "Expression",
+ "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {
@@ -88,8 +107,11 @@
  ],
  "row_format": "Dynamic",
  "rows_threshold_for_grid_search": 20,
+ "search_fields": "learner_eid",
+ "show_title_field_in_link": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": [],
- "title_field": "display_name"
+ "title_field": "name1",
+ "track_changes": 1
 }
