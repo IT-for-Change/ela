@@ -5,6 +5,10 @@ app_description = "E Learning Assessment"
 app_email = "chandra@itforchange.net"
 app_license = "mit"
 
+fixtures = [
+    "Website Settings"
+]
+
 # Apps
 # ------------------
 
@@ -241,4 +245,3 @@ app_license = "mit"
 # default_log_clearing_doctypes = {
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
-
