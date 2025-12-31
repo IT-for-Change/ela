@@ -1,6 +1,6 @@
 {
  "actions": [],
- "autoname": "format:ELA-SPEAKING-ASSESSMENT-{###}",
+ "autoname": "naming_series:",
  "creation": "2025-12-14 09:30:44.110508",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -8,6 +8,7 @@
   "section_break_oats",
   "title",
   "assessment_id",
+  "naming_series",
   "speaking_section",
   "conversation",
   "language_section",
@@ -16,10 +17,7 @@
   "word_count",
   "lexical_density",
   "parts_of_speech",
-  "advanced_section",
-  "noun_phrases",
-  "clauses",
-  "grammar",
+  "vocabulary_tab",
   "vocabulary_section",
   "enable",
   "global_wordlist_level_1",
@@ -27,7 +25,12 @@
   "global_wordlist_level_3",
   "custom_wordlist_level_1",
   "custom_wordlist_level_2",
-  "custom_wordlist_level_3"
+  "custom_wordlist_level_3",
+  "structure_tab",
+  "advanced_section",
+  "noun_phrases",
+  "clauses",
+  "grammar"
  ],
  "fields": [
   {
@@ -89,10 +92,10 @@
   },
   {
    "default": "1",
-   "description": "Use this for cohorts of early learners at a foundational level. The parameters in the following sections are evaluated only for English. except 'word count' which is evaluated for all languages.",
+   "description": "Use this for cohorts of early learners at a foundational level. The parameters in the assessment are evaluated only for English, except 'word count' which is evaluated for all languages.",
    "fieldname": "detect_language",
    "fieldtype": "Check",
-   "label": "Detect Language"
+   "label": "Check Language"
   },
   {
    "fieldname": "global_wordlist_level_1",
@@ -136,13 +139,18 @@
   {
    "fieldname": "title",
    "fieldtype": "Data",
-   "label": "Title"
+   "in_list_view": 1,
+   "label": "Title",
+   "reqd": 1
   },
   {
-   "description": "Specify a unique ID. If not specified, the system will assign one.",
+   "description": "Specify a unique ID.",
    "fieldname": "assessment_id",
    "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Assessment ID",
+   "set_only_once": 1,
    "unique": 1
   },
   {
@@ -152,24 +160,43 @@
   },
   {
    "default": "0",
-   "description": "Check this if: 1) this is an assessment of speaking ability of cohorts of early learners at a foundational level who may find it difficult to 'just speak' on their own, (OR) 2) if this is an assessment of conversational ability of more advanced learners. ",
+   "description": "Check this if: 1) this is an assessment for early learners who may find it difficult to 'just speak' on their own, (OR) 2) if this is an assessment of conversational ability of more advanced learners. ",
    "fieldname": "conversation",
    "fieldtype": "Check",
    "label": "Conversation"
   },
   {
    "fieldname": "section_break_oats",
-   "fieldtype": "Section Break"
+   "fieldtype": "Section Break",
+   "label": "Basic information"
+  },
+  {
+   "default": "SPEAKING-ASSESSMENT-",
+   "fieldname": "naming_series",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Naming series"
+  },
+  {
+   "fieldname": "vocabulary_tab",
+   "fieldtype": "Tab Break",
+   "label": "Vocabulary"
+  },
+  {
+   "fieldname": "structure_tab",
+   "fieldtype": "Tab Break",
+   "label": "Structure"
   }
  ],
  "grid_page_length": 50,
+ "hide_toolbar": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-30 11:36:35.614034",
+ "modified": "2025-12-31 16:13:07.949364",
  "modified_by": "Administrator",
  "module": "ELA",
  "name": "Speaking Assessment",
- "naming_rule": "Expression",
+ "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {
@@ -191,5 +218,6 @@
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": [],
- "title_field": "title"
+ "title_field": "title",
+ "track_changes": 1
 }
