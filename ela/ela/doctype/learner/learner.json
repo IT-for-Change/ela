@@ -46,12 +46,13 @@
    "reqd": 1
   },
   {
-   "description": "Unique ID for the learner. This is usually the learner's registered roll number or similar. If one is not available, maintain a register of manually assigned unique IDs for all learners and enter the ID here.",
+   "description": "Unique ID for the learner. This is usually the learner's registered roll number or similar. If one is not available, maintain a register of manually assigned unique IDs for all learners and enter the ID here. Once set, this field cannot be changed!",
    "fieldname": "learner_eid",
    "fieldtype": "Data",
    "in_standard_filter": 1,
    "label": "Learner EID",
    "reqd": 1,
+   "set_only_once": 1,
    "unique": 1
   },
   {
@@ -72,7 +73,7 @@
  "hide_toolbar": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-31 13:45:35.461170",
+ "modified": "2025-12-31 14:53:21.880421",
  "modified_by": "Administrator",
  "module": "ELA",
  "name": "Learner",
