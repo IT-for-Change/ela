@@ -1,10 +1,24 @@
 {
  "actions": [],
- "allow_rename": 1,
  "creation": "2025-12-16 14:39:49.191254",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "system_section",
+  "host",
+  "port",
+  "api_section",
+  "middleware_endpoint",
+  "speech_separation_callback",
+  "speech_to_text_callback",
+  "natural_language_processing_callback",
+  "language_check_callback",
+  "components_docker_images_section",
+  "speech_separation",
+  "language_check",
+  "speech_to_text",
+  "natural_language_processing",
+  "application_section",
   "supported_assessment_form_templates"
  ],
  "fields": [
@@ -12,13 +26,91 @@
    "fieldname": "supported_assessment_form_templates",
    "fieldtype": "Data",
    "label": "Supported Assessment Form Templates"
+  },
+  {
+   "fieldname": "system_section",
+   "fieldtype": "Section Break",
+   "label": "System"
+  },
+  {
+   "description": "Same as the site name.",
+   "fieldname": "host",
+   "fieldtype": "Data",
+   "label": "Host"
+  },
+  {
+   "fieldname": "port",
+   "fieldtype": "Data",
+   "label": "Port"
+  },
+  {
+   "fieldname": "api_section",
+   "fieldtype": "Section Break",
+   "label": "API"
+  },
+  {
+   "description": "Provide full URL, including port number and resource. Example: http://elamid:8080/run",
+   "fieldname": "middleware_endpoint",
+   "fieldtype": "Data",
+   "label": "Middleware endpoint"
+  },
+  {
+   "fieldname": "application_section",
+   "fieldtype": "Section Break",
+   "label": "Application"
+  },
+  {
+   "fieldname": "speech_to_text_callback",
+   "fieldtype": "Data",
+   "label": "Callback: Speech to text"
+  },
+  {
+   "fieldname": "speech_separation_callback",
+   "fieldtype": "Data",
+   "label": "Callback: Speech separation"
+  },
+  {
+   "fieldname": "natural_language_processing_callback",
+   "fieldtype": "Data",
+   "label": "Callback: Natural language processing"
+  },
+  {
+   "fieldname": "language_check_callback",
+   "fieldtype": "Data",
+   "label": "Callback: Language check"
+  },
+  {
+   "fieldname": "components_docker_images_section",
+   "fieldtype": "Section Break",
+   "label": "Components (Docker images)"
+  },
+  {
+   "fieldname": "speech_separation",
+   "fieldtype": "Data",
+   "label": "Speech separation"
+  },
+  {
+   "fieldname": "language_check",
+   "fieldtype": "Data",
+   "label": "Language check"
+  },
+  {
+   "fieldname": "speech_to_text",
+   "fieldtype": "Data",
+   "label": "Speech to text"
+  },
+  {
+   "fieldname": "natural_language_processing",
+   "fieldtype": "Data",
+   "label": "Natural language processing"
   }
  ],
  "grid_page_length": 50,
+ "hide_toolbar": 1,
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2025-12-16 14:40:24.488701",
+ "modified": "2025-12-31 16:43:52.989556",
  "modified_by": "Administrator",
  "module": "ELA",
  "name": "ELAConfiguration",
@@ -39,5 +131,6 @@
  "rows_threshold_for_grid_search": 20,
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "track_changes": 1
 }
