@@ -15,31 +15,16 @@ class Activity(Document):
             self.activity_id = self.name
 
 
-@frappe.whitelist()
-def display_assessment_block(activity_eid):
+def refresh_submission_status(submissions):
 
     submissions = frappe.get_list("Learner Submission",
-                                  filters={
-                                      'activity_eid': activity_eid})
+                                  filters={'activity_eid': activity_eid})
 
-    activity_doc = frappe.get_list(doctype="Activity", filters={
-        'activity_id': activity_eid}, limit_page_length=1)
-
-    if len(activity_doc) == 1:
-        activity_doc = frappe.get_doc('Activity', activity_doc[0].name)
-        # reset the child table.
-        activity_doc.speech_separation = []
-        activity_doc.save()
-
-    # refresh submission status and also assessment log view in activity
     for submission in submissions:
 
         submission_doc = frappe.get_doc(
             'Learner Submission', submission.name)
-
         questions_output = submission_doc.response
-
-        speech_separation_rows = []
 
         for index, question in enumerate(questions_output):
 
@@ -48,36 +33,119 @@ def display_assessment_block(activity_eid):
                 assessment_doc = frappe.get_doc(
                     question.assessment_type, question.assessment)  # dynamic link in action!
 
-                if (question.assessment_type == 'Speaking Assessment') and \
-                    (assessment_doc.conversation == 1) and \
-                        (question.status == None or question.status == 'CREATED'):
+                if (question.assessment_type == 'Speaking Assessment'):
 
-                    question.status = 'PENDING_LEARNER_SPEECH_SEPARATION'
-                    submission_doc.save()
+                    if (question.status == None or question.status == 'CREATED'):
+                        if (assessment_doc.conversation == 1):
+                            question.status = 'PENDING_LEARNER_SPEECH_SEPARATION'
+                            submission_doc.save()
+                            continue
+                        if (assessment_doc.detect_language == 1):
+                            question.status = 'PENDING_LANGUAGE_CHECK'
+                            submission_doc.save()
+                            continue
+                        # if nota, then set to proceed to transcription
+                        question.status = 'PENDING_TRANSCRIPTION'
+                        submission_doc.save()
+                        continue
 
-                    activity_doc.append("speech_separation", {
-                        'submission': submission_doc.name,
-                        'output': question,
-                        'learner': submission_doc.learner,
-                        'teacher': submission_doc.teacher_reference
-                    })
+                    if (question.status == 'LEARNER_SPEECH_SEPARATION_COMPLETE'):
+                        if (assessment_doc.detect_language == 1):
+                            question.status = 'PENDING_LANGUAGE_CHECK'
+                            submission_doc.save()
+                            continue
+                        else:
+                            question.status = 'PENDING_TRANSCRIPTION'
+                            submission_doc.save()
+                            continue
+
+                    if (question.status == 'LANGUAGE_CHECK_COMPLETE'):
+                        question.status = 'PENDING_TRANSCRIPTION'
+                        submission_doc.save()
+                        continue
+
+                    if (question.status == 'TRANSCRIPTION_COMPLETE'):
+                        question.status = 'PENDING_TEXT_ANALYSIS'
+                        submission_doc.save()
+                        continue
+
+                    if (question.status == 'TEXT_ANALYSIS_COMPLETE'):
+                        question.status = 'PENDING_REPORT'
+                        submission_doc.save()
+                        continue
+
+
+def update_activity_assessment_log_view(submissions, activity_eid):
+
+    activity_doc = frappe.get_list(doctype="Activity", filters={
+        'activity_id': activity_eid}, limit_page_length=1)
+
+    if len(activity_doc) == 1:
+        activity_doc = frappe.get_doc('Activity', activity_doc[0].name)
+        # reset the child tables.
+        activity_doc.speech_separation = []
+        activity_doc.language_identification = []
+        activity_doc.transcription = []
+        activity_doc.text_analysis = []
+        activity_doc.report = []
+        activity_doc.save()
+
+    for submission in submissions:
+
+        submission_doc = frappe.get_doc(
+            'Learner Submission', submission.name)
+
+        questions_output = submission_doc.response
+
+        for index, question in enumerate(questions_output):
+
+            ui_assessment_log_name = ''  # this will hold the assessment log UI child table name
+            submission_entry = {}
+            submission_entry['submission']: submission_doc.name
+            submission_entry['output']: question
+            submission_entry['learner']: submission_doc.learner
+            submission_entry['teacher']: submission_doc.teacher_reference
+
+            if question.status == 'PENDING_LEARNER_SPEECH_SEPARATION':
+                ui_assessment_log_name = "speech_separation"
+            if question.status == 'PENDING_LANGUAGE_CHECK':
+                ui_assessment_log_name = "language_identification"
+            if question.status == 'PENDING_TRANSCRIPTION':
+                ui_assessment_log_name = "transcription"
+            if question.status == 'PENDING_TEXT_ANALYSIS':
+                ui_assessment_log_name = "text_analysis"
+            if question.status == 'PENDING_REPORT':
+                ui_assessment_log_name = "report"
+
+            activity_doc.append(assessment_type_name, submission_entry)
 
     activity_doc.save()
+
+
+@frappe.whitelist()
+def display_assessment_block(activity_eid):
+
+    # update submission docs status for next action based on previous action done via elamid
+    refresh_submission_status(submissions)
+    # update UI view in activity
+    update_activity_assessment_log_view(submissions, activity_doc)
 
     submissions_count = len(submissions)
     return submissions_count
 
 
 @frappe.whitelist()
-def run_assessment(activity_id):
-    elamid_url = "http://elamid:80/run"
+def run_assessment(activity_id, operation):
 
-    ela_api = "ela.ela.doctype.activity.activity.get_submissions"
-    ela_api_host = "elaexplore.localhost"
-    ela_api_port = "8081"
+    doc = frappe.get_doc('ELA Configuration')
+    elamid_url = doc.middleware_endpoint
+
+    ela_api = doc.speech_separation_callback
+    ela_api_host = doc.host
+    ela_api_port = doc.port
+    ela_image = doc.speech_separation
     ela_activity = activity_id
-    ela_image = "elastt:latest"
-    params = {
+    elamid_params = {
         'ela_image': ela_image,
         'ela_activity': activity_id,
         'ela_api': ela_api,
@@ -85,22 +153,20 @@ def run_assessment(activity_id):
         'ela_api_port': ela_api_port
     }
 
-    # Make the GET request to the external Flask API
-    response = requests.get(elamid_url, params=params)
+    response = requests.get(elamid_url, params=elamid_params)
 
-    # Check for successful response
     if response.status_code == 200:
-        return response.text  # or any other type of response data you need
+        return response.text
     else:
-        # Handle API failure
         return f"Error: {response.status_code} - {response.text}"
 
 
 @frappe.whitelist()
 def get_submissions(activity_eid, reason):
 
-    domain = frappe.utils.get_url()
-    port = 8081
+    doc = frappe.get_doc('ELA Configuration')
+    host = doc.host
+    port = doc.port
     response = {"items": []}
 
     submissions = frappe.get_list("Learner Submission",
@@ -119,7 +185,7 @@ def get_submissions(activity_eid, reason):
                 entry_obj = {
                     "entry_key": question.file,
                     "language": "en",
-                    "source": f"{domain}:{port}{question.file}"
+                    "source": f"{host}:{port}{question.file}"
                 }
             else:
                 continue
@@ -135,7 +201,7 @@ def update_submissions(outputs):
 
     try:
         outputs = frappe.parse_json(outputs)
-        # outputs = outputs.get('outputs', {})
+
         for index, output in enumerate(outputs):
             learner_submission_id = output["item_key"]
             audio_file = output["entry_key"]

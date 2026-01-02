@@ -23,10 +23,17 @@
   "naming_series",
   "assessment_log_tab",
   "learner_submissions_section",
-  "language_identification",
   "speech_separation",
+  "run_speech_separation",
+  "language_identification",
+  "run_language_check",
   "transcription",
-  "text_analysis"
+  "run_speech_to_text",
+  "text_analysis",
+  "run_text_analysis",
+  "report",
+  "run_reporting",
+  "amended_from"
  ],
  "fields": [
   {
@@ -118,28 +125,28 @@
   {
    "fieldname": "language_identification",
    "fieldtype": "Table",
-   "label": "Language Identification",
+   "label": "Pending language check",
    "options": "Assessment Log",
    "read_only": 1
   },
   {
    "fieldname": "speech_separation",
    "fieldtype": "Table",
-   "label": "Learner Speech Separation",
+   "label": "Pending learner speech separation",
    "options": "Assessment Log",
    "read_only": 1
   },
   {
    "fieldname": "transcription",
    "fieldtype": "Table",
-   "label": "Transcription",
+   "label": "Pending transcription",
    "options": "Assessment Log",
    "read_only": 1
   },
   {
    "fieldname": "text_analysis",
    "fieldtype": "Table",
-   "label": "Text analysis",
+   "label": "Pending text analysis",
    "options": "Assessment Log",
    "read_only": 1
   },
@@ -159,13 +166,60 @@
    "hidden": 1,
    "label": "Naming series",
    "read_only": 1
+  },
+  {
+   "fieldname": "report",
+   "fieldtype": "Table",
+   "label": "Pending reporting",
+   "options": "Assessment Log",
+   "read_only": 1
+  },
+  {
+   "fieldname": "run_speech_separation",
+   "fieldtype": "Button",
+   "label": "Run speech separation",
+   "read_only": 1
+  },
+  {
+   "fieldname": "run_language_check",
+   "fieldtype": "Button",
+   "label": "Run language check",
+   "read_only": 1
+  },
+  {
+   "fieldname": "run_speech_to_text",
+   "fieldtype": "Button",
+   "label": "Run speech to text",
+   "read_only": 1
+  },
+  {
+   "fieldname": "run_text_analysis",
+   "fieldtype": "Button",
+   "label": "Run text analysis",
+   "read_only": 1
+  },
+  {
+   "fieldname": "run_reporting",
+   "fieldtype": "Button",
+   "label": "Run reporting",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Activity",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
   }
  ],
  "grid_page_length": 50,
  "hide_toolbar": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-31 14:51:55.466543",
+ "modified": "2026-01-02 13:08:30.236845",
  "modified_by": "Administrator",
  "module": "ELA",
  "name": "Activity",

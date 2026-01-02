@@ -47,14 +47,14 @@
    "fieldname": "status",
    "fieldtype": "Select",
    "label": "Status",
-   "options": "CREATED\nPENDING_LANGUAGE_CHECK\nPENDING_LEARNER_SPEECH_SEPARATION\nPENDING_TRANSCRIPTION\nPENDING_TEXT_ANALYSIS\nPENDING_REPORT"
+   "options": "CREATED\nPENDING_LEARNER_SPEECH_SEPARATION\nLEARNER_SPEECH_SEPARATION_COMPLETE\nPENDING_LANGUAGE_CHECK\nLANGUAGE_CHECK_COMPLETE\nPENDING_TRANSCRIPTION\nTRANSCRIPTION_COMPLETE\nPENDING_TEXT_ANALYSIS\nTEXT_ANALYSIS_COMPLETE\nPENDING_REPORT\nREPORT_COMPLETE"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-12-30 13:33:36.342374",
+ "modified": "2026-01-02 10:08:47.618244",
  "modified_by": "Administrator",
  "module": "ELA",
  "name": "Question Output",
