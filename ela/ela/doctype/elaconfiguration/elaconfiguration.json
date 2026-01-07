@@ -7,12 +7,14 @@
   "system_section",
   "host",
   "port",
+  "ai_install_dir",
   "api_section",
   "middleware_endpoint",
   "speech_separation_callback",
   "speech_to_text_callback",
   "natural_language_processing_callback",
   "language_check_callback",
+  "ela_api_token",
   "components_docker_images_section",
   "speech_separation",
   "language_check",
@@ -103,6 +105,16 @@
    "fieldname": "natural_language_processing",
    "fieldtype": "Data",
    "label": "Natural language processing"
+  },
+  {
+   "fieldname": "ai_install_dir",
+   "fieldtype": "Data",
+   "label": "AI install dir"
+  },
+  {
+   "fieldname": "ela_api_token",
+   "fieldtype": "Data",
+   "label": "API Token"
   }
  ],
  "grid_page_length": 50,
@@ -110,10 +122,10 @@
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2025-12-31 16:43:52.989556",
+ "modified": "2026-01-05 11:31:13.189495",
  "modified_by": "Administrator",
  "module": "ELA",
- "name": "ELA Configuration",
+ "name": "ELAConfiguration",
  "owner": "Administrator",
  "permissions": [
   {
