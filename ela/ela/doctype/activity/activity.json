@@ -10,7 +10,6 @@
   "activity_id",
   "column_break_txzk",
   "pending_assessment_count_msg",
-  "run_assessment",
   "section_break_pcah",
   "modes",
   "pictures",
@@ -23,16 +22,16 @@
   "naming_series",
   "assessment_log_tab",
   "learner_submissions_section",
-  "speech_separation",
   "run_speech_separation",
-  "language_identification",
+  "speech_separation",
   "run_language_check",
-  "transcription",
+  "language_identification",
   "run_speech_to_text",
-  "text_analysis",
+  "transcription",
   "run_text_analysis",
-  "report",
+  "text_analysis",
   "run_reporting",
+  "report",
   "amended_from"
  ],
  "fields": [
@@ -103,14 +102,9 @@
   },
   {
    "fieldname": "pending_assessment_count_msg",
-   "fieldtype": "Small Text",
-   "label": "Assessment"
-  },
-  {
-   "fieldname": "run_assessment",
-   "fieldtype": "Button",
+   "fieldtype": "HTML",
    "hidden": 1,
-   "label": "Run assessment"
+   "label": "Assessment"
   },
   {
    "fieldname": "overview_section",
@@ -219,7 +213,7 @@
  "hide_toolbar": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-01-02 13:08:30.236845",
+ "modified": "2026-01-03 11:54:57.496978",
  "modified_by": "Administrator",
  "module": "ELA",
  "name": "Activity",

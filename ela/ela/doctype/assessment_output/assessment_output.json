@@ -6,33 +6,35 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "language_section",
   "language_identified",
   "confidence",
-  "learner_speech",
-  "learner_contribution",
+  "audio_response_recording",
+  "transcription_section",
   "asr_text",
-  "nlp_text_analysis"
+  "hallu_score",
+  "text_analysis_section",
+  "nlp_text_analysis",
+  "conversation_section",
+  "learner_speech_diarized",
+  "learner_duration",
+  "learner_duration_max",
+  "teacher_duration",
+  "teacher_duration_max",
+  "total_turns"
  ],
  "fields": [
   {
    "fieldname": "language_identified",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Language identified"
   },
   {
    "fieldname": "confidence",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Confidence"
-  },
-  {
-   "fieldname": "learner_speech",
-   "fieldtype": "Attach",
-   "label": "Learner speech (diarizied)"
-  },
-  {
-   "fieldname": "learner_contribution",
-   "fieldtype": "Data",
-   "label": "Learner contribution (%)"
   },
   {
    "fieldname": "asr_text",
@@ -43,13 +45,75 @@
    "fieldname": "nlp_text_analysis",
    "fieldtype": "JSON",
    "label": "Text analysis"
+  },
+  {
+   "fieldname": "language_section",
+   "fieldtype": "Section Break",
+   "label": "Speech"
+  },
+  {
+   "fieldname": "conversation_section",
+   "fieldtype": "Section Break",
+   "label": "Conversation"
+  },
+  {
+   "fieldname": "learner_speech_diarized",
+   "fieldtype": "Link",
+   "label": "Learner speech (diarizied)",
+   "options": "File"
+  },
+  {
+   "fieldname": "learner_duration",
+   "fieldtype": "Data",
+   "label": "Learner duration"
+  },
+  {
+   "fieldname": "learner_duration_max",
+   "fieldtype": "Data",
+   "label": "Learner duration max"
+  },
+  {
+   "fieldname": "teacher_duration",
+   "fieldtype": "Data",
+   "label": "Teacher duration"
+  },
+  {
+   "fieldname": "teacher_duration_max",
+   "fieldtype": "Data",
+   "label": "Teacher duration max"
+  },
+  {
+   "fieldname": "total_turns",
+   "fieldtype": "Data",
+   "label": "Total turns (indicative)"
+  },
+  {
+   "fieldname": "transcription_section",
+   "fieldtype": "Section Break",
+   "label": "Transcription"
+  },
+  {
+   "fieldname": "hallu_score",
+   "fieldtype": "Data",
+   "label": "Hallucination score"
+  },
+  {
+   "fieldname": "text_analysis_section",
+   "fieldtype": "Section Break",
+   "label": "Text analysis"
+  },
+  {
+   "fieldname": "audio_response_recording",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Audio response"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-12-28 07:34:15.418591",
+ "modified": "2026-01-07 14:34:20.342810",
  "modified_by": "Administrator",
  "module": "ELA",
  "name": "Assessment Output",
