@@ -123,10 +123,12 @@ class AssessmentPackage(Document):
                     f"question_{index}/question_{index}_audio")
                 audio_file_url = audio_files_mapping[response]
                 question_output['file'] = audio_file_url
+                question_output['key_field'] = audio_file_url
             elif question_type == "SINGLE CHOICE":
                 response = root.findtext(
                     f"question_{index}/question_{index}_singlechoice")
                 question_output['response'] = response
+                # question_output['key_field'] = TBD
 
             question_outputs_list.append(question_output)
 
