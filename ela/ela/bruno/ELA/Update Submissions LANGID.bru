@@ -1,0 +1,24 @@
+meta {
+  name: Update Submissions LANGID
+  type: http
+  seq: 13
+}
+
+post {
+  url: http://elaexplore.localhost:8081/api/method/ela.ela.doctype.activity.activity.update_submissions
+  body: json
+  auth: inherit
+}
+
+headers {
+  Authorization: token b909eccbd9b04d1:e7515a47bbfad81
+}
+
+body:json {
+  {"outputs": [{"item_key": "u0k7qt40od", "entry_key": "/files/1765860508362.m4a", "langid": {"languages_estimation": [{"language_code": "en", "confidence": 1.0}, {"language_code": "kn", "confidence": 0.0}]}}, {"item_key": "u0k7qt40od", "entry_key": "/files/1765860637386.m4a", "langid": {"languages_estimation": [{"language_code": "en", "confidence": 1.0}, {"language_code": "kn", "confidence": 0.0}]}}], "operation": "langid"}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

@@ -5,9 +5,14 @@ meta {
 }
 
 get {
-  url: http://elaexplore.localhost:8081/api/v2/document/Speaking%20Assessment/ELA-SPEAKING-ASSESSMENT-087
+  url: http://elaexplore.localhost:8081/api/method/ela.ela.doctype.activity.activity.get_submissions?activity_eid=BYRA-ACTIVITY-1&operation=langid
   body: none
   auth: inherit
+}
+
+params:query {
+  activity_eid: BYRA-ACTIVITY-1
+  operation: langid
 }
 
 headers {
