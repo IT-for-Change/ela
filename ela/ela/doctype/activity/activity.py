@@ -228,8 +228,10 @@ def get_submissions(activity_eid, operation):
             # fetch the assessment for the question if the assessment entry already exists.
             # the assessment record might exist if the current status is anything other than the first step in the
             # assessment process, like "stt" if langid was done first, or 'langid' if speech separation was done first
-            assessment_output = assessment_outputs_access_map.get(
+            assessment_output_row = assessment_outputs_access_map.get(
                 question.key_field, None)
+
+            # return assessment_output_row.learner_speech_diarized
 
             if question.type == 'AUDIO':
                 sdz = {
@@ -238,15 +240,19 @@ def get_submissions(activity_eid, operation):
                 }
                 langid = {
                     "language_candidates": f"{(learner_doc.primary_home_language).lower()}",
-                    "source": f"{host}:{port}{question.file}"
+                    "source": f"{host}:{port}{frappe.get_doc('File',assessment_output_row.learner_speech_diarized).file_url}"
+                    if assessment_output_row is not None
+                    else f"{host}:{port}{question.file}"
                 }
                 stt = {
-                    "language": assessment_output.transcription_language if assessment_output is not None else '',
-                    "source": f"{host}:{port}{question.file}"
+                    "language": assessment_output_row.transcription_language if assessment_output_row is not None else '',
+                    "source": f"{host}:{port}{frappe.get_doc('File',assessment_output_row.learner_speech_diarized).file_url}"
+                    if assessment_output_row is not None
+                    else f"{host}:{port}{question.file}"
                 }
                 nlp = {
-                    "source": assessment_output.asr_text if assessment_output is not None else '',
-                    "language": assessment_output.transcription_language if assessment_output is not None else '',
+                    "source": assessment_output_row.asr_text if assessment_output_row is not None else '',
+                    "language": assessment_output_row.transcription_language if assessment_output_row is not None else '',
                     "grammar": "0"
                 }
                 entry_obj = {
