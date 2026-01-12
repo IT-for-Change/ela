@@ -350,13 +350,14 @@ def update_submissions(outputs, operation):
                         'key_field': key_field,
                         "languages_estimated": str(languages_estimated),
                         "transcription_language": transcription_language,
-                        "confidence": confidence
+                        "confidence": round(confidence * 100, 1)
                     })
                 else:
                     assessment_output_row.languages_estimated = str(
                         languages_estimated)
                     assessment_output_row.transcription_language = transcription_language
-                    assessment_output_row.confidence = confidence
+                    assessment_output_row.confidence = round(
+                        confidence * 100, 1)
 
                 update_question_status(
                     submission, output["entry_key"], 'LANGUAGE_CHECK_COMPLETE')
