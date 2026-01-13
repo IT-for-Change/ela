@@ -9,7 +9,8 @@ app_logo_url = "/assets/ela/ela_logo_192x.png"
 app_home = "/ela"
 
 fixtures = [
-    "Website Settings"
+    "Website Settings",
+    {"doctype": "Workspace", "filters": {"name": "ELA Home"}}
 ]
 
 # Installation
