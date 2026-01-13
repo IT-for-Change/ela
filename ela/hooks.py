@@ -9,6 +9,13 @@ fixtures = [
     "Website Settings"
 ]
 
+
+def after_migrate():
+    site_settings = frappe.get_single("Website Settings")
+    site_settings.logo = "/assets/ela/ela_logo_192x.png"
+    site_settings.save(ignore_permissions=True)
+
+
 # Apps
 # ------------------
 
@@ -52,10 +59,6 @@ fixtures = [
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
 
-# Svg Icons
-# ------------------
-# include app icons in desk
-# app_include_icons = "ela/public/icons.svg"
 
 # Home Pages
 # ----------
