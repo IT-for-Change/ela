@@ -8,9 +8,9 @@ app_license = "GNU General Public License (v3)"
 app_logo_url = "/assets/ela/ela_logo_192x.png"
 app_home = "/ela"
 
-fixtures = [
-    "Website Settings"
-]
+# fixtures = [
+#    "Website Settings"
+# ]
 
 # Installation
 # ------------
