@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_import": 1,
  "autoname": "naming_series:",
  "creation": "2025-12-14 09:30:44.110508",
  "doctype": "DocType",
@@ -192,7 +193,7 @@
  "hide_toolbar": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-31 16:13:07.949364",
+ "modified": "2026-01-13 14:10:26.757636",
  "modified_by": "Administrator",
  "module": "ELA",
  "name": "Speaking Assessment",
@@ -208,6 +209,18 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Teacher",
    "share": 1,
    "write": 1
   }

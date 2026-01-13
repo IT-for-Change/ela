@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_import": 1,
  "autoname": "format:FORM-{###}",
  "creation": "2025-12-06 11:18:29.719305",
  "doctype": "DocType",
@@ -98,9 +99,10 @@
   }
  ],
  "grid_page_length": 50,
+ "hide_toolbar": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-21 09:44:12.185369",
+ "modified": "2026-01-13 14:07:42.496933",
  "modified_by": "Administrator",
  "module": "ELA",
  "name": "Assessment Form",
