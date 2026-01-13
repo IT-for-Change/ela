@@ -3,18 +3,14 @@ app_title = "ELA"
 app_publisher = "IT for Change"
 app_description = "E Learning Assessment"
 app_email = "chandra@itforchange.net"
-app_license = "mit"
+source_link = "https://github.com/frappe/erpnext"
+app_license = "GNU General Public License (v3)"
+app_logo_url = "/assets/ela/ela_logo_192x.png"
+app_home = "/ela"
 
 fixtures = [
     "Website Settings"
 ]
-
-
-def after_migrate():
-    site_settings = frappe.get_single("Website Settings")
-    site_settings.logo = "/assets/ela/ela_logo_192x.png"
-    site_settings.save(ignore_permissions=True)
-
 
 # Apps
 # ------------------
