@@ -12,6 +12,12 @@ fixtures = [
     "Website Settings"
 ]
 
+# Installation
+# ------------
+
+# before_install = "ela.install.before_install"
+after_install = "ela.install.after_install"
+
 # Apps
 # ------------------
 
