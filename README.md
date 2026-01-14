@@ -7,6 +7,8 @@ ELA comprises the following components (with their github repositories linked)
 * [ELA Collect](https://github.com/IT-for-Change/ela_collect), an Android mobile application for capturing learner outputs
 * [ELA Web](https://github.com/IT-for-Change/ela), a browser-based web application that allows teachers to manage the entire assessment process
 
+A companion component is the [ECUBE data collector](https://github.com/IT-for-Change/ecube-data-collection), a custom data collection tool that captures learner outputs from the ECUBE English Language Lab (ELL) software developed by KITE. Read more about KITE [here](https://kite.kerala.gov.in) and the ECUBE ELL [here](https://ecube.kite.kerala.gov.in)
+
 ### Principles
 
 - **Pedagogy Driven**  : Designed by teachers and technologists in partnership, ELA is driven by pedagogy, not technology.
