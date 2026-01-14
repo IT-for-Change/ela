@@ -1,5 +1,6 @@
 ### ELA
 
+<img src="https://github.com/IT-for-Change/ela/blob/main/ela/public/ela_logo_192x.png" alt="The ELA Logo">
 ELA is non-generative AI-driven learning assessment software.
 
 ELA comprises the following components (with their github repositories linked)
@@ -21,7 +22,7 @@ A companion component is the [ECUBE data collector](https://github.com/IT-for-Ch
 - Language learning assessment is central to the software, and the English language in particular. ELA is therefore 'English Language Assessment'.
 - In the immediate roadmap is support for other languages (Indian languages, to begin with). Here, ELA is therefore also 'E Language Assessment', the 'E' stands for 'Electronic' of course. 
 - A future iteration of the software will also support other forms of assessments based on non-speech inputs such as MCQs that the teacher will record based on learner responses, and OCR scans of student paper MCQ responses etc. This could be in any subject of learning. Here, ELA is 'E Learning Assessment'. Note the absence of a hyphen between 'E' and 'Learning'. This is not 'E-Learning'. Learning happens in the classroom.
-- Lastly, in homage to the Free Software Movement and The GNU Project, ELA of course is also a recursive acronym expanded as **ELA Learning Assessment**
+- Lastly, in homage to the Free Software Movement and The GNU Project, ELA of course is also a recursive acronym that expands to **ELA Learning Assessment**
 
 ### Software features
 - Assessment of English language learner's speech, with focus on early speakers. 
