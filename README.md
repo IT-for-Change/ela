@@ -25,7 +25,7 @@ A companion component is the [ECUBE data collector](https://github.com/IT-for-Ch
 - Language learning assessment is central to the software, and the English language in particular. ELA is therefore 'English Language Assessment'.
 - In the immediate roadmap is support for other languages (Indian languages, to begin with). Here, ELA is therefore also 'E Language Assessment', the 'E' stands for 'Electronic' of course. 
 - A future iteration of the software will also support other forms of assessments based on non-speech inputs such as MCQs that the teacher will record based on learner responses, and OCR scans of student paper MCQ responses etc. This could be in any subject of learning. Here, ELA is 'E Learning Assessment'. Note the absence of a hyphen between 'E' and 'Learning'. This is not 'E-Learning'. Learning happens in the classroom.
-- Lastly, in homage to the Free Software Movement and The GNU Project, ELA of course is also a recursive acronym that expands to **ELA Learning Assessment**
+- Lastly, in homage to the Free Software Movement and The GNU Project, ELA is of course also a recursive acronym that expands to **ELA Learning Assessment**
   
 
 ### Software features
@@ -34,3 +34,12 @@ A companion component is the [ECUBE data collector](https://github.com/IT-for-Ch
 - A 9-point scale based reporting that is sensitive to early speakers' abilities in their home language(s)
 - Recommendations of audio stories for learners to listen to, to improve listening skills, vocabulary and overall proficiency in the language (Work in progress)
 
+### Hardware and software requirements
+To successfully install and run ELA, the following are the minimum requirements.
+- A desktop / laptop computer with 8 GB RAM, 4 CPU cores, 50 GB disk space is sufficient. Note: The AI components are resource intensive when they are running. Avoid actively running/using other software when the AI components are executing.
+- Any standard Linux OS distribution. While other OSes/versions should work, ELA is developed and tested on Linux, specifically Ubuntu 22.04+
+- The desktop should have the following software installed
+  - Docker CE
+  - [KDE Connect app](https://kdeconnect.kde.org/) to transfer files between ELA Web and ELA Collect. An alternative to this software is raw Bluetooth connectivity, but it is far more harder to use.
+- A USB storage device with about 20 GB space for the ELA software, AI models and tutorial materials, and a working USB port on the desktop computer.
+- An android mobile phone with Android OS version 10 or above (ensure the phone microphone is in working condition)
