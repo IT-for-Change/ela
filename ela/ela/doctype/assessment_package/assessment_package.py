@@ -85,7 +85,7 @@ class AssessmentPackage(Document):
 
         learner_doc = frappe.get_value('Learner', {"learner_eid": learner},
                                        ['name', 'name1',
-                                       'learner_id', 'learner_eid', 'display_name', "cohort"], as_dict=True
+                                       'learner_eid', 'display_name', "cohort"], as_dict=True
                                        )
 
         teacher_doc = frappe.get_value('Teacher', {"teacher_eid": teacher},
