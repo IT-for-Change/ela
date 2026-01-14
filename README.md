@@ -11,7 +11,7 @@ A companion component is the [ECUBE data collector](https://github.com/IT-for-Ch
 
 ### Principles
 
-- **Pedagogy Driven**  : Designed by teachers and technologists in partnership, ELA is driven by pedagogy, not technology.
+- **Pedagogy Driven**  : Designed by teachers and technologists together, ELA is driven by pedagogy, not technology.
 - **Teacher First**    : ELA is teacher-facing software. There is no student <-> computer interaction.
 - **Offline First**    : ELA is carefully architected to run on a desktop computer. No internet required.
 - **Openness**         : ELA is licensed to be free and open source (FOSS). Always.
