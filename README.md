@@ -6,7 +6,7 @@ ELA is non-generative AI-driven learning assessment software.
 
 ELA comprises the following components (with their github repositories linked)
 * [ELA AI](https://github.com/IT-for-Change/elaai), the AI engine
-* [ELA Collect](https://github.com/IT-for-Change/ela_collect), an Android mobile application for teachers to capture learner outputs in the classroom
+* [ELA Collect](https://github.com/IT-for-Change/ela_collect), an Android mobile application for teachers to capture learner outputs in the classroom. This is a forked customization of the renowned [ODK Collect](https://github.com/getodk/collect) app.
 * [ELA Web](https://github.com/IT-for-Change/ela), a browser-based web application for teachers to manage the entire assessment process
 * [ELA Middleware](https://github.com/IT-for-Change/elamid), a technical component hidden from users that orchestrates interactions between ELA Web and ELA AI to reduce computer resource usage.
 
@@ -42,7 +42,7 @@ To successfully install and run ELA, the following are the minimum requirements.
 - Any standard Linux OS distribution. While other OSes/versions should work, ELA is developed and tested on Linux, specifically Ubuntu 22.04+
 - The desktop should have the following software installed
   - Docker CE
-  - [KDE Connect app](https://kdeconnect.kde.org/) to transfer files between ELA Web and ELA Collect. An alternative to this software is raw Bluetooth connectivity, but it is far more harder to use.
+  - [KDE Connect app](https://kdeconnect.kde.org/) to transfer files between ELA Web and ELA Collect. An alternative to this software is raw Bluetooth connectivity, but working with Bluetooth connections directly is harder.
 - A USB storage device with about 20 GB space for the ELA software, AI models and tutorial materials, and a working USB port on the desktop computer.
 - An android mobile phone with Android OS version 10 or above (ensure the phone microphone is in working condition)
 
