@@ -14,45 +14,6 @@
  "label": "ELA Home",
  "links": [
   {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Ongoing tasks",
-   "link_count": 3,
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Card Break"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Create an activity",
-   "link_count": 0,
-   "link_to": "Activity",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Create an assessment form",
-   "link_count": 0,
-   "link_to": "Assessment Form",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Upload a package from ELA Collect",
-   "link_count": 0,
-   "link_to": "Assessment Package",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
    "description": "Manage learners, teachers, activities and assessments.",
    "hidden": 0,
    "is_query_report": 0,
@@ -111,9 +72,48 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Ongoing tasks",
+   "link_count": 3,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Create an activity",
+   "link_count": 0,
+   "link_to": "Activity",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Create assessment form for activity",
+   "link_count": 0,
+   "link_to": "Activity",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Upload a package from ELA Collect",
+   "link_count": 0,
+   "link_to": "Assessment Package",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2026-01-14 06:55:57.805207",
+ "modified": "2026-01-14 15:02:03.917932",
  "modified_by": "Administrator",
  "module": "ELA",
  "name": "ELA Home",

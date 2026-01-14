@@ -1,0 +1,22 @@
+[
+ {
+  "ai_install_dir": "/media/chandra/Data/Documents/Work/git2/elaai",
+  "docstatus": 0,
+  "doctype": "ELAConfiguration",
+  "ela_api_token": "b909eccbd9b04d1:e7515a47bbfad81",
+  "host": "http://elaexplore.localhost",
+  "language_check": "elaai:0.2",
+  "language_check_callback": "ela.ela.doctype.activity.activity.get_submissions",
+  "middleware_endpoint": "http://elamid:80/run",
+  "modified": "2026-01-06 11:24:34.544042",
+  "name": "ELAConfiguration",
+  "natural_language_processing": "elaai:0.2",
+  "natural_language_processing_callback": "ela.ela.doctype.activity.activity.get_submissions",
+  "port": "8081",
+  "speech_separation": "elaai:0.2",
+  "speech_separation_callback": "ela.ela.doctype.activity.activity.get_submissions",
+  "speech_to_text": "elaai:0.2",
+  "speech_to_text_callback": "ela.ela.doctype.activity.activity.get_submissions",
+  "supported_assessment_form_templates": "A,AA,AS,ASAS"
+ }
+]
