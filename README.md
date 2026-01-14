@@ -16,8 +16,9 @@ A companion component is the [ECUBE data collector](https://github.com/IT-for-Ch
 ### Principles
 
 - **Pedagogy Driven**  : Designed by educators and technologists at [IT for Change](https://itforchange.net), ELA is driven by pedagogy, not technology.
-- **Teacher First**    : ELA is teacher-facing software. No learner <-> computer/phone interaction is necessary.
+- **Teacher First**    : ELA is teacher-facing software. No learner <-> computer/phone interaction is necessary for the learning process.
 - **Offline First**    : ELA is carefully architected to run on a desktop computer. No internet required.
+- **Privacy Focus**    : With no internet required, all learner data and assessment reports stay on the computer. No data is shared or visible to any party, including the app developer.
 - **Openness**         : ELA is licensed to be free and open source (FOSS). Always.
   
 
@@ -25,7 +26,7 @@ A companion component is the [ECUBE data collector](https://github.com/IT-for-Ch
 - 'ELA' is a polysemous acronym. That is, an acronym with multiple, related meanings.
 - Language learning assessment is central to the software, and the English language in particular. ELA is therefore 'English Language Assessment'.
 - In the immediate roadmap is support for other languages (Indian languages, to begin with). Here, ELA is therefore also 'E Language Assessment', the 'E' stands for 'Electronic' of course. 
-- A future iteration of the software will also support other forms of assessments based on non-speech inputs such as MCQs that the teacher will record based on learner responses, and OCR scans of student paper MCQ responses etc. This could be in any subject of learning. Here, ELA is 'E Learning Assessment'. Note the absence of a hyphen between 'E' and 'Learning'. This is not 'E-Learning'. Learning happens in the classroom.
+- A future iteration of the software will also support other forms of assessments based on non-speech inputs such as MCQs that the teacher will record based on learner responses, and OCR scans of paper-based MCQ responses of learners etc. This could be in any subject of learning. Here, ELA is 'E Learning Assessment'. Note the absence of a hyphen between 'E' and 'Learning'. This is not 'E-Learning'. Learning happens in the classroom.
 - Lastly, in homage to the Free Software Movement and The GNU Project, ELA is of course also a recursive acronym that expands to **ELA Learning Assessment**
   
 
