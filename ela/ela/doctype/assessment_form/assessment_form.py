@@ -15,7 +15,7 @@ from frappe.utils import slug
 
 class AssessmentForm(Document):
 
-    def before_save(self):
+    def after_insert(self):
 
         configuration = frappe.get_doc('ELAConfiguration')
         template_config = configuration.supported_assessment_form_templates
@@ -36,7 +36,7 @@ class AssessmentForm(Document):
 
         self.assessment_template_type = template
 
-        if (self.form_id is None):
+        if (self.form_id == None):
             self.form_id = self.name
 
         form_learners = frappe.get_all(
