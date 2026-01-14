@@ -15,7 +15,7 @@ A companion component is the [ECUBE data collector](https://github.com/IT-for-Ch
 ### Principles
 
 - **Pedagogy Driven**  : Designed by educators and technologists at [IT for Change](https://itforchange.net), ELA is driven by pedagogy, not technology.
-- **Teacher First**    : ELA is teacher-facing software. There is no student <-> computer interaction.
+- **Teacher First**    : ELA is teacher-facing software. No learner <-> computer/phone interaction is necessary.
 - **Offline First**    : ELA is carefully architected to run on a desktop computer. No internet required.
 - **Openness**         : ELA is licensed to be free and open source (FOSS). Always.
   
@@ -43,3 +43,10 @@ To successfully install and run ELA, the following are the minimum requirements.
   - [KDE Connect app](https://kdeconnect.kde.org/) to transfer files between ELA Web and ELA Collect. An alternative to this software is raw Bluetooth connectivity, but it is far more harder to use.
 - A USB storage device with about 20 GB space for the ELA software, AI models and tutorial materials, and a working USB port on the desktop computer.
 - An android mobile phone with Android OS version 10 or above (ensure the phone microphone is in working condition)
+
+### What is the AI in ELA?
+ELA uses the following AI and Machine Learning components
+- [pyannote](https://github.com/pyannote/pyannote-audio), for speaker diarization to separate learner and teacher speech in conversations
+- [whisper](https://github.com/openai/whisper), for spoken language identification and transcription
+- [spaCy](https://spacy.io/), for natural language processing
+- A custom grammar model built on the lines of [vennify](https://huggingface.co/vennify/t5-base-grammar-correction), supported by the [Errant](https://github.com/chrisjbryant/errant) library
