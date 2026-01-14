@@ -12,6 +12,8 @@ ELA comprises the following components (with their github repositories linked)
 
 A companion component is the [ECUBE data collector](https://github.com/IT-for-Change/ecube-data-collection), a custom data collection tool that extracts learner outputs from the ECUBE English Language Lab (ELL) software developed by KITE. Read more about KITE [here](https://kite.kerala.gov.in) and the ECUBE ELL [here](https://ecube.kite.kerala.gov.in)
 
+### Technical documentation
+See here for technical documentation and user guide.
 
 ### Principles
 
@@ -49,6 +51,6 @@ To successfully install and run ELA, the following are the minimum requirements.
 ### What is the AI in ELA?
 ELA uses the following AI and Machine Learning components
 - [pyannote](https://github.com/pyannote/pyannote-audio), for speaker diarization to separate learner and teacher speech in conversations
-- [whisper](https://github.com/openai/whisper), for spoken language identification and transcription
-- [spaCy](https://spacy.io/), for natural language processing
+- [whisper](https://github.com/openai/whisper), for spoken language identification and transcription of learner speech
+- [spaCy](https://spacy.io/), for natural language processing of transcribed learner speech
 - A custom grammar model built on the lines of [vennify](https://huggingface.co/vennify/t5-base-grammar-correction), supported by the [Errant](https://github.com/chrisjbryant/errant) library
