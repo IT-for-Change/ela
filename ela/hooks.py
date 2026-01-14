@@ -10,7 +10,7 @@ app_home = "/ela"
 
 fixtures = [
     "Website Settings",
-    {"doctype": "Workspace", "filters": {"name": "ELA Home"}}
+    "Workspace"
 ]
 
 # Installation
