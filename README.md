@@ -2,10 +2,10 @@
 
 ELA is non-generative AI-driven learning assessment software.
 
-ELA comprises the following components
-* ELA AI, the AI engine
-* ELA Collect, an Android mobile application for capturing learner outputs
-* ELA Web, a browser-based web application that allows teachers to manage the entire assessment process
+ELA comprises the following components (with their github repositories linked)
+* [ELA AI](https://github.com/IT-for-Change/elaai), the AI engine
+* [ELA Collect](https://github.com/IT-for-Change/ela_collect), an Android mobile application for capturing learner outputs
+* [ELA Web](https://github.com/IT-for-Change/ela), a browser-based web application that allows teachers to manage the entire assessment process
 
 ### Principles
 
