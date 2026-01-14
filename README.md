@@ -1,33 +1,15 @@
 ### ELA
 
-E Learning Assessment
+ELA is non-generative AI-driven learning assessment software.
 
-### Installation
+ELA comprises the following components
+* ELA AI, the AI engine
+* ELA Collect, an Android mobile application for capturing learner outputs
+* ELA Web, a browser-based web application that allows teachers to manage the entire assessment process
 
-You can install this app using the [bench](https://github.com/frappe/bench) CLI:
+### Features
 
-```bash
-cd $PATH_TO_YOUR_BENCH
-bench get-app $URL_OF_THIS_REPO --branch develop
-bench install-app ela
-```
-
-### Contributing
-
-This app uses `pre-commit` for code formatting and linting. Please [install pre-commit](https://pre-commit.com/#installation) and enable it for this repository:
-
-```bash
-cd apps/ela
-pre-commit install
-```
-
-Pre-commit is configured to use the following tools for checking and formatting your code:
-
-- ruff
-- eslint
-- prettier
-- pyupgrade
-
-### License
-
-mit
+- **Pedagogy Driven**  : Designed by teachers and technologists in partnership, ELA is driven by pedagogy, not technology.
+- **Teacher First**    : ELA is teacher-facing software. There is no student <-> computer interaction.
+- **Offline First**    : ELA is carefully architected to run on a desktop computer. No internet required.
+- **Openness**         : ELA is licensed to be free and open source (FOSS). Always.
