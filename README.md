@@ -8,8 +8,9 @@ ELA comprises the following components (with their github repositories linked)
 * [ELA AI](https://github.com/IT-for-Change/elaai), the AI engine
 * [ELA Collect](https://github.com/IT-for-Change/ela_collect), an Android mobile application for teachers to capture learner outputs in the classroom
 * [ELA Web](https://github.com/IT-for-Change/ela), a browser-based web application for teachers to manage the entire assessment process
+* [ELA Middleware](https://github.com/IT-for-Change/elamid), a technical component hidden from users that orchestrates interactions between ELA Web and ELA AI to reduce computer resource usage.
 
-A companion component is the [ECUBE data collector](https://github.com/IT-for-Change/ecube-data-collection), a custom data collection tool that captures learner outputs from the ECUBE English Language Lab (ELL) software developed by KITE. Read more about KITE [here](https://kite.kerala.gov.in) and the ECUBE ELL [here](https://ecube.kite.kerala.gov.in)
+A companion component is the [ECUBE data collector](https://github.com/IT-for-Change/ecube-data-collection), a custom data collection tool that extracts learner outputs from the ECUBE English Language Lab (ELL) software developed by KITE. Read more about KITE [here](https://kite.kerala.gov.in) and the ECUBE ELL [here](https://ecube.kite.kerala.gov.in)
 
 
 ### Principles
