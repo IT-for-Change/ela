@@ -16,11 +16,11 @@ A companion component is the [ECUBE data collector](https://github.com/IT-for-Ch
 - **Offline First**    : ELA is carefully architected to run on a desktop computer. No internet required.
 - **Openness**         : ELA is licensed to be free and open source (FOSS). Always.
 
-### What 'ELA' stands for
-- 'ELA' is a polysemous acronym (an acronym with multiple, related meanings).
-- Language learning assessment is central to the software, and the English language in particular. ELA is English Language Assessment.
-- In the immediate roadmap is support for other languages. Here, ELA is E Language Assessment, the 'E' stands for 'Electronic' of course. 
-- A future iteration of the software will also support other forms of assessments based on non-speech inputs such as MCQs that the teacher will record based on learner responses in any subject of learning, OCR scans of student paper MCQ responses etc. Here, ELA is E Learning Assessment. Note the absence of a hyphen between the 'E' and 'Learning'. There is no 'E-Learning'. Learning happens in the classroom. 
+### What is 'ELA'
+- 'ELA' is a polysemous acronym. That is, an acronym with multiple, related meanings.
+- Language learning assessment is central to the software, and the English language in particular. ELA is therefore 'English Language Assessment'.
+- In the immediate roadmap is support for other languages (Indian languages, to begin with). Here, ELA is therefore also 'E Language Assessment', the 'E' stands for 'Electronic' of course. 
+- A future iteration of the software will also support other forms of assessments based on non-speech inputs such as MCQs that the teacher will record based on learner responses, and OCR scans of student paper MCQ responses etc. This could be in any subject of learning. Here, ELA is 'E Learning Assessment'. Note the absence of a hyphen between 'E' and 'Learning'. This is not 'E-Learning'. Learning happens in the classroom.
 - Lastly, in homage to the Free Software Movement, ELA of course also expands to **ELA Learning Assessment**
 
 ### Software features
