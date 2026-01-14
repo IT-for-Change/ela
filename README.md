@@ -13,3 +13,10 @@ ELA comprises the following components
 - **Teacher First**    : ELA is teacher-facing software. There is no student <-> computer interaction.
 - **Offline First**    : ELA is carefully architected to run on a desktop computer. No internet required.
 - **Openness**         : ELA is licensed to be free and open source (FOSS). Always.
+
+### What 'ELA' stands for
+- 'ELA' is a polysemous acronym (an acronym with multiple, related meanings).
+- Language learning assessment is central to the software, and the English language in particular. ELA is English Language Assessment.
+- In the immediate roadmap is support for other languages. ELA is E Language Assessment, the 'E' stands for 'Electronic' of course. 
+- A future iteration of the software will also support other forms of assessments based on non-speech inputs such as MCQs that the teacher will record based on learner responses, OCR scans of student paper MCQ responses etc. ELA is E Learning Assessment. Note the absence of a hyphen between the 'E' and 'Learning'. There is no 'E-Learning'. Learning happens in the classroom. 
+- Lastly, in homage to the Free Software Movement, ELA is of course also **ELA Learning Assessment**
