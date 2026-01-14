@@ -45,13 +45,13 @@
             <instance id="learner">
                 <root> {% for learner in learners %} <item>
                         <label>{{ learner.display_name }}</label>
-                        <name>{{ learner.learner_id }}</name>
+                        <name>{{ learner.learner_eid }}</name>
                     </item> {% endfor %} </root>
             </instance>
             <instance id="teacher">
                 <root> {% for teacher in teachers %} <item>
                         <label>{{ teacher.display_name }}</label>
-                        <name>{{ teacher.teacher_id }}</name>
+                        <name>{{ teacher.teacher_eid }}</name>
                     </item> {% endfor %} </root>
             </instance>
             <bind nodeset="/data/startTime" jr:preload="timestamp" type="dateTime"
