@@ -15,7 +15,7 @@ from frappe.utils import slug
 
 class AssessmentForm(Document):
 
-    def after_insert(self):
+    def validate(self):
 
         configuration = frappe.get_doc('ELAConfiguration')
         template_config = configuration.supported_assessment_form_templates
