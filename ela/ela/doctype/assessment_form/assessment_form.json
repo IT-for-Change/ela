@@ -34,11 +34,12 @@
    "reqd": 1
   },
   {
+   "description": "Enter a unique ID. If unspecified, the system will assign one.",
    "fieldname": "cohort",
-   "fieldtype": "Link",
+   "fieldtype": "Data",
+   "hidden": 1,
    "label": "Cohort",
-   "options": "Learner Cohort",
-   "reqd": 1
+   "read_only": 1
   },
   {
    "default": "None",
@@ -101,7 +102,8 @@
    "fieldname": "cohorts",
    "fieldtype": "Table MultiSelect",
    "label": "Cohorts",
-   "options": "Cohorts Collection"
+   "options": "Cohorts Collection",
+   "reqd": 1
   },
   {
    "default": "FORM-",
@@ -114,7 +116,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-01-15 10:21:51.257964",
+ "modified": "2026-01-15 13:11:57.324767",
  "modified_by": "Administrator",
  "module": "ELA",
  "name": "Assessment Form",
