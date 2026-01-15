@@ -12,6 +12,8 @@ import frappe
 from frappe.utils.jinja import render_template
 from frappe.utils import slug
 
+logger = frappe.logger("ELA")
+
 
 class AssessmentForm(Document):
 
@@ -39,27 +41,39 @@ class AssessmentForm(Document):
         if (self.form_id == None):
             self.form_id = self.name
 
-        form_learners = frappe.get_all(
-            'Learner',
-            filters={'cohort': f'{self.cohort}'},
-            fields=['name', 'name1', 'learner_eid', 'display_name'],
-            order_by='display_name asc'
-        )
+        cohorts = self.cohorts
+        form_learner_cohorts = []
+        form_learners = []
+        form_learning_spaces = []
+
+        for cohort in cohorts:
+            learner_cohort = frappe.get_doc(
+                'Learner Cohort', cohort.cohort,
+                fields=['cohort_name', 'name',
+                        'learning_space', 'academic_year']
+            )
+
+            form_learner_cohorts.append(learner_cohort.name)
+
+            learners_by_cohort = frappe.get_all(
+                'Learner',
+                filters={'cohort': learner_cohort.name},
+                fields=['name', 'name1', 'learner_eid', 'display_name'],
+                order_by='display_name asc'
+            )
+            form_learners.extend(learners_by_cohort)
+
+            learning_space = frappe.get_doc(
+                'Learning Space', learner_cohort.learning_space,
+                fields=['name', 'name1', 'postal_code']
+            )
+
+            form_learning_spaces.append(learning_space.name1)
 
         form_teachers = frappe.get_all(
             'Teacher',
             fields=['name', 'name1', 'teacher_eid', 'display_name'],
             order_by='display_name asc'
-        )
-
-        form_learner_cohort = frappe.get_doc(
-            'Learner Cohort', self.cohort,
-            fields=['cohort_name', 'name', 'learning_space', 'academic_year']
-        )
-
-        form_learning_space = frappe.get_doc(
-            'Learning Space', form_learner_cohort.learning_space,
-            fields=['name', 'name1', 'postal_code']
         )
 
         form_activity = frappe.get_doc('Activity', self.activity)
@@ -112,8 +126,8 @@ class AssessmentForm(Document):
             "title": self.title,
             "id": self.form_id,
             "brief_note": self.brief_note,
-            "cohort_id": form_learner_cohort.cohort_name,
-            "learning_space_id": form_learning_space.name1,
+            "cohort_id": ', '.join(form_learner_cohorts),
+            "learning_space_id": ', '.join(form_learning_spaces),
             "activity_name": form_activity.activity_id,
             "activity_label": form_activity.title,
             "learners": form_learners,
