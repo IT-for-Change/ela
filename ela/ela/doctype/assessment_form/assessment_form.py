@@ -70,7 +70,7 @@ class AssessmentForm(Document):
 
             form_learning_spaces.append(learning_space.short_name)
 
-        form_cohorts_id = ', '.join(form_learner_cohorts),
+        form_cohorts_id = ', '.join(form_learner_cohorts)
         form_learning_spaces_id = ', '.join(list(set(form_learning_spaces)))
 
         form_teachers = frappe.get_all(
@@ -130,7 +130,7 @@ class AssessmentForm(Document):
             "id": self.form_id,
             "brief_note": self.brief_note,
             "cohort_id": form_cohorts_id,
-            "learning_space_id": learning_spaces_id,
+            "learning_space_id": form_learning_spaces_id,
             "activity_name": form_activity.activity_id,
             "activity_label": form_activity.title,
             "learners": form_learners,
