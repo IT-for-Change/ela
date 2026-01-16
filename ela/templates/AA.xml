@@ -101,10 +101,10 @@
                 <label>{{ brief_note }}</label>
             </input>
             <input ref="/data/form_introduction/cohort">
-                <label>Learner cohort: {{ cohort_id }}</label>
+                <label>Learner cohort(s): {{ cohort_id }}</label>
             </input>
             <input ref="/data/form_introduction/space">
-                <label>Learning space: {{ learning_space_id }}</label>
+                <label>Learning space(s): {{ learning_space_id }}</label>
             </input>
             <input ref="/data/form_introduction/assessments">
                 <label>The following {{ assessment_count }} assessment(s) are included in this form

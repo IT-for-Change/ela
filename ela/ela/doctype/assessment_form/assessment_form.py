@@ -65,10 +65,13 @@ class AssessmentForm(Document):
 
             learning_space = frappe.get_doc(
                 'Learning Space', learner_cohort.learning_space,
-                fields=['name', 'name1', 'postal_code']
+                fields=['name', 'short_name', 'postal_code']
             )
 
-            form_learning_spaces.append(learning_space.name1)
+            form_learning_spaces.append(learning_space.short_name)
+
+        form_cohorts_id = ', '.join(form_learner_cohorts),
+        form_learning_spaces_id = ', '.join(list(set(form_learning_spaces)))
 
         form_teachers = frappe.get_all(
             'Teacher',
@@ -115,7 +118,7 @@ class AssessmentForm(Document):
             form_question_types.append(question_type)
             question_prompt = question.prompt
             form_question_prompts.append(question_prompt)
-            form_question_title = question.name
+            form_question_title = question.question_title
             form_question_titles.append(form_question_title)
             form_question_action = question.action_instruction
             form_question_actions.append(form_question_action)
@@ -126,8 +129,8 @@ class AssessmentForm(Document):
             "title": self.title,
             "id": self.form_id,
             "brief_note": self.brief_note,
-            "cohort_id": ', '.join(form_learner_cohorts),
-            "learning_space_id": ', '.join(form_learning_spaces),
+            "cohort_id": form_cohorts_id,
+            "learning_space_id": learning_spaces_id,
             "activity_name": form_activity.activity_id,
             "activity_label": form_activity.title,
             "learners": form_learners,
