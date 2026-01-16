@@ -9,7 +9,7 @@ function waiting(frm) {
 
 function run_assessment(frm, op) {
     frappe.call({
-        method: "ela.ela.doctype.activity.activity.run_assessment",
+        method: "ela.ela.api.assessments.run_assessment",
         args: {
             activity_id: frm.doc.activity_id,
             operation: op
@@ -29,7 +29,7 @@ frappe.ui.form.on("Activity", {
             waiting(frm);
 
             frappe.call({
-                method: "ela.ela.doctype.activity.activity.display_assessment_block",
+                method: "ela.ela.api.assessments.display_assessment_block",
                 args: { activity_eid: frm.doc.activity_id },
                 callback(r) {
                     var wrapper = $(frm.fields_dict['pending_assessment_count_msg'].wrapper);
