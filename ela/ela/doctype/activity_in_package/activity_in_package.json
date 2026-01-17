@@ -4,6 +4,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "activity_title",
   "activity"
  ],
  "fields": [
@@ -13,13 +14,21 @@
    "fieldtype": "Link",
    "label": "Activity",
    "options": "Activity"
+  },
+  {
+   "fetch_from": "activity.title",
+   "fieldname": "activity_title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Activity in package",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-12-21 12:50:52.434372",
+ "modified": "2026-01-17 13:51:17.385497",
  "modified_by": "Administrator",
  "module": "ELA",
  "name": "Activity in Package",
