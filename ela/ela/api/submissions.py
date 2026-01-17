@@ -197,11 +197,16 @@ def update_submissions(outputs, operation):
                 text_analysis_output = assessment_output["analyzed_text"]
                 if (assessment_output_row_does_not_exist):
                     submission.append("assessment_outputs", {
-                        'key_field': key_field,
+                        "key_field": key_field,
+                        "word_count": text_analysis_output["token_count"],
+                        "lexical_density": text_analysis_output["lexical_density"],
+                        "nine_point_score": "1.1",
                         "nlp_text_analysis": text_analysis_output
                     })
                 else:
                     assessment_output_row.nlp_text_analysis = text_analysis_output
+                    assessment_output_row.word_count = text_analysis_output["token_count"]
+                    assessment_output_row.lexical_density = text_analysis_output["lexical_density"]
 
                 update_question_status(
                     submission, output["entry_key"], 'TEXT_ANALYSIS_COMPLETE')
