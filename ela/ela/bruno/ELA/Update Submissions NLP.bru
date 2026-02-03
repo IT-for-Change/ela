@@ -1,0 +1,58 @@
+meta {
+  name: Update Submissions NLP
+  type: http
+  seq: 14
+}
+
+post {
+  url: http://elaexplore.localhost:8081/api/method/ela.ela.api.submissions.update_submissions
+  body: json
+  auth: inherit
+}
+
+headers {
+  Authorization: token b909eccbd9b04d1:e7515a47bbfad81
+}
+
+body:json {
+  {
+    "outputs": [
+      {
+        "item_key": "ks10qp2b4q",
+        "entry_key": "/files/1765860508362.m4a",
+        "nlp": {
+          "analyzed_text": {
+            "token_count": 3,
+            "lang_code": "kn",
+            "lexical_analysis": "",
+            "morphological_analysis": "",
+            "syntactic_analysis": "",
+            "grammar_analysis": "",
+            "semantic_analysis": ""
+          }
+        }
+      },
+      {
+        "item_key": "ks10qp2b4q",
+        "entry_key": "/files/1765860637386.m4a",
+        "nlp": {
+          "analyzed_text": {
+            "token_count": 38,
+            "lang_code": "kn",
+            "lexical_analysis": "",
+            "morphological_analysis": "",
+            "syntactic_analysis": "",
+            "grammar_analysis": "",
+            "semantic_analysis": ""
+          }
+        }
+      }
+    ],
+    "operation": "nlp"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

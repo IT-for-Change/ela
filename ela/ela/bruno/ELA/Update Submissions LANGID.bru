@@ -5,7 +5,7 @@ meta {
 }
 
 post {
-  url: http://elaexplore.localhost:8081/api/method/ela.ela.doctype.activity.activity.update_submissions
+  url: http://elaexplore.localhost:8081/api/method/ela.ela.api.submissions.update_submissions
   body: json
   auth: inherit
 }
@@ -15,7 +15,43 @@ headers {
 }
 
 body:json {
-  {"outputs": [{"item_key": "u0k7qt40od", "entry_key": "/files/1765860508362.m4a", "langid": {"languages_estimation": [{"language_code": "en", "confidence": 1.0}, {"language_code": "kn", "confidence": 0.0}]}}, {"item_key": "u0k7qt40od", "entry_key": "/files/1765860637386.m4a", "langid": {"languages_estimation": [{"language_code": "en", "confidence": 1.0}, {"language_code": "kn", "confidence": 0.0}]}}], "operation": "langid"}
+  {
+    "outputs": [
+      {
+        "item_key": "u0k7qt40od",
+        "entry_key": "/files/1765860508362.m4a",
+        "langid": {
+          "languages_estimation": [
+            {
+              "language_code": "en",
+              "confidence": 1.0
+            },
+            {
+              "language_code": "kn",
+              "confidence": 0.0
+            }
+          ]
+        }
+      },
+      {
+        "item_key": "u0k7qt40od",
+        "entry_key": "/files/1765860637386.m4a",
+        "langid": {
+          "languages_estimation": [
+            {
+              "language_code": "en",
+              "confidence": 1.0
+            },
+            {
+              "language_code": "kn",
+              "confidence": 0.0
+            }
+          ]
+        }
+      }
+    ],
+    "operation": "langid"
+  }
 }
 
 settings {
