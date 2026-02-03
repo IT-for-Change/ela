@@ -77,7 +77,7 @@
    "hidden": 0,
    "is_query_report": 0,
    "label": "Ongoing tasks",
-   "link_count": 3,
+   "link_count": 5,
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
@@ -105,15 +105,35 @@
   {
    "hidden": 0,
    "is_query_report": 0,
+   "label": "View assessment forms",
+   "link_count": 0,
+   "link_to": "Assessment Form",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
    "label": "Upload a package from ELA Collect",
    "link_count": 0,
    "link_to": "Assessment Package",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "View learner submissions",
+   "link_count": 0,
+   "link_to": "Learner Submission",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2026-01-14 15:02:03.917932",
+ "modified": "2026-01-20 12:09:23.916881",
  "modified_by": "Administrator",
  "module": "ELA",
  "name": "ELA Home",
