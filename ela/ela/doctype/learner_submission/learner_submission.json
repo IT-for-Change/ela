@@ -54,7 +54,7 @@
    "fieldname": "status",
    "fieldtype": "Select",
    "label": "Status",
-   "options": "CREATED\nSPEECH_SEP_COMPLETE\nLANG_CHECK_COMPLETE\nSTT_COMPLETE\nNLP_COMPLETE\nREPORT_COMPLETE"
+   "options": "CREATED\nASSESSED\nSPEECH_SEP_COMPLETE\nLANG_CHECK_COMPLETE\nSTT_COMPLETE\nNLP_COMPLETE\nREPORT_COMPLETE"
   },
   {
    "fieldname": "source_package",
@@ -174,7 +174,7 @@
  "hide_toolbar": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-01-14 15:25:28.542485",
+ "modified": "2026-01-19 14:47:36.607881",
  "modified_by": "Administrator",
  "module": "ELA",
  "name": "Learner Submission",

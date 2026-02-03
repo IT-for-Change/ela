@@ -1,4 +1,5 @@
 import frappe
+import requests
 
 
 def refresh_submission_status(activity_eid):
@@ -60,6 +61,11 @@ def refresh_submission_status(activity_eid):
 
                     if (question.status == 'TEXT_ANALYSIS_COMPLETE'):
                         question.status = 'PENDING_REPORT'
+                        submission_doc.save()
+                        continue
+
+                    if (question.status == 'REPORT_COMPLETE'):
+                        submission_doc.status = 'ASSESSED'
                         submission_doc.save()
                         continue
     return
@@ -152,7 +158,9 @@ def run_assessment(activity_id, operation):
     doc = frappe.get_doc('ELAConfiguration')
     elamid_url = doc.middleware_endpoint
 
-    ela_api = doc.speech_separation_callback
+    ela_get_api = doc.submission_list_callback
+    ela_put_api = doc.submission_update_callback
+    ela_add_file_api = doc.create_file_callback
     ela_api_host = doc.host
     ela_api_port = doc.port
     ela_image = doc.speech_separation
@@ -162,7 +170,9 @@ def run_assessment(activity_id, operation):
 
     elamid_params = {
         'ela_image': ela_image,
-        'ela_api': ela_api,
+        'ela_get_api': ela_get_api,
+        'ela_put_api': ela_put_api,
+        'ela_add_file_api': ela_add_file_api,
         'ela_api_host': ela_api_host,
         'ela_api_port': ela_api_port,
         'ela_ai_install_dir': ela_ai_install_dir,

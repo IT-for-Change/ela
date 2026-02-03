@@ -207,9 +207,12 @@ def update_submissions(outputs, operation):
                     assessment_output_row.nlp_text_analysis = text_analysis_output
                     assessment_output_row.word_count = text_analysis_output["token_count"]
                     assessment_output_row.lexical_density = text_analysis_output["lexical_density"]
+                    assessment_output_row.nine_point_score = "1.1"
 
                 update_question_status(
                     submission, output["entry_key"], 'TEXT_ANALYSIS_COMPLETE')
+                update_question_status(
+                    submission, output["entry_key"], 'REPORT_COMPLETE')
 
             submission.save()
             frappe.db.commit()
