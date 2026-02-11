@@ -2,7 +2,7 @@
 
 ### ELA
 
-ELA is non-generative AI-driven learning assessment software.
+ELA is non-generative AI-driven learning assessment software for teachers to use in their classrooms.
 
 ELA comprises the following components (with their github repositories linked)
 * [ELA AI](https://github.com/IT-for-Change/elaai), the AI engine
