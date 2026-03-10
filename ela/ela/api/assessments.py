@@ -68,6 +68,19 @@ def refresh_submission_status(activity_eid):
                         submission_doc.status = 'ASSESSED'
                         submission_doc.save()
                         continue
+
+            # These question types don't need any processing prior to reporting
+            if question.type in ["SINGLE CHOICE", "MULTI CHOICE", "NUMBER"]:
+                assessment_doc = frappe.get_doc(
+                    question.assessment_type, question.assessment)
+
+                if (question.assessment_type == 'Single Choice Assessment'):
+
+                    if (question.status == None or question.status == 'CREATED'):
+                        question.status = 'PENDING_REPORT'
+                        submission_doc.save()
+                        continue
+
     return
 
 
@@ -96,25 +109,25 @@ def update_activity_assessment_log_view(activity_eid):
 
         questions_output = submission_doc.response
 
-        for index, question in enumerate(questions_output):
+        for index, question_output in enumerate(questions_output):
 
             # this will hold the assessment log UI child table name
             ui_assessment_log_name = 'NA'
             submission_entry = {}
             submission_entry['submission'] = submission_doc.name
-            submission_entry['output'] = question
+            submission_entry['output'] = question_output
             submission_entry['learner'] = submission_doc.learner
             submission_entry['teacher'] = submission_doc.teacher_reference
 
-            if question.status == 'PENDING_LEARNER_SPEECH_SEPARATION':
+            if question_output.status == 'PENDING_LEARNER_SPEECH_SEPARATION':
                 ui_assessment_log_name = "speech_separation"
-            if question.status == 'PENDING_LANGUAGE_CHECK':
+            if question_output.status == 'PENDING_LANGUAGE_CHECK':
                 ui_assessment_log_name = "language_identification"
-            if question.status == 'PENDING_TRANSCRIPTION':
+            if question_output.status == 'PENDING_TRANSCRIPTION':
                 ui_assessment_log_name = "transcription"
-            if question.status == 'PENDING_TEXT_ANALYSIS':
+            if question_output.status == 'PENDING_TEXT_ANALYSIS':
                 ui_assessment_log_name = "text_analysis"
-            if question.status == 'PENDING_REPORT':
+            if question_output.status == 'PENDING_REPORT':
                 ui_assessment_log_name = "report"
 
             activity_doc.append(ui_assessment_log_name, submission_entry)
