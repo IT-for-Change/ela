@@ -35,7 +35,7 @@
  "fields": [
   {
    "fieldname": "confidence",
-   "fieldtype": "Data",
+   "fieldtype": "Float",
    "in_list_view": 1,
    "label": "Confidence"
   },
@@ -67,27 +67,27 @@
   },
   {
    "fieldname": "learner_duration",
-   "fieldtype": "Data",
+   "fieldtype": "Int",
    "label": "Learner duration"
   },
   {
    "fieldname": "learner_duration_max",
-   "fieldtype": "Data",
+   "fieldtype": "Int",
    "label": "Learner duration max"
   },
   {
    "fieldname": "teacher_duration",
-   "fieldtype": "Data",
+   "fieldtype": "Int",
    "label": "Teacher duration"
   },
   {
    "fieldname": "teacher_duration_max",
-   "fieldtype": "Data",
+   "fieldtype": "Int",
    "label": "Teacher duration max"
   },
   {
    "fieldname": "total_turns",
-   "fieldtype": "Data",
+   "fieldtype": "Int",
    "label": "Total turns (indicative)"
   },
   {
@@ -97,7 +97,7 @@
   },
   {
    "fieldname": "hallu_score",
-   "fieldtype": "Data",
+   "fieldtype": "Float",
    "label": "Hallucination score"
   },
   {
@@ -140,7 +140,7 @@
   },
   {
    "fieldname": "word_count",
-   "fieldtype": "Data",
+   "fieldtype": "Int",
    "label": "Word count"
   },
   {
@@ -150,7 +150,7 @@
   },
   {
    "fieldname": "lexical_density",
-   "fieldtype": "Data",
+   "fieldtype": "Float",
    "label": "Lexical density"
   },
   {
@@ -170,7 +170,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-03-02 10:57:10.876053",
+ "modified": "2026-03-10 06:50:16.017697",
  "modified_by": "Administrator",
  "module": "ELA",
  "name": "Assessment Output",
