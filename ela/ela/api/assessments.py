@@ -176,7 +176,7 @@ def run_assessment(activity_id, operation):
     ela_add_file_api = doc.create_file_callback
     ela_api_host = doc.host
     ela_api_port = doc.port
-    ela_image = doc.speech_separation
+    ela_image = doc.common_ai_backend
     ela_ai_install_dir = doc.ai_install_dir
     ela_api_token = doc.ela_api_token
     ela_activity = activity_id
