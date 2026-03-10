@@ -15,10 +15,12 @@
   "create_file_callback",
   "ela_api_token",
   "components_docker_images_section",
+  "common_ai_backend",
   "speech_separation",
   "language_check",
   "speech_to_text",
   "natural_language_processing",
+  "reporting",
   "application_section",
   "supported_assessment_form_templates"
  ],
@@ -109,6 +111,16 @@
    "fieldname": "create_file_callback",
    "fieldtype": "Data",
    "label": "Callback: Create file"
+  },
+  {
+   "fieldname": "reporting",
+   "fieldtype": "Data",
+   "label": "Reporting"
+  },
+  {
+   "fieldname": "common_ai_backend",
+   "fieldtype": "Data",
+   "label": "Common AI backend"
   }
  ],
  "grid_page_length": 50,
@@ -116,7 +128,7 @@
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2026-01-18 15:08:16.502966",
+ "modified": "2026-03-10 17:57:55.794198",
  "modified_by": "Administrator",
  "module": "ELA",
  "name": "ELAConfiguration",
