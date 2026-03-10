@@ -6,14 +6,14 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "section_break_lmru",
-  "nine_point_score",
   "language_section",
   "languages_estimated",
   "transcription_language",
   "confidence",
   "transcription_language_reason",
   "audio_response_recording",
+  "summary_section",
+  "nine_point_score_9",
   "section_break_peaq",
   "key_field",
   "transcription_section",
@@ -24,13 +24,31 @@
   "word_count",
   "lexical_density",
   "nlp_text_analysis",
+  "total_nouns",
+  "total_proper_nouns",
+  "total_verbs",
+  "total_adjectives",
+  "total_noun_phrases",
+  "total_prepositions",
+  "total_clause_fragments",
+  "two_letter_words",
+  "three_letter_words",
+  "four_letter_words",
+  "five_letter_words",
+  "six_letter_words",
+  "seven_letter_words",
+  "eight_letter_words",
+  "nine_letter_words",
+  "ten_letter_words",
+  "greater_than_10_letter_words",
   "conversation_section",
   "learner_speech_diarized",
   "learner_duration",
   "learner_duration_max",
   "teacher_duration",
   "teacher_duration_max",
-  "total_turns"
+  "total_turns",
+  "conversation_contribution_pct"
  ],
  "fields": [
   {
@@ -144,33 +162,122 @@
    "label": "Word count"
   },
   {
-   "fieldname": "section_break_lmru",
-   "fieldtype": "Section Break",
-   "label": "Summary"
-  },
-  {
    "fieldname": "lexical_density",
    "fieldtype": "Float",
    "label": "Lexical density"
-  },
-  {
-   "fieldname": "nine_point_score",
-   "fieldtype": "Data",
-   "label": "Score (9-point scale)",
-   "read_only": 1
   },
   {
    "fieldname": "transcription_language_reason",
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Transcription language (REASON)"
+  },
+  {
+   "fieldname": "total_nouns",
+   "fieldtype": "Int",
+   "label": "Total nouns"
+  },
+  {
+   "fieldname": "total_proper_nouns",
+   "fieldtype": "Int",
+   "label": "Total proper nouns"
+  },
+  {
+   "fieldname": "total_verbs",
+   "fieldtype": "Int",
+   "label": "Total verbs"
+  },
+  {
+   "fieldname": "conversation_contribution_pct",
+   "fieldtype": "Int",
+   "label": "Conversation contribution (percent)"
+  },
+  {
+   "fieldname": "summary_section",
+   "fieldtype": "Section Break",
+   "label": "Summary"
+  },
+  {
+   "fieldname": "nine_point_score_9",
+   "fieldtype": "Int",
+   "label": "Nine point score"
+  },
+  {
+   "fieldname": "total_adjectives",
+   "fieldtype": "Int",
+   "label": "Total adjectives"
+  },
+  {
+   "fieldname": "total_noun_phrases",
+   "fieldtype": "Int",
+   "label": "Total noun phrases"
+  },
+  {
+   "fieldname": "total_prepositions",
+   "fieldtype": "Int",
+   "label": "Total prepositions"
+  },
+  {
+   "fieldname": "total_clause_fragments",
+   "fieldtype": "Int",
+   "label": "Total clause fragments"
+  },
+  {
+   "fieldname": "greater_than_10_letter_words",
+   "fieldtype": "Int",
+   "label": "Total greater-than-10-letter words"
+  },
+  {
+   "fieldname": "two_letter_words",
+   "fieldtype": "Int",
+   "label": "Total 2-letter words"
+  },
+  {
+   "fieldname": "three_letter_words",
+   "fieldtype": "Int",
+   "label": "Total 3-letter words"
+  },
+  {
+   "fieldname": "four_letter_words",
+   "fieldtype": "Int",
+   "label": "Total 4-letter words"
+  },
+  {
+   "fieldname": "five_letter_words",
+   "fieldtype": "Int",
+   "label": "Total 5-letter words"
+  },
+  {
+   "fieldname": "six_letter_words",
+   "fieldtype": "Int",
+   "label": "Total 6-letter words"
+  },
+  {
+   "fieldname": "seven_letter_words",
+   "fieldtype": "Int",
+   "label": "Total 7-letter words"
+  },
+  {
+   "fieldname": "eight_letter_words",
+   "fieldtype": "Int",
+   "label": "Total 8-letter words"
+  },
+  {
+   "fieldname": "nine_letter_words",
+   "fieldtype": "Int",
+   "label": "Total 9-letter words"
+  },
+  {
+   "fieldname": "ten_letter_words",
+   "fieldtype": "Int",
+   "label": "Total 10-letter words"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-03-10 06:50:16.017697",
+ "modified": "2026-03-10 21:21:08.234972",
  "modified_by": "Administrator",
  "module": "ELA",
  "name": "Assessment Output",
