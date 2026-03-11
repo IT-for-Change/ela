@@ -1,0 +1,86 @@
+[
+ {
+  "_liked_by": "[]",
+  "docstatus": 0,
+  "doctype": "Insights Dashboard",
+  "is_public": 0,
+  "items": [
+   {
+    "item_id": "168518",
+    "item_type": "Bar",
+    "layout": "{\"i\":168518,\"x\":0,\"y\":3,\"w\":20,\"h\":20,\"moved\":false}",
+    "options": "{\"xAxis\":[{\"column\":\"Activity Title\"},{\"column\":\"Learner Display Name\"}],\"yAxis\":[{\"column\":\"avg_score\",\"series_options\":{\"type\":\"bar\"}}],\"rotateLabels\":\"90\",\"title\":\"9 Point Scores: Activity wise\",\"colors\":[\"#318AD8\",\"#F683AE\",\"#48BB74\",\"#F56B6B\",\"#FACF7A\",\"#44427B\",\"#5FD8C4\",\"#F8814F\",\"#15CCEF\",\"#A6B1B9\"],\"query\":\"QRY-0182\",\"stack\":false,\"roundedBars\":true}",
+    "parent": "DSH-0183",
+    "parentfield": "items",
+    "parenttype": "Insights Dashboard"
+   },
+   {
+    "item_id": "279562",
+    "item_type": "Bar",
+    "layout": "{\"i\":279562,\"x\":0,\"y\":36,\"w\":20,\"h\":20,\"moved\":false}",
+    "options": "{\"xAxis\":[{\"column\":\"Activity Title\"}],\"yAxis\":[{\"column\":\"Word Count\",\"series_options\":{\"type\":\"bar\"}}],\"rotateLabels\":\"90\",\"title\":\"Word production (English)\",\"colors\":[\"#318AD8\",\"#F683AE\",\"#48BB74\",\"#F56B6B\",\"#FACF7A\",\"#44427B\",\"#5FD8C4\",\"#F8814F\",\"#15CCEF\",\"#A6B1B9\"],\"query\":\"QRY-0186\",\"stack\":true,\"roundedBars\":true}",
+    "parent": "DSH-0183",
+    "parentfield": "items",
+    "parenttype": "Insights Dashboard"
+   },
+   {
+    "item_id": "300415",
+    "item_type": "Line",
+    "layout": "{\"i\":300415,\"x\":0,\"y\":23,\"w\":20,\"h\":13,\"moved\":false}",
+    "options": "{\"title\":\"Learner-wise 9-point scores\",\"xAxis\":[{\"column\":\"Activity Title\"}],\"yAxis\":[{\"column\":\"Nine Point Score 9\",\"series_options\":{\"type\":\"line\"}}],\"colors\":[\"#318AD8\",\"#F683AE\",\"#48BB74\",\"#F56B6B\",\"#FACF7A\",\"#44427B\",\"#5FD8C4\",\"#F8814F\",\"#15CCEF\",\"#A6B1B9\"],\"query\":\"QRY-0187\",\"showPoints\":true}",
+    "parent": "DSH-0183",
+    "parentfield": "items",
+    "parenttype": "Insights Dashboard"
+   },
+   {
+    "item_id": "50088",
+    "item_type": "Filter",
+    "layout": "{\"i\":50088,\"x\":5,\"y\":1,\"w\":5,\"h\":2,\"moved\":false}",
+    "options": "{\"links\":{\"24011\":{\"label\":\"Learner Display Name\",\"column\":\"learner_display_name\",\"table\":\"tabLearner Submission\",\"type\":\"String\",\"table_label\":\"Learner Submission\",\"data_source\":\"Site DB\",\"description\":\"String - Learner Submission\",\"value\":\"tabLearner Submission.learner_display_name\"},\"72236\":{\"label\":\"Learner Display Name\",\"column\":\"learner_display_name\",\"table\":\"tabLearner Submission\",\"type\":\"String\",\"table_label\":\"Learner Submission\",\"data_source\":\"Site DB\",\"description\":\"String - Learner Submission\",\"value\":\"tabLearner Submission.learner_display_name\"},\"132143\":{\"label\":\"Learner Display Name\",\"column\":\"learner_display_name\",\"table\":\"tabLearner Submission\",\"type\":\"String\",\"table_label\":\"Learner Submission\",\"data_source\":\"Site DB\",\"description\":\"String - Learner Submission\",\"value\":\"tabLearner Submission.learner_display_name\"},\"279562\":{\"label\":\"Learner Display Name\",\"column\":\"learner_display_name\",\"table\":\"tabLearner Submission\",\"type\":\"String\",\"table_label\":\"Learner Submission\",\"data_source\":\"Site DB\",\"description\":\"String - Learner Submission\",\"value\":\"tabLearner Submission.learner_display_name\"},\"300415\":{\"label\":\"Learner Display Name\",\"column\":\"learner_display_name\",\"table\":\"tabLearner Submission\",\"type\":\"String\",\"table_label\":\"Learner Submission\",\"data_source\":\"Site DB\",\"description\":\"String - Learner Submission\",\"value\":\"tabLearner Submission.learner_display_name\"},\"435642\":{\"label\":\"Learner Display Name\",\"column\":\"learner_display_name\",\"table\":\"tabLearner Submission\",\"type\":\"String\",\"table_label\":\"Learner Submission\",\"data_source\":\"Site DB\",\"description\":\"String - Learner Submission\",\"value\":\"tabLearner Submission.learner_display_name\"}},\"column\":{\"label\":\"Learner Display Name\",\"column\":\"learner_display_name\",\"type\":\"String\",\"table\":\"tabLearner Submission\",\"data_source\":\"Site DB\",\"description\":\"String - Learner Submission\",\"value\":\"tabLearner Submission.learner_display_name\"},\"defaultOperator\":{\"label\":\"equals\",\"value\":\"=\"},\"defaultValue\":{},\"label\":\"Learner\"}",
+    "parent": "DSH-0183",
+    "parentfield": "items",
+    "parenttype": "Insights Dashboard"
+   },
+   {
+    "item_id": "132143",
+    "item_type": "Bar",
+    "layout": "{\"i\":132143,\"x\":0,\"y\":56,\"w\":20,\"h\":24,\"moved\":false}",
+    "options": "{\"xAxis\":[{\"column\":\"Activity Title\"}],\"yAxis\":[{\"column\":\"Two Letter Words\",\"series_options\":{\"type\":\"bar\"}},{\"column\":\"Three Letter Words\",\"series_options\":{\"type\":\"bar\"}},{\"column\":\"Four Letter Words\",\"series_options\":{\"type\":\"bar\"}},{\"column\":\"Five Letter Words\",\"series_options\":{\"type\":\"bar\"}},{\"column\":\"Six Letter Words\",\"series_options\":{\"type\":\"bar\"}},{\"column\":\"Seven Letter Words\",\"series_options\":{\"type\":\"bar\"}},{\"column\":\"Eight Letter Words\",\"series_options\":{\"type\":\"bar\"}},{\"column\":\"Nine Letter Words\",\"series_options\":{\"type\":\"bar\"}},{\"column\":\"Ten Letter Words\",\"series_options\":{\"type\":\"bar\"}},{\"column\":\"Greater Than 10 Letter Words\",\"series_options\":{\"type\":\"bar\"}}],\"rotateLabels\":\"90\",\"title\":\"Word productions (English): By word length\",\"colors\":[\"#318AD8\",\"#F683AE\",\"#48BB74\",\"#F56B6B\",\"#FACF7A\",\"#44427B\",\"#5FD8C4\",\"#F8814F\",\"#15CCEF\",\"#A6B1B9\"],\"query\":\"QRY-0188\",\"stack\":true}",
+    "parent": "DSH-0183",
+    "parentfield": "items",
+    "parenttype": "Insights Dashboard"
+   },
+   {
+    "item_id": "24011",
+    "item_type": "Bar",
+    "layout": "{\"i\":24011,\"x\":0,\"y\":80,\"w\":20,\"h\":20,\"moved\":false}",
+    "options": "{\"xAxis\":[{\"column\":\"Activity Title\"}],\"yAxis\":[{\"column\":\"Total Nouns\",\"series_options\":{\"type\":\"bar\"}},{\"column\":\"Total Proper Nouns\",\"series_options\":{\"type\":\"bar\"}},{\"column\":\"Total Verbs\",\"series_options\":{\"type\":\"bar\"}},{\"column\":\"Total Adjectives\",\"series_options\":{\"type\":\"bar\"}},{\"column\":\"Total Prepositions\",\"series_options\":{\"type\":\"bar\"}}],\"rotateLabels\":\"90\",\"title\":\"Word productions (English): By part of speech\",\"colors\":[\"#318AD8\",\"#F683AE\",\"#48BB74\",\"#F56B6B\",\"#FACF7A\",\"#44427B\",\"#5FD8C4\",\"#F8814F\",\"#15CCEF\",\"#A6B1B9\"],\"query\":\"QRY-0190\",\"stack\":true,\"roundedBars\":true}",
+    "parent": "DSH-0183",
+    "parentfield": "items",
+    "parenttype": "Insights Dashboard"
+   },
+   {
+    "item_id": "790155",
+    "item_type": "Filter",
+    "layout": "{\"i\":790155,\"x\":0,\"y\":1,\"w\":5,\"h\":2,\"moved\":false}",
+    "options": "{\"links\":{\"24011\":{\"label\":\"Learner Cohort\",\"column\":\"learner_cohort\",\"table\":\"tabLearner Submission\",\"type\":\"String\",\"table_label\":\"Learner Submission\",\"data_source\":\"Site DB\",\"description\":\"String - Learner Submission\",\"value\":\"tabLearner Submission.learner_cohort\"},\"72236\":{\"label\":\"Learner Cohort\",\"column\":\"learner_cohort\",\"table\":\"tabLearner Submission\",\"type\":\"String\",\"table_label\":\"Learner Submission\",\"data_source\":\"Site DB\",\"description\":\"String - Learner Submission\",\"value\":\"tabLearner Submission.learner_cohort\"},\"132143\":{\"label\":\"Learner Cohort\",\"column\":\"learner_cohort\",\"table\":\"tabLearner Submission\",\"type\":\"String\",\"table_label\":\"Learner Submission\",\"data_source\":\"Site DB\",\"description\":\"String - Learner Submission\",\"value\":\"tabLearner Submission.learner_cohort\"},\"168518\":{\"label\":\"Learner Cohort\",\"column\":\"learner_cohort\",\"table\":\"tabLearner Submission\",\"type\":\"String\",\"table_label\":\"Learner Submission\",\"data_source\":\"Site DB\",\"description\":\"String - Learner Submission\",\"value\":\"tabLearner Submission.learner_cohort\"},\"279562\":{\"label\":\"Learner Cohort\",\"column\":\"learner_cohort\",\"table\":\"tabLearner Submission\",\"type\":\"String\",\"table_label\":\"Learner Submission\",\"data_source\":\"Site DB\",\"description\":\"String - Learner Submission\",\"value\":\"tabLearner Submission.learner_cohort\"},\"300415\":{\"label\":\"Learner Cohort\",\"column\":\"learner_cohort\",\"table\":\"tabLearner Submission\",\"type\":\"String\",\"table_label\":\"Learner Submission\",\"data_source\":\"Site DB\",\"description\":\"String - Learner Submission\",\"value\":\"tabLearner Submission.learner_cohort\"},\"435642\":{\"label\":\"Learner Cohort\",\"column\":\"learner_cohort\",\"table\":\"tabLearner Submission\",\"type\":\"String\",\"table_label\":\"Learner Submission\",\"data_source\":\"Site DB\",\"description\":\"String - Learner Submission\",\"value\":\"tabLearner Submission.learner_cohort\"}},\"column\":{\"label\":\"Learner Cohort\",\"column\":\"learner_cohort\",\"type\":\"String\",\"table\":\"tabLearner Submission\",\"data_source\":\"Site DB\",\"description\":\"String - Learner Submission\",\"value\":\"tabLearner Submission.learner_cohort\"},\"defaultValue\":{}}",
+    "parent": "DSH-0183",
+    "parentfield": "items",
+    "parenttype": "Insights Dashboard"
+   },
+   {
+    "item_id": "435642",
+    "item_type": "Bar",
+    "layout": "{\"i\":435642,\"x\":0,\"y\":100,\"w\":20,\"h\":17,\"moved\":false}",
+    "options": "{\"xAxis\":[{\"column\":\"Activity Title\"},{\"column\":\"Learner Display Name\"}],\"yAxis\":[{\"column\":\"Conversation Contribution Pct\",\"series_options\":{\"type\":\"bar\"}}],\"rotateLabels\":\"0\",\"title\":\"Conversation: % Learner contribution\",\"colors\":[\"#318AD8\",\"#F683AE\",\"#48BB74\",\"#F56B6B\",\"#FACF7A\",\"#44427B\",\"#5FD8C4\",\"#F8814F\",\"#15CCEF\",\"#A6B1B9\"],\"query\":\"QRY-0191\",\"roundedBars\":true}",
+    "parent": "DSH-0183",
+    "parentfield": "items",
+    "parenttype": "Insights Dashboard"
+   }
+  ],
+  "modified": "2026-03-11 15:00:16.869150",
+  "name": "DSH-0183",
+  "public_key": null,
+  "title": "ELA Learner Dashboard"
+ }
+]

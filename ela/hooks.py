@@ -11,7 +11,10 @@ app_home = "/ela"
 fixtures = [
     "ELAConfiguration",
     "Website Settings",
-    "Workspace"
+    "Workspace",
+    "Insights Query",
+    "Insights Dashboard",
+    "Insights Data Source"
 ]
 
 # Installation
