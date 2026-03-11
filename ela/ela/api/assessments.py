@@ -129,6 +129,8 @@ def update_activity_assessment_log_view(activity_eid):
                 ui_assessment_log_name = "text_analysis"
             if question_output.status == 'PENDING_REPORT':
                 ui_assessment_log_name = "report"
+            if question_output.status == 'REPORT_COMPLETE':
+                continue
 
             activity_doc.append(ui_assessment_log_name, submission_entry)
 
