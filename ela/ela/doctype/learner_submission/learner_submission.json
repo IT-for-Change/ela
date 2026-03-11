@@ -84,11 +84,15 @@
   {
    "fieldname": "activity_title",
    "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Title"
   },
   {
    "fieldname": "learner_display_name",
    "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Name and ID"
   },
   {
@@ -173,7 +177,7 @@
  "hide_toolbar": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-03-02 12:16:50.151301",
+ "modified": "2026-03-11 06:55:42.651662",
  "modified_by": "Administrator",
  "module": "ELA",
  "name": "Learner Submission",
