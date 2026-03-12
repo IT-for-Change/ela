@@ -45,7 +45,7 @@
     "item_id": "132143",
     "item_type": "Bar",
     "layout": "{\"i\":132143,\"x\":0,\"y\":56,\"w\":20,\"h\":24,\"moved\":false}",
-    "options": "{\"xAxis\":[{\"column\":\"Activity Title\"}],\"yAxis\":[{\"column\":\"Two Letter Words\",\"series_options\":{\"type\":\"bar\"}},{\"column\":\"Three Letter Words\",\"series_options\":{\"type\":\"bar\"}},{\"column\":\"Four Letter Words\",\"series_options\":{\"type\":\"bar\"}},{\"column\":\"Five Letter Words\",\"series_options\":{\"type\":\"bar\"}},{\"column\":\"Six Letter Words\",\"series_options\":{\"type\":\"bar\"}},{\"column\":\"Seven Letter Words\",\"series_options\":{\"type\":\"bar\"}},{\"column\":\"Eight Letter Words\",\"series_options\":{\"type\":\"bar\"}},{\"column\":\"Nine Letter Words\",\"series_options\":{\"type\":\"bar\"}},{\"column\":\"Ten Letter Words\",\"series_options\":{\"type\":\"bar\"}},{\"column\":\"Greater Than 10 Letter Words\",\"series_options\":{\"type\":\"bar\"}}],\"rotateLabels\":\"90\",\"title\":\"Word productions (English): By word length\",\"colors\":[\"#318AD8\",\"#F683AE\",\"#48BB74\",\"#F56B6B\",\"#FACF7A\",\"#44427B\",\"#5FD8C4\",\"#F8814F\",\"#15CCEF\",\"#A6B1B9\"],\"query\":\"QRY-0188\",\"stack\":true}",
+    "options": "{\"xAxis\":[{\"column\":\"Activity Title\"}],\"yAxis\":[{\"column\":\"Two Letter Words\",\"series_options\":{\"type\":\"bar\"}},{\"column\":\"Three Letter Words\",\"series_options\":{\"type\":\"bar\"}},{\"column\":\"Four Letter Words\",\"series_options\":{\"type\":\"bar\"}},{\"column\":\"Five Letter Words\",\"series_options\":{\"type\":\"bar\"}},{\"column\":\"Six Letter Words\",\"series_options\":{\"type\":\"bar\"}},{\"column\":\"Seven Letter Words\",\"series_options\":{\"type\":\"bar\"}},{\"column\":\"Eight Letter Words\",\"series_options\":{\"type\":\"bar\"}},{\"column\":\"Nine Letter Words\",\"series_options\":{\"type\":\"bar\"}},{\"column\":\"Ten Letter Words\",\"series_options\":{\"type\":\"bar\"}},{\"column\":\"Greater Than 10 Letter Words\",\"series_options\":{\"type\":\"bar\"}}],\"rotateLabels\":\"90\",\"title\":\"Word productions (English): By word length\",\"colors\":[\"#318AD8\",\"#F683AE\",\"#48BB74\",\"#F56B6B\",\"#FACF7A\",\"#44427B\",\"#5FD8C4\",\"#F8814F\",\"#15CCEF\",\"#A6B1B9\"],\"query\":\"QRY-0188\",\"stack\":true,\"roundedBars\":true}",
     "parent": "DSH-0183",
     "parentfield": "items",
     "parenttype": "Insights Dashboard"
@@ -76,9 +76,27 @@
     "parent": "DSH-0183",
     "parentfield": "items",
     "parenttype": "Insights Dashboard"
+   },
+   {
+    "item_id": "967686",
+    "item_type": "Number",
+    "layout": "{\"i\":967686,\"x\":0,\"y\":117,\"w\":4,\"h\":4,\"moved\":false}",
+    "options": "{\"column\":\"Activity\",\"shorten\":false,\"title\":\"Activities\",\"query\":\"QRY-0192\"}",
+    "parent": "DSH-0183",
+    "parentfield": "items",
+    "parenttype": "Insights Dashboard"
+   },
+   {
+    "item_id": "701565",
+    "item_type": "Number",
+    "layout": "{\"i\":701565,\"x\":4,\"y\":117,\"w\":4,\"h\":4,\"moved\":false}",
+    "options": "{\"column\":\"Count of Rows\",\"shorten\":false,\"title\":\"Recordings\",\"query\":\"QRY-0193\"}",
+    "parent": "DSH-0183",
+    "parentfield": "items",
+    "parenttype": "Insights Dashboard"
    }
   ],
-  "modified": "2026-03-11 15:00:16.869150",
+  "modified": "2026-03-11 16:03:23.508832",
   "name": "DSH-0183",
   "public_key": null,
   "title": "ELA Learner Dashboard"
