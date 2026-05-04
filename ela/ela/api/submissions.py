@@ -1,4 +1,5 @@
 import frappe
+import traceback
 
 
 def update_question_status(submission, entry_key, status):
@@ -53,6 +54,22 @@ def filter_question_for_curr_operation(question, operation):
     return True
 
 
+def get_assessment_question_for_output(question_output):
+    question_index = int(question_output.question_index)
+    assessment_form_id = question_output.assessment_form
+    assessment_form_doc = frappe.get_doc(
+        'Assessment Form', {"form_id": assessment_form_id})
+    # index was stored as 1, 2 etc. when question output was extracted from package, but rows in child tables idx start 0.
+    question = assessment_form_doc.questions[question_index - 1]
+    return question
+
+
+def get_assessment_question_text_assist_for_output(question_output):
+    question = get_assessment_question_for_output(question_output)
+    text_assist = question.text_assist
+    return text_assist
+
+
 @frappe.whitelist()
 def get_submissions(activity_eid, operation):
 
@@ -86,22 +103,22 @@ def get_submissions(activity_eid, operation):
             assessment_output.key_field: assessment_output for assessment_output in assessment_outputs
         }
 
-        for index, question in enumerate(question_outputs):
+        for index, question_output in enumerate(question_outputs):
 
-            if (filter_question_for_curr_operation(question, operation) == True):
+            if (filter_question_for_curr_operation(question_output, operation) == True):
                 continue
 
             # fetch the assessment for the question if the assessment entry already exists.
             # the assessment record might exist if the current status is anything other than the first step in the
             # assessment process, like "stt" if langid was done first, or 'langid' if speech separation was done first
             assessment_output_row = assessment_outputs_access_map.get(
-                question.key_field, None)
+                question_output.key_field, None)
 
             # return assessment_output_row.learner_speech_diarized
 
-            if question.type == 'AUDIO':
+            if question_output.type == 'AUDIO':
                 sdz = {
-                    "source": f"{host}:{port}{question.file}",
+                    "source": f"{host}:{port}{question_output.file}",
                     "source_separation_ref": f"{host}:{port}{teacher_doc.voice_sample}"
                 }
                 langid = {
@@ -110,13 +127,16 @@ def get_submissions(activity_eid, operation):
                     "teacher_duration": assessment_output_row.teacher_duration if assessment_output_row is not None else 0,
                     "source": f"{host}:{port}{frappe.get_doc('File',assessment_output_row.learner_speech_diarized).file_url}"
                     if assessment_output_row is not None
-                    else f"{host}:{port}{question.file}"
+                    else f"{host}:{port}{question_output.file}"
                 }
                 stt = {
                     "language": assessment_output_row.transcription_language if assessment_output_row is not None else '',
                     "source": f"{host}:{port}{frappe.get_doc('File',assessment_output_row.learner_speech_diarized).file_url}"
                     if assessment_output_row is not None
-                    else f"{host}:{port}{question.file}"
+                    else f"{host}:{port}{question_output.file}",
+                    "transcription_language_reason": assessment_output_row.transcription_language_reason if assessment_output_row is not None else 'LANGID_NO_SPEECH',
+                    "text_assist": get_assessment_question_text_assist_for_output(question_output),
+                    "transcription_language_override_threshold": 5  # TODO move to ELA Configuration
                 }
                 nlp = {
                     "source": assessment_output_row.asr_text if assessment_output_row is not None else '',
@@ -135,7 +155,7 @@ def get_submissions(activity_eid, operation):
                     "teacher_duration": assessment_output_row.teacher_duration if assessment_output_row is not None else 0
                 }
                 entry = {
-                    "key": question.file,
+                    "key": question_output.file,
                     "sdz": sdz,
                     "langid": langid,
                     "stt": stt,
@@ -241,13 +261,22 @@ def update_submissions(outputs, operation):
                         'key_field': key_field,
                         "asr_text": transcription_output['asr_text'],
                         "hallu_score": transcription_output['hallu_score'],
-                        "hallu_text": str(transcription_output['hallu_text'])
+                        "hallu_text": str(transcription_output['hallu_text']),
+                        "transcription_language": transcription_output['transcription_language_override'],
+                        "transcription_language_reason": transcription_output['transcription_language_override_reason'],
+                        "text_assist_similarity_score": transcription_output['text_assist_similarity_score']
                     })
                 else:
                     assessment_output_row.asr_text = transcription_output['asr_text']
                     assessment_output_row.hallu_score = transcription_output['hallu_score']
                     assessment_output_row.hallu_text = str(
                         transcription_output['hallu_text'])
+                    assessment_output_row.transcription_language = transcription_output[
+                        'transcription_language_override']
+                    assessment_output_row.transcription_language_reason = transcription_output[
+                        'transcription_language_override_reason']
+                    assessment_output_row.text_assist_similarity_score = transcription_output[
+                        'text_assist_similarity_score']
 
                 update_question_status(
                     submission, output["entry_key"], 'TRANSCRIPTION_COMPLETE')
@@ -336,4 +365,7 @@ def update_submissions(outputs, operation):
             submission.save()
             frappe.db.commit()
     except Exception as e:
-        return {"status": "error", "message": f"Unexpected error: {str(e)}"}
+        # frappe.log_error(frappe.get_traceback(),"API Update Submissions Error")
+        stack_trace = traceback.format_exc()
+        frappe.log_error(stack_trace, "Update Submissions API Error")
+        return {"status": "error", "message": e}

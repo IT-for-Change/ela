@@ -5,6 +5,8 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "assessment_form",
+  "question_index",
   "type",
   "response",
   "file",
@@ -54,13 +56,23 @@
    "fieldname": "key_field",
    "fieldtype": "Data",
    "label": "Key field"
+  },
+  {
+   "fieldname": "question_index",
+   "fieldtype": "Data",
+   "label": "Question no. in assessment"
+  },
+  {
+   "fieldname": "assessment_form",
+   "fieldtype": "Data",
+   "label": "Assessment form attached to"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-01-08 15:41:32.316612",
+ "modified": "2026-04-03 13:45:46.075552",
  "modified_by": "Administrator",
  "module": "ELA",
  "name": "Question Output",

@@ -76,7 +76,7 @@ class AssessmentPackage(Document):
 
         # 1) Extract and print required fields
         start_time = root.findtext("startTime")
-        form_id = root.findtext("form_introduction/form_id")
+        form_id = root.findtext("form_introduction/ela_form_id")
         num_assessments = int(root.findtext(
             "form_introduction/num_assessments"))
         learner = root.findtext("form_configuration/learner")
@@ -101,6 +101,7 @@ class AssessmentPackage(Document):
 
         # Loop through assessments
         question_outputs_list = []
+        # index numbering for question ids in odk start from 1
         for index in range(1, num_assessments + 1):
             question_output = {}
             question_output_doc_file_name = 'Question Output'
@@ -114,7 +115,9 @@ class AssessmentPackage(Document):
 
             question_output['assessment_type'] = assessment_type
             question_output['assessment'] = assessment_doc.name
+            question_output['assessment_form'] = form_id
             question_output['type'] = question_type
+            question_output['question_index'] = index
             question_output['status'] = 'CREATED'
 
             response = None

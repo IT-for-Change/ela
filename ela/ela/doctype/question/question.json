@@ -12,6 +12,7 @@
   "audio_question_type",
   "question_title",
   "prompt",
+  "text_assist",
   "action_instruction",
   "speaking_assessment",
   "readaloud_assessment",
@@ -101,13 +102,19 @@
    "fieldtype": "Data",
    "label": "QUESTION TITLE",
    "reqd": 1
+  },
+  {
+   "description": "Provide plain text. This can be the full text of a story/lesson used in the activity or keywords from the story or a 'model answer' for the question. In all cases, the words or keywords should be separated by spaces.",
+   "fieldname": "text_assist",
+   "fieldtype": "Long Text",
+   "label": "Hint text"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-12-15 21:22:15.756783",
+ "modified": "2026-04-03 10:36:00.427841",
  "modified_by": "Administrator",
  "module": "ELA",
  "name": "Question",
