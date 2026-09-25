@@ -32,7 +32,7 @@ A companion component is the [ECUBE data collector](https://github.com/IT-for-Ch
 ### Software features
 - Assessment of English language learner's speech, with focus on early speakers. 
 - Support for _monologic_ and _dialogic_ oral productions (the dialog is between the learner and the teacher)
-- A 9-point scale based reporting that is sensitive to early speakers' abilities in their home language(s)
+- A 16-point scale based reporting that is sensitive to early speakers' abilities in their home language(s)
 - Recommendations of audio stories for learners to listen to, to improve listening skills, vocabulary and overall proficiency in the language (Work in progress)
 
 ### Hardware and software requirements
@@ -41,9 +41,9 @@ To successfully install and run ELA, the following are the minimum requirements.
 - Any standard Linux OS distribution. While other OSes/versions should work, ELA is developed and tested on Linux, specifically Ubuntu 22.04+
 - The desktop should have the following software installed
   - Docker CE
-  - [KDE Connect app](https://kdeconnect.kde.org/) to transfer files between ELA Web and ELA Collect. An alternative to this software is raw Bluetooth connectivity, but working with Bluetooth connections directly is harder.
+  - [KDE Connect app](https://kdeconnect.kde.org/) or [Localsend](https://localsend.org/) to transfer files between ELA Web and ELA Collect. An alternative to this software is raw Bluetooth connectivity, but working with Bluetooth connections directly is harder.
 - A USB storage device with about 20 GB space for the ELA software, AI models and tutorial materials, and a working USB port on the desktop computer.
-- An android mobile phone with Android OS version 10 or above (ensure the phone microphone is in working condition)
+- An android mobile phone with Android OS version 10 or above (ensure the phone microphone is in working condition), and [KDE Connect app](https://kdeconnect.kde.org/) or [Localsend](https://localsend.org/) mobile app installed.
 
 ### What is the AI in ELA?
 ELA uses the following AI and Machine Learning components
