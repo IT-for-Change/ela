@@ -48,7 +48,8 @@ To successfully install and run ELA, the following are the minimum requirements.
 ### What is the AI in ELA?
 ELA uses the following AI and Machine Learning components
 - [pyannote](https://github.com/pyannote/pyannote-audio), for speaker diarization to separate learner and teacher speech in conversations
-- [whisper](https://github.com/openai/whisper), for spoken language identification and transcription of learner speech
+- [Vaani LID](https://huggingface.co/ARTPARK-IISc/Vaani-LID_v0) for language identification
+- [whisper](https://github.com/openai/whisper), for transcription of learner speech
 - [spaCy](https://spacy.io/), for natural language processing of transcribed learner speech
 - A custom grammar model built on the lines of [vennify](https://huggingface.co/vennify/t5-base-grammar-correction), supported by the [Errant](https://github.com/chrisjbryant/errant) library
 
