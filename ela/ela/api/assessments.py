@@ -183,6 +183,8 @@ def run_assessment(activity_id, operation):
     ela_api_token = doc.ela_api_token
     ela_activity = activity_id
 
+    language_id_matrix = doc.language_id_matrix if operation == "langid" else None
+
     elamid_params = {
         'ela_image': ela_image,
         'ela_get_api': ela_get_api,
@@ -193,7 +195,8 @@ def run_assessment(activity_id, operation):
         'ela_ai_install_dir': ela_ai_install_dir,
         'ela_ai_operation': operation,
         'ela_activity': ela_activity,
-        'ela_api_token': ela_api_token
+        'ela_api_token': ela_api_token,
+        'ela_language_id_matrix': language_id_matrix
     }
 
     response = requests.get(elamid_url, params=elamid_params)
