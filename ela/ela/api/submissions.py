@@ -10,33 +10,14 @@ def update_question_status(submission, entry_key, status):
                 question.status = status
 
 
-def get_transcription_language_reason(language, confidence):
-    reason = "NOT_SPECIFIED"
-    if language == '-':
-        if confidence == 1:
-            reason = 'LANGID_NO_SPEECH'
-        else:
-            reason = 'LANGID_INSUFFICIENT_SPEECH'
-    else:
-        if confidence >= 0.9:  # any valid detected language
-            if language == 'en':
-                reason = 'LANGID_ELAAI_CONFIRMED_EN'
-            else:
-                reason = 'LANGID_ELAAI_CONFIRMED_OTHER'
-        else:  # valid detected language, but likely reported mixed
-            if language == 'en':
-                reason = 'LANGID_ELAAI_MIXED_EN'
-            else:
-                reason = 'LANGID_ELAAI_MIXED_OTHER'
-    return reason
+def get_transcription_language(language_identification):
 
-
-def get_transcription_language(languages_estimated):
-    best_fit = max(languages_estimated, key=lambda x: x['confidence'])
-    language = best_fit['language_code']
-    confidence = best_fit['confidence']
-    reason = get_transcription_language_reason(language, confidence)
-    return language, confidence, reason
+    transcription_language = language_identification['decision']
+    score = language_identification['score']
+    confidence = language_identification['confidence']
+    remark = language_identification['remark']
+    langid_decision_data = language_identification['langid_decision_data']
+    return transcription_language, score, confidence, remark, langid_decision_data
 
 
 def filter_question_for_curr_operation(question, operation):
@@ -134,18 +115,20 @@ def get_submissions(activity_eid, operation):
                     "source": f"{host}:{port}{frappe.get_doc('File',assessment_output_row.learner_speech_diarized).file_url}"
                     if assessment_output_row is not None
                     else f"{host}:{port}{question_output.file}",
-                    "transcription_language_reason": assessment_output_row.transcription_language_reason if assessment_output_row is not None else 'LANGID_NO_SPEECH',
-                    "text_assist": get_assessment_question_text_assist_for_output(question_output),
-                    "transcription_language_override_threshold": 5  # TODO move to ELA Configuration
+                    "langid_remark": assessment_output_row.transcription_language_remark if assessment_output_row is not None else '000',
+                    "langid_score": assessment_output_row.language_id_score if assessment_output_row is not None else 0,
+                    "langid_decision_data": assessment_output_row.langid_decision_data if assessment_output_row is not None else None,
                 }
                 nlp = {
                     "source": assessment_output_row.asr_text if assessment_output_row is not None else '',
+                    "text_assist": get_assessment_question_text_assist_for_output(question_output),
                     "language": assessment_output_row.transcription_language if assessment_output_row is not None else '',
                     "grammar": "0"
                 }
                 report = {
                     "transcription_language": assessment_output_row.transcription_language if assessment_output_row is not None else '-',
-                    "transcription_language_reason": assessment_output_row.transcription_language_reason if assessment_output_row is not None else 'LANGID_NO_SPEECH',
+                    "langid_score": assessment_output_row.language_id_score if assessment_output_row is not None else 0,
+                    "transcription_language_remark": assessment_output_row.transcription_language_remark if assessment_output_row is not None else '000',
                     "asr_text": assessment_output_row.asr_text if assessment_output_row is not None else '',
                     "hallu_score":  assessment_output_row.hallu_score if assessment_output_row is not None else 0,
                     "word_count": assessment_output_row.word_count if assessment_output_row is not None else 0,
@@ -230,24 +213,25 @@ def update_submissions(outputs, operation):
             if operation == "langid":
 
                 assessment_output = output["langid"]
-                languages_estimated = assessment_output["languages_estimation"]
-                transcription_language, confidence, reason = get_transcription_language(
-                    languages_estimated)
+                language_identification = assessment_output["language_identification"]
+                transcription_language, score, confidence, remark, langid_decision_data = get_transcription_language(
+                    language_identification)
                 if (assessment_output_row_does_not_exist):
                     submission.append("assessment_outputs", {
                         'key_field': key_field,
-                        "languages_estimated": str(languages_estimated),
+                        "langid_decision_data": str(langid_decision_data),
                         "transcription_language": transcription_language,
-                        "transcription_language_reason": reason,
-                        "confidence": round(confidence * 100, 1)
+                        "language_id_score": score,
+                        "transcription_language_remark": remark,
+                        "confidence": confidence
                     })
                 else:
-                    assessment_output_row.languages_estimated = str(
-                        languages_estimated)
+                    assessment_output_row.langid_decision_data = str(
+                        langid_decision_data)
                     assessment_output_row.transcription_language = transcription_language
-                    assessment_output_row.confidence = round(
-                        confidence * 100, 1)
-                    assessment_output_row.transcription_language_reason = reason
+                    assessment_output_row.language_id_score = score
+                    assessment_output_row.confidence = confidence
+                    assessment_output_row.transcription_language_remark = remark
 
                 update_question_status(
                     submission, output["entry_key"], 'LANGUAGE_CHECK_COMPLETE')
@@ -261,22 +245,14 @@ def update_submissions(outputs, operation):
                         'key_field': key_field,
                         "asr_text": transcription_output['asr_text'],
                         "hallu_score": transcription_output['hallu_score'],
-                        "hallu_text": str(transcription_output['hallu_text']),
-                        "transcription_language": transcription_output['transcription_language_override'],
-                        "transcription_language_reason": transcription_output['transcription_language_override_reason'],
-                        "text_assist_similarity_score": transcription_output['text_assist_similarity_score']
+                        "hallu_text": str(transcription_output['hallu_text'])
                     })
                 else:
                     assessment_output_row.asr_text = transcription_output['asr_text']
                     assessment_output_row.hallu_score = transcription_output['hallu_score']
                     assessment_output_row.hallu_text = str(
                         transcription_output['hallu_text'])
-                    assessment_output_row.transcription_language = transcription_output[
-                        'transcription_language_override']
-                    assessment_output_row.transcription_language_reason = transcription_output[
-                        'transcription_language_override_reason']
-                    assessment_output_row.text_assist_similarity_score = transcription_output[
-                        'text_assist_similarity_score']
+                    # assessment_output_row.text_assist_similarity_score = transcription_output['text_assist_similarity_score']
 
                 update_question_status(
                     submission, output["entry_key"], 'TRANSCRIPTION_COMPLETE')
@@ -289,14 +265,18 @@ def update_submissions(outputs, operation):
                         "key_field": key_field,
                         "word_count": text_analysis_output["token_count"],
                         "lexical_density": text_analysis_output["lexical_density"],
-                        # "nine_point_score": "1.1",
-                        "nlp_text_analysis": text_analysis_output
+                        "nlp_text_analysis": text_analysis_output,
+                        "text_assist_similarity_score": transcription_output['text_assist_similarity_score'],
+                        "text_assist_common_words": ", ".join(transcription_output['text_assist_common_words'])
                     })
                 else:
                     assessment_output_row.nlp_text_analysis = text_analysis_output
                     assessment_output_row.word_count = text_analysis_output["token_count"]
                     assessment_output_row.lexical_density = text_analysis_output["lexical_density"]
-                    # assessment_output_row.nine_point_score = "1.1"
+                    assessment_output_row.text_assist_similarity_score = text_analysis_output.get(
+                        "text_assist_similarity_score", 0)
+                    assessment_output_row.text_assist_common_words = ", ".join(text_analysis_output.get(
+                        "text_assist_common_words", ''))
 
                 update_question_status(
                     submission, output["entry_key"], 'TEXT_ANALYSIS_COMPLETE')
@@ -311,7 +291,7 @@ def update_submissions(outputs, operation):
                         "key_field": key_field,
                         "word_count": report_output["word_count"],
                         "lexical_density": report_output["lexical_density"],
-                        "nine_point_score_9": report_output["nine_point_score"],
+                        "sixteen_point_score": report_output["sixteen_point_score"],
                         "conversation_contribution_pct": report_output["conversation_contribution_pct"],
                         "total_nouns": report_output["total_nouns"],
                         "total_proper_nouns": report_output["total_proper_nouns"],
@@ -335,7 +315,7 @@ def update_submissions(outputs, operation):
                 else:
                     assessment_output_row.word_count = report_output["word_count"]
                     assessment_output_row.lexical_density = report_output["lexical_density"]
-                    assessment_output_row.nine_point_score_9 = report_output["nine_point_score"]
+                    assessment_output_row.sixteen_point_score = report_output["sixteen_point_score"]
                     assessment_output_row.conversation_contribution_pct = report_output[
                         "conversation_contribution_pct"]
                     assessment_output_row.total_nouns = report_output["total_nouns"]

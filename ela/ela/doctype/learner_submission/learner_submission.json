@@ -163,8 +163,7 @@
    "fieldname": "assessment_outputs",
    "fieldtype": "Table",
    "label": "Assessment Outputs",
-   "options": "Assessment Output",
-   "read_only": 1
+   "options": "Assessment Output"
   },
   {
    "default": "SUBID-",
@@ -177,7 +176,7 @@
  "hide_toolbar": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-03-11 06:55:42.651662",
+ "modified": "2026-07-06 13:45:26.417209",
  "modified_by": "Administrator",
  "module": "ELA",
  "name": "Learner Submission",

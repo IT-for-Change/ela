@@ -76,7 +76,7 @@ class AssessmentPackage(Document):
 
         # 1) Extract and print required fields
         start_time = root.findtext("startTime")
-        form_id = root.findtext("form_introduction/ela_form_id")
+        form_id = root.findtext("form_introduction/form_id")
         num_assessments = int(root.findtext(
             "form_introduction/num_assessments"))
         learner = root.findtext("form_configuration/learner")
