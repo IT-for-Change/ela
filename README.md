@@ -37,7 +37,7 @@ A companion component is the [ECUBE data collector](https://github.com/IT-for-Ch
 
 ### Hardware and software requirements
 To successfully install and run ELA, the following are the minimum requirements.
-- A desktop / laptop computer with 8 GB RAM, 4 CPU cores, 50 GB disk space is sufficient. Note: The AI components are resource intensive when they are running. Avoid actively running/using other software when the AI components are executing.
+- A desktop / laptop computer with 8 GB RAM, 4 CPU cores, 16 GB swap, and 50 GB disk space is sufficient. Note: The AI components are resource intensive when they are running. Avoid actively running/using other software when the AI components are executing.
 - Any standard Linux OS distribution. While other OSes/versions should work, ELA is developed and tested on Linux, specifically Ubuntu 22.04+
 - The desktop should have the following software installed
   - Docker CE
