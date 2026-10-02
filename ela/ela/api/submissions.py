@@ -123,6 +123,7 @@ def get_submissions(activity_eid, operation):
                     "source": assessment_output_row.asr_text if assessment_output_row is not None else '',
                     "text_assist": get_assessment_question_text_assist_for_output(question_output),
                     "language": assessment_output_row.transcription_language if assessment_output_row is not None else '',
+                    "learner_duration": assessment_output_row.learner_duration if assessment_output_row is not None else 0,
                     "grammar": "0"
                 }
                 report = {
@@ -131,7 +132,8 @@ def get_submissions(activity_eid, operation):
                     "transcription_language_remark": assessment_output_row.transcription_language_remark if assessment_output_row is not None else '000',
                     "asr_text": assessment_output_row.asr_text if assessment_output_row is not None else '',
                     "hallu_score":  assessment_output_row.hallu_score if assessment_output_row is not None else 0,
-                    "word_count": assessment_output_row.word_count if assessment_output_row is not None else 0,
+                    "en_word_count": assessment_output_row.en_word_count if assessment_output_row is not None else 0,
+                    "est_non_en_word_count": assessment_output_row.est_non_en_word_count if assessment_output_row is not None else 0,
                     "lexical_density": assessment_output_row.lexical_density if assessment_output_row is not None else 0,
                     "text_analysis": assessment_output_row.nlp_text_analysis if assessment_output_row is not None else '',
                     "learner_duration": assessment_output_row.learner_duration if assessment_output_row is not None else 0,
@@ -263,7 +265,8 @@ def update_submissions(outputs, operation):
                 if (assessment_output_row_does_not_exist):
                     submission.append("assessment_outputs", {
                         "key_field": key_field,
-                        "word_count": text_analysis_output["token_count"],
+                        "en_word_count": text_analysis_output["en_token_count"],
+                        "est_non_en_word_count": text_analysis_output["est_non_en_word_count"],
                         "lexical_density": text_analysis_output["lexical_density"],
                         "nlp_text_analysis": text_analysis_output,
                         "text_assist_similarity_score": transcription_output['text_assist_similarity_score'],
@@ -271,7 +274,9 @@ def update_submissions(outputs, operation):
                     })
                 else:
                     assessment_output_row.nlp_text_analysis = text_analysis_output
-                    assessment_output_row.word_count = text_analysis_output["token_count"]
+                    assessment_output_row.en_word_count = text_analysis_output["en_token_count"]
+                    assessment_output_row.est_non_en_word_count = text_analysis_output[
+                        "est_non_en_word_count"]
                     assessment_output_row.lexical_density = text_analysis_output["lexical_density"]
                     assessment_output_row.text_assist_similarity_score = text_analysis_output.get(
                         "text_assist_similarity_score", 0)
@@ -289,9 +294,9 @@ def update_submissions(outputs, operation):
                 if (assessment_output_row_does_not_exist):
                     submission.append("assessment_outputs", {
                         "key_field": key_field,
-                        "word_count": report_output["word_count"],
                         "lexical_density": report_output["lexical_density"],
                         "sixteen_point_score": report_output["sixteen_point_score"],
+                        "remark_summary": report_output["remark_summary"],
                         "conversation_contribution_pct": report_output["conversation_contribution_pct"],
                         "total_nouns": report_output["total_nouns"],
                         "total_proper_nouns": report_output["total_proper_nouns"],
@@ -311,11 +316,14 @@ def update_submissions(outputs, operation):
                         "nine_letter_words": report_output["nine_letter_words"],
                         "ten_letter_words": report_output["ten_letter_words"],
                         "greater_than_10_letter_words": report_output["greater_than_10_letter_words"],
+                        "grammar_error_types": report_output["grammar_error_types"],
+                        "grammar_error_context_hint": report_output["grammar_error_context_hint"],
+                        "grammar_error_details": report_output["grammar_error_details"]
                     })
                 else:
-                    assessment_output_row.word_count = report_output["word_count"]
                     assessment_output_row.lexical_density = report_output["lexical_density"]
                     assessment_output_row.sixteen_point_score = report_output["sixteen_point_score"]
+                    assessment_output_row.remark_summary = report_output["remark_summary"]
                     assessment_output_row.conversation_contribution_pct = report_output[
                         "conversation_contribution_pct"]
                     assessment_output_row.total_nouns = report_output["total_nouns"]
@@ -338,6 +346,13 @@ def update_submissions(outputs, operation):
                     assessment_output_row.ten_letter_words = report_output["ten_letter_words"]
                     assessment_output_row.greater_than_10_letter_words = report_output[
                         "greater_than_10_letter_words"]
+
+                    assessment_output_row.grammar_error_types = report_output[
+                        "grammar_error_types"]
+                    assessment_output_row.grammar_error_details = report_output[
+                        "grammar_error_details"]
+                    assessment_output_row.grammar_error_context_hint = report_output[
+                        "grammar_error_context_hint"]
 
                 update_question_status(
                     submission, output["entry_key"], 'REPORT_COMPLETE')
