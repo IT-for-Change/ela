@@ -72,7 +72,7 @@
     "item_id": "435642",
     "item_type": "Bar",
     "layout": "{\"i\":435642,\"x\":0,\"y\":100,\"w\":20,\"h\":17,\"moved\":false}",
-    "options": "{\"xAxis\":[{\"column\":\"Activity Title\"},{\"column\":\"Learner Display Name\"}],\"yAxis\":[{\"column\":\"Conversation Contribution Pct\",\"series_options\":{\"type\":\"bar\"}}],\"rotateLabels\":\"0\",\"title\":\"Conversation: % Learner contribution\",\"colors\":[\"#318AD8\",\"#F683AE\",\"#48BB74\",\"#F56B6B\",\"#FACF7A\",\"#44427B\",\"#5FD8C4\",\"#F8814F\",\"#15CCEF\",\"#A6B1B9\"],\"query\":\"QRY-0191\",\"roundedBars\":true}",
+    "options": "{\"xAxis\":[{\"column\":\"Activity Title\"},{\"column\":\"Learner Display Name\"}],\"yAxis\":[{\"column\":\"Conversation Contribution Pct\",\"series_options\":{\"type\":\"bar\"}}],\"rotateLabels\":\"90\",\"title\":\"Conversation: % Learner contribution\",\"colors\":[\"#318AD8\",\"#F683AE\",\"#48BB74\",\"#F56B6B\",\"#FACF7A\",\"#44427B\",\"#5FD8C4\",\"#F8814F\",\"#15CCEF\",\"#A6B1B9\"],\"query\":\"QRY-0191\",\"roundedBars\":true}",
     "parent": "DSH-0183",
     "parentfield": "items",
     "parenttype": "Insights Dashboard"
@@ -94,9 +94,27 @@
     "parent": "DSH-0183",
     "parentfield": "items",
     "parenttype": "Insights Dashboard"
+   },
+   {
+    "item_id": "687264",
+    "item_type": "Table",
+    "layout": "{\"i\":687264,\"x\":0,\"y\":123,\"w\":10,\"h\":10,\"moved\":false}",
+    "options": "{\"columns\":[{\"column\":\"Learner Display Name\",\"column_options\":{\"column_type\":\"Text\"}},{\"column\":\"Sixteen Point Score\",\"column_options\":{\"column_type\":\"Text\"}},{\"column\":\"Question Index\",\"column_options\":{\"column_type\":\"Text\"}}],\"query\":\"QRY-0202\",\"title\":\"Learners by 16 point score\",\"filtersEnabled\":true}",
+    "parent": "DSH-0183",
+    "parentfield": "items",
+    "parenttype": "Insights Dashboard"
+   },
+   {
+    "item_id": "607286",
+    "item_type": "Filter",
+    "layout": "{\"i\":607286,\"x\":0,\"y\":121,\"w\":5,\"h\":2,\"moved\":false}",
+    "options": "{\"links\":{},\"column\":{\"label\":\"Learner Display Name\",\"column\":\"learner_display_name\",\"type\":\"String\",\"table\":\"tabLearner Submission\",\"data_source\":\"Site DB\",\"description\":\"String - Learner Submission\",\"value\":\"tabLearner Submission.learner_display_name\"},\"label\":\"Learner score 16 point\",\"defaultOperator\":{\"label\":\"equals\",\"value\":\"=\"},\"defaultValue\":{}}",
+    "parent": "DSH-0183",
+    "parentfield": "items",
+    "parenttype": "Insights Dashboard"
    }
   ],
-  "modified": "2026-03-11 16:03:23.508832",
+  "modified": "2026-10-01 15:45:38.677025",
   "name": "DSH-0183",
   "public_key": null,
   "title": "ELA Learner Dashboard"
