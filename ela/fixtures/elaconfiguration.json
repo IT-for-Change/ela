@@ -8,6 +8,7 @@
   "ela_api_token": "b909eccbd9b04d1:e7515a47bbfad81",
   "host": "http://elaexplore.localhost",
   "language_check": "elaai:0.51",
+  "language_id_matrix": "",
   "middleware_endpoint": "http://elamid:80/run",
   "modified": "2026-03-10 17:58:09.374062",
   "name": "ELAConfiguration",

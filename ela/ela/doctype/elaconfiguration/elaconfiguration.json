@@ -18,6 +18,7 @@
   "common_ai_backend",
   "speech_separation",
   "language_check",
+  "language_id_matrix",
   "speech_to_text",
   "natural_language_processing",
   "reporting",
@@ -76,6 +77,12 @@
    "fieldname": "language_check",
    "fieldtype": "Data",
    "label": "Language check"
+  },
+  {
+   "description": "Upload the language identification matrix used by the langid app. The file is made public so the app can download it when its container starts.",
+   "fieldname": "language_id_matrix",
+   "fieldtype": "Attach",
+   "label": "Language ID matrix"
   },
   {
    "fieldname": "speech_to_text",
